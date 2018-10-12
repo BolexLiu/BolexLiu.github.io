@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="React-Native,es6,SDK," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="通过此文章你将获得如下升职加薪装逼技能 动手封装native接口提供reactNative调用 集成百度定位sdk 定位服务">
+<meta name="keywords" content="React-Native,es6,SDK">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你React-Native撸android原生百度定位SDK服务[跨平台模块自定义]">
+<meta property="og:url" content="http://www.dajipai.cc/archives/58cfb872.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="通过此文章你将获得如下升职加薪装逼技能 动手封装native接口提供reactNative调用 集成百度定位sdk 定位服务">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-29adb336f5ceeff8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-a11c1cc1511f9bea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-0420bcd99db8bc75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4abf462d86c84a05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-cf6374c319a000c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-23193a93a7f025f0.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-edcb32a6cbf018dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f5201c6cf1837217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-ddaa39a38e45b2fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-a5b6688d9ce9ccee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1c77dad9d782c2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1afe4a491ce58fa4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-984b21fa76e26639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-dda65e928fcccb47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f7c74edeea5c75c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-37e7faa575d12875.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-d1d6b60c7837eaff.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1393639d791f2f2e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-9ec5b050b6168498.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-c57defa4b04682f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-b0ea390490081c5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/300">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-a3a7f345e0cc17ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/300">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="教你React-Native撸android原生百度定位SDK服务[跨平台模块自定义]">
+<meta name="twitter:description" content="通过此文章你将获得如下升职加薪装逼技能 动手封装native接口提供reactNative调用 集成百度定位sdk 定位服务">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-29adb336f5ceeff8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/58cfb872.html"/>
+
+
+
+
+
+  <title>教你React-Native撸android原生百度定位SDK服务[跨平台模块自定义] | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/58cfb872.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">教你React-Native撸android原生百度定位SDK服务[跨平台模块自定义]</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-01-19T14:37:53+08:00">
+                2017-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/react-native/" itemprop="url" rel="index">
+                    <span itemprop="name">react-native</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="通过此文章你将获得如下升职加薪装逼技能"><a href="#通过此文章你将获得如下升职加薪装逼技能" class="headerlink" title="通过此文章你将获得如下升职加薪装逼技能"></a>通过此文章你将获得如下升职加薪装逼技能</h2><ul>
+<li>动手封装native接口提供reactNative调用</li>
+<li>集成百度定位sdk 定位服务</li>
+</ul>
+<hr>
+<a id="more"></a>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题?"></a>问题?</h2><p>  哈喽,最近一直在研究reactNative没有碰原生的东西已经很久了.不知道大家是否想过一个问题呢?reactNative开发中用到的语言是Js.但是我们如果想做百度定位或者微博分享等第三方sdk的集成时,会不会碰到以下问题.</p>
+<ul>
+<li>第三方sdk是否有reactNative的sdk.</li>
+<li>reactNative是否支持调用原生sdk</li>
+</ul>
+<h3 id="第三方sdk是否有reactNative的sdk"><a href="#第三方sdk是否有reactNative的sdk" class="headerlink" title="第三方sdk是否有reactNative的sdk."></a>第三方sdk是否有reactNative的sdk.</h3><p> 暂不支持,很抱歉,由于reactNative技术太新,而且更新较快.目前暂未发现第三sdk有做这块的.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-29adb336f5ceeff8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br> 既然他们还没来得及做,是否又有民间艺人做了这事?没错确实有.如果你在github上去搜索确实能找到一些.不过有的时候我们会发现一个问题.他们的项目可能断更了.也就是说sdk更新后,作者并未能及时更新.导致你集成进来后压根就不能用.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-a11c1cc1511f9bea.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###reactNative是否支持调用原生sdk</p>
+<p> 支持,是的官方说了他们支持的.下面请看原话.<br><img src="http://upload-images.jianshu.io/upload_images/1110736-0420bcd99db8bc75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<ul>
+<li><p>你需要一个翻译吗下面就是哦:</p>
+<p>有时候App需要访问平台API，但React Native可能还没有相应的模块包装；或者你需要复用一些Java代码，而不是用Javascript重新实现一遍；又或者你需要实现某些高性能的、多线程的代码，譬如图片处理、数据库、或者各种高级扩展等等。<br>我们把React Native设计为可以在其基础上编写真正的原生代码，并且可以访问平台所有的能力。这是一个相对高级的特性，我们并不认为它应当在日常开发的过程中经常出现，但具备这样的能力是很重要的。如果React Native还不支持某个你需要的原生特性，你应当可以自己实现该特性的封装。</p>
+</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4abf462d86c84a05.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>  没有错,官方都说了,它支持的.那还怕个J*,那么我们现在就撸起袖子干他丫的.搞起.</p>
+<hr>
+<h2 id="集成百度定位"><a href="#集成百度定位" class="headerlink" title="集成百度定位"></a>集成百度定位</h2><p>这是温柔的一条提示:题纲带星号的是你应该关注的重点</p>
+<ul>
+<li>初始化项目</li>
+<li>申请认证成为百度开发者</li>
+<li>下载基础开发包并导入android Studio</li>
+<li>编写Native模块*</li>
+<li>reactNative调用Native模块*</li>
+<li>Run起来</li>
+</ul>
+<p>###初始化项目</p>
+<p>我们打开命令行,输入 react-native init [你的项目名称] 不含括弧,如下图所示</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-cf6374c319a000c8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>然后你就会看到下面这个样子的. 一切顺利的话只等他结束.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-23193a93a7f025f0.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>为了验证项目是否正常init,现在你可以使用react-native run-android 运行你的应用.在这之前你要确保adb是否都已经链接好哦.</p>
+<p>###申请认证成为百度开发者<br> <a href="http://lbsyun.baidu.com/" target="_blank" rel="noopener">http://lbsyun.baidu.com/</a> 打开它,然后注册一个账号.简单的认证后找到<a href="http://lbsyun.baidu.com/apiconsole/key" target="_blank" rel="noopener">API控制台</a>,然后你会看到如下界面.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-edcb32a6cbf018dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>那么我们首先来创建一个应用吧.点击创建应用.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f5201c6cf1837217.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>注意以下几点:</p>
+<ul>
+<li>应用类型选择android sdk</li>
+<li>SHA1可以参考官方的方法生成. <a href="http://lbsyun.baidu.com/index.php?title=androidsdk/guide/key" target="_blank" rel="noopener">http://lbsyun.baidu.com/index.php?title=androidsdk/guide/key</a></li>
+<li>包名不要填错了 包名需要在文件build.gradle中查询 applicationId，并确保 applicationId 与在 AndroidManifest.xml 中定义的包名一致</li>
+</ul>
+<p>随后你会获得一个叫ak的key.这个key后面要配置到你的AndroidManifest.xml .后面会讲解到.<br>你可以点击应用列表中的设置,看到你自己应用的ak</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-ddaa39a38e45b2fd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>###下载基础开发包并导入android Studio</p>
+<p>我想你正常开发reactnative的时候可能用的是atom编辑器或者webStorm之类的,但是因为我们的sdk基础包是native的,所以如果你写java的时候用那些不支持提示或自动导java包的ide会很蛋疼的.所以在此请你先确保要安装好哦.<br> 我们先在官方找到自定义下载包地址.<a href="http://lbsyun.baidu.com/sdk/download?selected=mapsdk_basicmap,mapsdk_searchfunction,mapsdk_lbscloudsearch,mapsdk_calculationtool,mapsdk_radar" target="_blank" rel="noopener">http://lbsyun.baidu.com/sdk/download?selected=mapsdk_basicmap,mapsdk_searchfunction,mapsdk_lbscloudsearch,mapsdk_calculationtool,mapsdk_radar</a> 也就是这个链接了.勾选你需要的服务.这里我只选了基础定位.然后点击开发包下载.<br><img src="http://upload-images.jianshu.io/upload_images/1110736-a5b6688d9ce9ccee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下载后的解压包里有一个叫libs的文件夹.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-1c77dad9d782c2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>现在我们打开androidStudio,找到这个选项.<br><img src="http://upload-images.jianshu.io/upload_images/1110736-1afe4a491ce58fa4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>找到你的项目路径,打开项目下的android目录.</p>
+<p>注意是打开android目录.<br>注意是打开android目录.<br>注意是打开android目录.<br>重要的事情说三遍.<br><img src="http://upload-images.jianshu.io/upload_images/1110736-984b21fa76e26639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>运行起来后,将项目切换成Project模式.(默认是android模式)</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-dda65e928fcccb47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<p>将刚刚下载的压缩文件中的libs复制到项目中的App文件夹下.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f7c74edeea5c75c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt="Paste_Image.png"></p>
+<p>打开APP文件夹下的build.Gradle,在加入如下代码.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">     .... 这是其他的代码,你别动它.这一行不需要,不要复制进来了.</span><br><span class="line">   sourceSets &#123;</span><br><span class="line">        main &#123;</span><br><span class="line">            jniLibs.srcDirs = [&apos;libs&apos;]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>打开AndroidManifest文件,在application标签中添加服务和ak秘钥.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;service</span><br><span class="line">        android:name=&quot;com.baidu.location.f&quot;</span><br><span class="line">        android:enabled=&quot;true&quot;</span><br><span class="line">        android:process=&quot;:remote&quot;&gt;&lt;/service&gt;</span><br><span class="line">    &lt;meta-data</span><br><span class="line">        android:name=&quot;com.baidu.lbsapi.API_KEY&quot;</span><br><span class="line">        android:value=&quot;GN1lCGAHdh1rrkMeEY4I5Azs&quot; /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>添加权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.SYSTEM_ALERT_WINDOW&quot;/&gt;</span><br><span class="line"> &lt;!-- 这个权限用于进行网络定位--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.ACCESS_COARSE_LOCATION&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 这个权限用于访问GPS定位--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 用于访问wifi网络信息，wifi信息会用于进行网络定位--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 获取运营商信息，用于支持提供运营商信息相关的接口--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 用于读取手机当前的状态--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 写入扩展存储，向扩展卡写入数据，用于写入离线定位数据--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot;&gt;&lt;/uses-permission&gt;</span><br><span class="line"> &lt;!-- 访问网络，网络定位需要上网--&gt;</span><br><span class="line"> &lt;!-- SD卡读取权限，用户写入离线定位数据--&gt;</span><br><span class="line"> &lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;&gt;&lt;/uses-permission&gt;</span><br></pre></td></tr></table></figure></p>
+<p>至此恭喜你已经完成一个基础的定位环境了.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-37e7faa575d12875.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt=""></p>
+<p>###编写Native模块*</p>
+<p> 编写一个Native模块分为三步</p>
+<ul>
+<li>1.建一个中间访问对象,</li>
+<li>2.建一个ReactPackage对象.</li>
+<li>3.将ReactPackage对象加载到MainApplication中.</li>
+</ul>
+<p>接下来我们就来一步一步做.</p>
+<ul>
+<li>新建一个BaiduLBS类继承ReactContextBaseJavaModule.  声明一个startLocation()的方法.供给RN调用,参数Callback是用于回调js的对象.我们再定位成功后要调用它.注意方法的上面必须加上 @ReactMethod注解.具体的调用定位请参考代码吧.然后重写GetName方法.return的值就是rn中调用的组件.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">package com.baidumapnr;</span><br><span class="line"></span><br><span class="line">import android.util.Log;</span><br><span class="line"></span><br><span class="line">import com.baidu.location.BDLocation;</span><br><span class="line">import com.baidu.location.BDLocationListener;</span><br><span class="line">import com.baidu.location.LocationClient;</span><br><span class="line">import com.baidu.location.LocationClientOption;</span><br><span class="line">import com.baidu.location.Poi;</span><br><span class="line">import com.facebook.react.bridge.Callback;</span><br><span class="line">import com.facebook.react.bridge.ReactApplicationContext;</span><br><span class="line">import com.facebook.react.bridge.ReactContextBaseJavaModule;</span><br><span class="line">import com.facebook.react.bridge.ReactMethod;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * author：LiuShenEn on 2017/1/18 14:57</span><br><span class="line"> */</span><br><span class="line">public class BaiduLBS  extends ReactContextBaseJavaModule &#123;</span><br><span class="line">    public LocationClient mLocationClient = null;</span><br><span class="line">    private Callback locationCallback;</span><br><span class="line"></span><br><span class="line">    public BaiduLBS(ReactApplicationContext reactContext) &#123;</span><br><span class="line">        super(reactContext);</span><br><span class="line">    &#125;</span><br><span class="line">    @ReactMethod</span><br><span class="line">    public void startLocation( Callback locationCallback) &#123;</span><br><span class="line">       this.locationCallback = locationCallback;</span><br><span class="line">        mLocationClient = new LocationClient(getReactApplicationContext());     //声明LocationClient类</span><br><span class="line">        mLocationClient.registerLocationListener(myListener);    //注册监听函数</span><br><span class="line">        LocationClientOption option = new LocationClientOption();</span><br><span class="line">        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy</span><br><span class="line">        );//可选，默认高精度，设置定位模式，高精度，低功耗，仅设备</span><br><span class="line">        option.setCoorType(&quot;bd09ll&quot;);//可选，默认gcj02，设置返回的定位结果坐标系</span><br><span class="line">        int span = 0;</span><br><span class="line">        option.setScanSpan(span);//可选，默认0，即仅定位一次，设置发起定位请求的间隔需要大于等于1000ms才是有效的</span><br><span class="line">        option.setIsNeedAddress(true);//可选，设置是否需要地址信息，默认不需要</span><br><span class="line">        option.setOpenGps(true);//可选，默认false,设置是否使用gps</span><br><span class="line">        option.setLocationNotify(true);//可选，默认false，设置是否当gps有效时按照1S1次频率输出GPS结果</span><br><span class="line">        option.setIsNeedLocationDescribe(true);//可选，默认false，设置是否需要位置语义化结果，可以在BDLocation.getLocationDescribe里得到，结果类似于“在北京天安门附近”</span><br><span class="line">        option.setIsNeedLocationPoiList(true);//可选，默认false，设置是否需要POI结果，可以在BDLocation.getPoiList里得到</span><br><span class="line">        option.setIgnoreKillProcess(false);//可选，默认true，定位SDK内部是一个SERVICE，并放到了独立进程，设置是否在stop的时候杀死这个进程，默认不杀死</span><br><span class="line">        option.SetIgnoreCacheException(false);//可选，默认false，设置是否收集CRASH信息，默认收集</span><br><span class="line">        option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要</span><br><span class="line">        mLocationClient.setLocOption(option);</span><br><span class="line">        mLocationClient.start();</span><br><span class="line">        Log.e(&quot;tag&quot;,&quot;ok&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 定位回掉</span><br><span class="line">     */</span><br><span class="line">    public BDLocationListener myListener = new BDLocationListener() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public void onReceiveLocation(final BDLocation bdLocation) &#123;</span><br><span class="line">            Log.e(&quot;TGA&quot;, &quot;回掉+1&quot;);</span><br><span class="line">            //Receive Location</span><br><span class="line">            final StringBuffer sb = new StringBuffer(256);</span><br><span class="line">            sb.append(&quot;time : &quot;);</span><br><span class="line">            sb.append(bdLocation.getTime());</span><br><span class="line">            sb.append(&quot;\nerror code : &quot;);</span><br><span class="line">            sb.append(bdLocation.getLocType());</span><br><span class="line">            sb.append(&quot;\nlatitude : &quot;);</span><br><span class="line">            sb.append(bdLocation.getLatitude());</span><br><span class="line">            sb.append(&quot;\nlontitude : &quot;);</span><br><span class="line">            sb.append(bdLocation.getLongitude());</span><br><span class="line">            sb.append(&quot;\nradius : &quot;);</span><br><span class="line">            sb.append(bdLocation.getRadius());</span><br><span class="line">            if (bdLocation.getLocType() == BDLocation.TypeGpsLocation) &#123;// GPS定位结果</span><br><span class="line">                sb.append(&quot;\nspeed : &quot;);</span><br><span class="line">                sb.append(bdLocation.getSpeed());// 单位：公里每小时</span><br><span class="line">                sb.append(&quot;\nsatellite : &quot;);</span><br><span class="line">                sb.append(bdLocation.getSatelliteNumber());</span><br><span class="line">                sb.append(&quot;\nheight : &quot;);</span><br><span class="line">                sb.append(bdLocation.getAltitude());// 单位：米</span><br><span class="line">                sb.append(&quot;\ndirection : &quot;);</span><br><span class="line">                sb.append(bdLocation.getDirection());// 单位度</span><br><span class="line">                sb.append(&quot;\naddr : &quot;);</span><br><span class="line">                sb.append(bdLocation.getAddrStr());</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;gps定位成功&quot;);</span><br><span class="line"></span><br><span class="line">            &#125; else if (bdLocation.getLocType() == BDLocation.TypeNetWorkLocation) &#123;// 网络定位结果</span><br><span class="line">                sb.append(&quot;\naddr : &quot;);</span><br><span class="line">                sb.append(bdLocation.getAddrStr());</span><br><span class="line">                //运营商信息</span><br><span class="line">                sb.append(&quot;\noperationers : &quot;);</span><br><span class="line">                sb.append(bdLocation.getOperators());</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;网络定位成功&quot;);</span><br><span class="line">            &#125; else if (bdLocation.getLocType() == BDLocation.TypeOffLineLocation) &#123;// 离线定位结果</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;离线定位成功，离线定位结果也是有效的&quot;);</span><br><span class="line">            &#125; else if (bdLocation.getLocType() == BDLocation.TypeServerError) &#123;</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;服务端网络定位失败，可以反馈IMEI号和大体定位时间到loc-bugs@baidu.com，会有人追查原因&quot;);</span><br><span class="line">            &#125; else if (bdLocation.getLocType() == BDLocation.TypeNetWorkException) &#123;</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;网络不同导致定位失败，请检查网络是否通畅&quot;);</span><br><span class="line">            &#125; else if (bdLocation.getLocType() == BDLocation.TypeCriteriaException) &#123;</span><br><span class="line">                sb.append(&quot;\ndescribe : &quot;);</span><br><span class="line">                sb.append(&quot;无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            sb.append(&quot;\nlocationdescribe : &quot;);</span><br><span class="line">            sb.append(bdLocation.getLocationDescribe());// 位置语义化信息</span><br><span class="line">            List&lt;Poi&gt; list = bdLocation.getPoiList();// POI数据</span><br><span class="line">            if (list != null) &#123;</span><br><span class="line">                sb.append(&quot;\npoilist size = : &quot;);</span><br><span class="line">                sb.append(list.size());</span><br><span class="line">                for (Poi p : list) &#123;</span><br><span class="line">                    sb.append(&quot;\npoi= : &quot;);</span><br><span class="line">                    sb.append(p.getId() + &quot; &quot; + p.getName() + &quot; &quot; + p.getRank());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            locationCallback.invoke(sb.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return &quot;MyLBS&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>新建一个AnExampleReactPackage类实现ReactPackage接口.并在createNativeModules方法中加载BaiduLBS类.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.baidumapnr;</span><br><span class="line"></span><br><span class="line">import com.facebook.react.ReactPackage;</span><br><span class="line">import com.facebook.react.bridge.JavaScriptModule;</span><br><span class="line">import com.facebook.react.bridge.NativeModule;</span><br><span class="line">import com.facebook.react.bridge.ReactApplicationContext;</span><br><span class="line">import com.facebook.react.uimanager.ViewManager;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.Collections;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">class AnExampleReactPackage implements ReactPackage &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;NativeModule&gt; createNativeModules(</span><br><span class="line">            ReactApplicationContext reactContext) &#123;</span><br><span class="line">        List&lt;NativeModule&gt; modules = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        modules.add(new BaiduLBS(reactContext));</span><br><span class="line"></span><br><span class="line">        return modules;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在MainApplication中的getPackages方法中添加AnExampleReactPackage.代码如下</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">package com.baidumapnr;</span><br><span class="line"></span><br><span class="line">import android.app.Application;</span><br><span class="line"></span><br><span class="line">import com.facebook.react.ReactApplication;</span><br><span class="line">import com.facebook.react.ReactNativeHost;</span><br><span class="line">import com.facebook.react.ReactPackage;</span><br><span class="line">import com.facebook.react.shell.MainReactPackage;</span><br><span class="line">import com.facebook.soloader.SoLoader;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class MainApplication extends Application implements ReactApplication &#123;</span><br><span class="line"></span><br><span class="line">  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) &#123;</span><br><span class="line">    @Override</span><br><span class="line">    protected boolean getUseDeveloperSupport() &#123;</span><br><span class="line">      return BuildConfig.DEBUG;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</span><br><span class="line">      return Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">          new MainReactPackage(),</span><br><span class="line">              new AnExampleReactPackage()</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public ReactNativeHost getReactNativeHost() &#123;</span><br><span class="line">    return mReactNativeHost;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public void onCreate() &#123;</span><br><span class="line">    super.onCreate();</span><br><span class="line">    SoLoader.init(this, /* native exopackage */ false);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>让我们喘一会气歇一下,理一下思路吧.</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-d1d6b60c7837eaff.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>至此你已经编写完成所有的native模块.简单来说当MainApplication 实现了ReactApplication 接口以后就会通过getPackages来加载你自定义的模块和原生reactNative的模块.其中MainReactPackage就是原生的模块.那么我们自定位的AnExampleReactPackage中就加载了我们自定义的百度定位sdk.然后rn中才能调用到.</p>
+<h3 id="reactNative调用Native模块"><a href="#reactNative调用Native模块" class="headerlink" title="reactNative调用Native模块*"></a>reactNative调用Native模块*</h3><p>保存你的代码,现在可以关掉AS了.打开你写JS的IDE吧.让我们愉快的调用刚刚自定义的sdk接口.</p>
+<ul>
+<li>打开你rn的目录,新建一个BaiduLbs.js文件.然后使用NativeModules对象将刚刚原生中定位的模块加载进来.注意其中 NativeModules.MyLBS中的MyLBS就是我们写原生中BaiduLBS 类的getName的返回值.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;;</span><br><span class="line"></span><br><span class="line">import &#123; NativeModules &#125; from &apos;react-native&apos;;</span><br><span class="line"></span><br><span class="line">export default NativeModules.MyLBS;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>找到index.android.js 文件.import刚刚我们声明的模块. 代码如下:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import React, &#123;Component&#125; from &apos;react&apos;;</span><br><span class="line">import &#123;</span><br><span class="line">    AppRegistry,</span><br><span class="line">    StyleSheet,</span><br><span class="line">    Text,</span><br><span class="line">    View</span><br><span class="line">&#125; from &apos;react-native&apos;;</span><br><span class="line">import MyLBS from &apos;./BaiduLbs&apos;</span><br><span class="line"></span><br><span class="line">export default class BaiduMapNR extends Component &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line">        this.state = &#123;</span><br><span class="line">            location: null,</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        MyLBS.startLocation((location)=&gt; &#123;</span><br><span class="line">            this.setState(&#123;location: location&#125;)</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line"></span><br><span class="line">        if (this.state.location) &#123;</span><br><span class="line">            return &lt;Text &gt;</span><br><span class="line">                &#123; this.state.location&#125;</span><br><span class="line">            &lt;/Text&gt;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &lt;View&gt;</span><br><span class="line">               &lt;Text&gt;你好!&lt;/Text&gt;</span><br><span class="line">            &lt;/View&gt;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">AppRegistry.registerComponent(&apos;BaiduMapNR&apos;, () =&gt; BaiduMapNR);</span><br></pre></td></tr></table></figure>
+<p>###Run起来</p>
+<p>  在你项目的目录下打开命令行.输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android .</span><br></pre></td></tr></table></figure></p>
+<p>下面就是见证奇迹的时刻啦.有木有小激动呢?</p>
+<p>duang!</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-1393639d791f2f2e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-9ec5b050b6168498.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>ok.成功出现我们定位的地址啦.哈哈 是不是很简单.相信你又学会了一招.(⊙v⊙)嗯,加油哦.相信这么爱学习的你,肯定是整天沉迷在其中.那么下面的官方教程你也要抽时间学习哦.</p>
+<ul>
+<li><a href="http://reactnative.cn/docs/0.39/native-modules-android.html#content" target="_blank" rel="noopener">原生模块</a></li>
+<li><a href="http://reactnative.cn/docs/0.39/native-component-android.html#content" target="_blank" rel="noopener">原生UI组件</a></li>
+</ul>
+<hr>
+<h1 id="感谢-amp-打赏"><a href="#感谢-amp-打赏" class="headerlink" title="感谢&amp;打赏"></a>感谢&amp;打赏</h1><ul>
+<li>如果本文对您的工作或学习有帮助,您可以打赏支持我.这样我会更有动力.都说2017年是为内容付费的元年.O(∩_∩)O哈哈~<br><img src="http://upload-images.jianshu.io/upload_images/1110736-c57defa4b04682f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<h2 id="支付宝"><a href="#支付宝" class="headerlink" title="支付宝"></a>支付宝</h2><p><img src="http://upload-images.jianshu.io/upload_images/1110736-b0ea390490081c5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/300" alt=""></p>
+<h2 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h2><p><img src="http://upload-images.jianshu.io/upload_images/1110736-a3a7f345e0cc17ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/300" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/React-Native/" rel="tag"># React-Native</a>
+          
+            <a href="/tags/es6/" rel="tag"># es6</a>
+          
+            <a href="/tags/SDK/" rel="tag"># SDK</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/1099feff.html" rel="next" title="快抱紧我,教你撸出一个简单的React-Naitive [入门基础篇]">
+                <i class="fa fa-chevron-left"></i> 快抱紧我,教你撸出一个简单的React-Naitive [入门基础篇]
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/6bab0cfe.html" rel="prev" title="踏过2016一名刚毕业的android初级工程师是如何成长的">
+                踏过2016一名刚毕业的android初级工程师是如何成长的 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#通过此文章你将获得如下升职加薪装逼技能"><span class="nav-number">1.</span> <span class="nav-text">通过此文章你将获得如下升职加薪装逼技能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第三方sdk是否有reactNative的sdk"><span class="nav-number">2.1.</span> <span class="nav-text">第三方sdk是否有reactNative的sdk.</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集成百度定位"><span class="nav-number">3.</span> <span class="nav-text">集成百度定位</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#reactNative调用Native模块"><span class="nav-number">3.1.</span> <span class="nav-text">reactNative调用Native模块*</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#感谢-amp-打赏"><span class="nav-number"></span> <span class="nav-text">感谢&amp;打赏</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#支付宝"><span class="nav-number">1.</span> <span class="nav-text">支付宝</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#微信"><span class="nav-number">2.</span> <span class="nav-text">微信</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,网站撸成App," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="漂亮的皮囊千篇一律，有趣的灵魂就是老夫啦。这位看文章的小哥，还在无聊的套接口解析数据吗？ 来来来，鸡排君带你玩一把将一个网站撸成App。">
+<meta name="keywords" content="Android,网站撸成App">
+<meta property="og:type" content="article">
+<meta property="og:title" content="无接口写网站App端">
+<meta property="og:url" content="http://www.dajipai.cc/archives/aa7f67b7.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="漂亮的皮囊千篇一律，有趣的灵魂就是老夫啦。这位看文章的小哥，还在无聊的套接口解析数据吗？ 来来来，鸡排君带你玩一把将一个网站撸成App。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f451008707e310bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-b44c75dc47adc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-2fbdfda018f9890f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-9161f8b9eda45b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/400">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-38facc6e28fcc719.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-7efe37a55be82057.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-9e0254d3bc3cfb5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-5e0ee4d0edc9c206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6fb9fda52aa0935d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e52009587968bbef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-929200e683a9a12b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6e70c505cb733bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3fe2e5be968d58c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-9ea7e594fc9e0c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-2f1e75dee2d00323.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-06938b044c06fc4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-50b4609b3726e2e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-432004731059b4ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-496e275f0f46ce32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-d14d9aae3905c6d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-d0451e3a873372ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4ac8afd54888e249.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-d28e243e657dce7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-aadd398ff4e2e394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-2479eb623cd5ab03.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3fd2584ea568d7ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e00c3bd42c9ccf92.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e203654f2166fb90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4e4d713a8c0a6dda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="无接口写网站App端">
+<meta name="twitter:description" content="漂亮的皮囊千篇一律，有趣的灵魂就是老夫啦。这位看文章的小哥，还在无聊的套接口解析数据吗？ 来来来，鸡排君带你玩一把将一个网站撸成App。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-f451008707e310bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/aa7f67b7.html"/>
+
+
+
+
+
+  <title>无接口写网站App端 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-Android" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/aa7f67b7.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">无接口写网站App端</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-07T00:32:00+08:00">
+                2017-08-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/1110736-f451008707e310bd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>漂亮的皮囊千篇一律，<br>有趣的灵魂就是老夫啦。<br>这位看文章的小哥，还在无聊的套接口解析数据吗？</p>
+<p>来来来，鸡排君带你玩一把将一个网站撸成App。<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/1110736-b44c75dc47adc5b2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>本篇是一个实战文章讲解，<br>在无接口的情况下，将网站转换成App。<br>有料有干货，奇淫技巧我赌两包辣条你没见过。</p>
+<p>啊，哈哈哈（你这个笑是认真的吗？）</p>
+<p>别特么瞎BB，NotFoundBitmap你说个毛球啊。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-2fbdfda018f9890f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>哟，这位小爷看样子挺懂行啊，有滴有滴，看下面。<br>（警告前方高能）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-9161f8b9eda45b8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/400" alt=""></p>
+<p>不不不，不是你想的那样。<br>那个谁? 助理，对就是助理。他拿错了图<br>扣工资~~<br>你们假装没看见就好 ：）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-38facc6e28fcc719.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>(ˉ▽￣～) 切~~，不就是一个列表搭配了一个详情页嘛。<br>五毛特效。还装。</p>
+<p>别走呀，老弟。这不是重点。<br>诺，先看看我们的网站。<a href="http://www.apkbus.com/plugin.php?id=cxy_common_blog" target="_blank" rel="noopener">www.apkbus.com</a></p>
+<p>没错，丫的，原生的网页并没有接口暴露出来给我们获取列表，<br>文章详情页排版也没有对移动端做区别展示。<br>不信你拿手机访问看看。</p>
+<p>但是，但是我们要重新排版。</p>
+<h2 id="进入主题"><a href="#进入主题" class="headerlink" title="进入主题"></a>进入主题</h2><p>通过本篇文章你能收获如下。</p>
+<ul>
+<li>解析任意网页上的数据，转换成实体对象</li>
+<li>奇淫技巧，动态注入js修改WebView内容排版</li>
+</ul>
+<p>咱们这个项目是依照安卓巴士博客网站动态解析制作的APP。<br>使用了MVP+RxJava+Retrofit的主流开发套路。<br>篇幅原因我就展开讨论如何搭建框架搭建这种知识了，网上已有很多优秀的文章。<br>我们今天重点讲解这次实战中有用的干货知识啦。</p>
+<p>快来吧，小宝贝儿，上车啦。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-7efe37a55be82057.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>设计思路</li>
+<li>Chrome 页面分析与调试</li>
+<li>解析页面数据</li>
+<li>WebView阅读模式</li>
+<li>内容加载优化</li>
+<li>其他</li>
+<li>小结</li>
+</ul>
+<hr>
+<h2 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h2><h3 id="Banner"><a href="#Banner" class="headerlink" title="Banner :"></a>Banner :</h3><p><img src="http://upload-images.jianshu.io/upload_images/1110736-9e0254d3bc3cfb5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这是巴士的首页，里面包含一个Banner。我们现在可以将这个Banner作为我的App的Banner轮播效果。</p>
+<p>有三个信息我们需要获取。</p>
+<ul>
+<li>背景图</li>
+<li>标题</li>
+<li>Banner地址</li>
+</ul>
+<p>怎么取数据？稍后我们会讲到。</p>
+<h3 id="博客列表"><a href="#博客列表" class="headerlink" title="博客列表"></a>博客列表</h3><p><img src="http://upload-images.jianshu.io/upload_images/1110736-5e0ee4d0edc9c206.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>博客列表页比较中规中矩，该有的都有。</p>
+<ul>
+<li>用户头像</li>
+<li>用户名称</li>
+<li>文章标题</li>
+<li>文章摘要</li>
+<li>时间</li>
+<li>阅读数</li>
+<li>评论数</li>
+<li>赞数</li>
+<li>文章地址</li>
+</ul>
+<h3 id="详情页"><a href="#详情页" class="headerlink" title="详情页"></a>详情页</h3><p><img src="http://upload-images.jianshu.io/upload_images/1110736-6fb9fda52aa0935d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>文章详情页面里内容看上去比较多。我们其实只需要关注三个东西。</p>
+<ul>
+<li>用户信息</li>
+<li>标题</li>
+<li>内容</li>
+</ul>
+<p>没错内容不再拆分了。</p>
+<h3 id="拆解数据思路"><a href="#拆解数据思路" class="headerlink" title="拆解数据思路"></a>拆解数据思路</h3><p>首先Banner和博客列表，我们知道他们都是网页。在前端中常见用<code>document</code>或者<code>JQuery</code>去获取页面节点上的属性或信息。那么其实<code>Java</code>也有轮子可以用来直接解析<code>Html</code>上的节点数据。大型的叫爬虫。当然我们这里用不到爬虫这么个东西。有更轻巧的<a href="https://jsoup.org/" target="_blank" rel="noopener">jsoup</a>框架。</p>
+<p>而文章详情页面的思路不一样，这里我们不方便用<code>Jsoup</code>来解析，因为文章的排版是很复杂的，我们无法知道UGC 会把内容写成什么样子，自然也无法针对性的去解析。但是这不代表我们就不能重新排版了。不知道大家有没有用过<code>Iphone</code>自带的Safari浏览器，他支持将原本没有在移动端适配的页面重新布局。思索了许久这是如何做到的。最后采用了<code>WebView</code>里注入<code>js</code>，然后通过<code>js</code>去操作<code>dom</code>上的元素修改其样式。</p>
+<hr>
+<h2 id="Chrome-页面分析与调试"><a href="#Chrome-页面分析与调试" class="headerlink" title="Chrome 页面分析与调试"></a>Chrome 页面分析与调试</h2><p>因为我们并没有接口，所以我们先来分析页面结构，方便获取我们需要得到的数据。看Banner标签。<br>这里我们使用的是Chrome浏览器。打开开发者模式。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e52009587968bbef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""><br>可以看到最外层的<code>div</code>的<code>id</code>为<code>theTarget</code>里面包含了五个<code>div</code>就是我们需要取的数据。</p>
+<p>我们展开其中第一个子<code>div</code>容器<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"visible"</span> <span class="attr">style</span>=<span class="string">"position: absolute; left: 823.15px;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.apkbus.com/thread-282214-1-1.html"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"data/attachment/forum/201707/31/161204zqgdz0cm22n2mmym.jpg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>不做将死之蛙 安卓巴士博文大赛第三期为你加温！<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>可以很清楚的看到：</p>
+<p><code>&lt;a&gt;</code>里包含了文章详情的链接<br><code>&lt;img&gt;</code>里包含了轮播图链接<br><code>&lt;span&gt;</code>里包含了标题</p>
+<p>同理在博客列表上也是一样的取法，可自行打开开发者模式查看就不展开浪费篇幅了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-929200e683a9a12b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<hr>
+<h2 id="解析页面数据"><a href="#解析页面数据" class="headerlink" title="解析页面数据"></a>解析页面数据</h2><p>我们根据之前在Chrome上的分析得到了如下需要使用的对象。</p>
+<p><strong>Banner模型</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-6e70c505cb733bdb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>文章列表模型</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-3fe2e5be968d58c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>先在要做的是什么呢？</p>
+<p>没错就是激动人心的从网页里取数据了。</p>
+<p>这里我们使用<code>jsoup</code>来解析数据，我们在<code>Gradle</code>里依赖一下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;org.jsoup:jsoup:1.10.1&apos;</span><br></pre></td></tr></table></figure></p>
+<p>这个框架的API已经很简单了噢。我简单说下如何使用。</p>
+<p>1.使用<code>Document doc =  Jsoup.parse(htmlString)</code>方法加载我们需要解析Html。<br>2.假设我们需要获取<code>&lt;h2 id=&quot;test&quot;&gt;123&lt;h2&gt;</code>元素里的123。<br>3.调用<code>Element test=doc.getElementById(&quot;test&quot;);</code>就可以了。<br>4.<code>String value=test.text();</code>就获取到了<code>value=&quot;123&quot;</code></p>
+<p>怎么样，是不是超方便？这是第一步。其他的取法也大同小异。</p>
+<p>下面我们依照<strong>Banner</strong>作为列子解析，看看其他的元素和属性如何解析。</p>
+<p>这是Banner里的某一个Item。我们可以对照着解析。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"visible"</span> <span class="attr">style</span>=<span class="string">"position: absolute; left: 823.15px;"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">href</span>=<span class="string">"http://www.apkbus.com/thread-282214-1-1.html"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"data/attachment/forum/201707/31/161204zqgdz0cm22n2mmym.jpg"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"title"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>不做将死之蛙 安卓巴士博文大赛第三期为你加温！<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>为了方便大家阅读理解，我就把解析过程写在下面图中的代码上了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-9ea7e594fc9e0c13.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>然后我们在UI层对数据进行渲染加载。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-2f1e75dee2d00323.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>这样就完成了从<code>Html</code>到APP上的解析过程。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-06938b044c06fc4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>博客列表</strong>的信息稍微多一点，不过一样如法制炮。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"blog-889706-68413.html"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Handler消息源码流程分析（含手写笔记）<span class="tag">&lt;/<span class="name">h2</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"preview"</span>&gt;</span>相关文章链接：Handler消息源码流程分析（含手写笔记）HandlerThread线程间通信源码解析IntentService源码解析Handler在android开发中可谓随处可见，不论你是一个刚开始学习android的新人，还是昔日的王者，都离不开它。关于 handler的源码已经很前人分享过了。如果我没能给大家讲明白可以参考网上其他人写的。注：文 ...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"uinfo"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">onclick</span>=<span class="string">"window.open('home.php?mod=space&amp;uid=889706&amp;do=index');"</span> <span class="attr">src</span>=<span class="string">"http://www.apkbus.com/uc_server/avatar.php?uid=889706&amp;size=small"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>香脆的大鸡排<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"cinfo"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>阅读：197<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>评论：5<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>赞：1<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>有兴趣深入看<code>ApkBusBolgMode.java</code>解析的代码<a href="https://github.com/BolexLiu/ApkBusBlog/blob/4881ce9633dded832d83ef29cb3d0f7812ce571f/app/src/main/java/bolex/com/apkbus/Blog/model/ApkBusBolgMode.java" target="_blank" rel="noopener">ApkBusBolgMode</a>，就不细说了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-50b4609b3726e2e3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt=""></p>
+<hr>
+<h2 id="WebView阅读模式"><a href="#WebView阅读模式" class="headerlink" title="WebView阅读模式"></a>WebView阅读模式</h2><p>前面说过Iphone自带的Safari浏览器支持将本来PC的网页，转换成阅读模式，让移动端方便阅读。这里一样，我们的详情页也是一个PC上展示的，如果在移动端上直接用<code>WebView</code>进行加载，那将很不适合阅读。</p>
+<p>在做之前我左寻思，右冥想。晚上都睡不好觉了，在<code>android</code>上怎么做，又没有轮子。</p>
+<p>半梦半醒之间，大概是4点多的样子。</p>
+<p>梦里我女朋友说：<br>“老公，你们可曾记得有一招从天而降的掌法？！？”</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-432004731059b4ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>卧槽，莫非是失传已久的如来神掌？</p>
+<p>顿时BMG响起，唢呐、古筝。（喂，你们配合一下脑补音乐下好嘛）</p>
+<p>甚（肾）好 ，甚（肾）好 ！</p>
+<p>灵光闪过，老夫一弹坐了起来，摸起我那20年的梭(键盘)。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-496e275f0f46ce32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt=""></p>
+<p>开机 撸代码！！ 哦不，那是灵魂的敲击声。</p>
+<p><strong>js注入</strong><br>WebView加载网页时，可以通过如下方法从java层将js注入进去。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mWebView.loadUrl(<span class="string">"javascript:function myFunction()&#123;</span></span><br><span class="line"><span class="string">&#125;"</span>) <span class="comment">//声明方法</span></span><br><span class="line"></span><br><span class="line">mWebView.loadUrl(<span class="string">"javascript:myFunction()"</span>) <span class="comment">//调用方法。</span></span><br></pre></td></tr></table></figure></p>
+<p>那么我们知道<code>javascript</code>是可以动态的操作<code>html</code>和<code>css</code>样式的，虽然我们不能从服务器上修改巴士网站的代码进行适配，但是可以选择在客户端上操作响应后给<code>WebView</code>的结果呀。</p>
+<p>如果用原生的<code>API</code>可能不是那么简洁，在分析网页的过程中，我们发现了网站中有引入<code>Jquery</code>框架。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-d14d9aae3905c6d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>那么接下来的事情就简单了，我们直接调用<code>Jquery</code>来动态修改网页。</p>
+<p><strong>css样式调试</strong></p>
+<p>这里我们还是先用Chrome在PC端进行调试，因为如果每次都在<code>android</code>中修改<code>js</code>再编译，太慢了，不方便。我们一次性调试完成后。写入到项目中去。且看我们下面的操作。</p>
+<p>1.打开详情页，开启控制台。看看文章主体内容的<code>div</code>是赋予的什么<code>id</code>或者<code>class</code>。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-d0451e3a873372ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以发现，这里没有<code>id</code>，只有<code>class=&quot;article&quot;</code>,不过已经够用了。<br>在控制台上调用<code>JQuery</code>获取内容。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4ac8afd54888e249.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>此时我们已经取到了文章主体内容。</p>
+<p>接下来将<code>Body</code>内容先清空。再给我们的<code>content</code>内容加上样式使其铺满全屏。最后设置到<code>Body</code>里。这时网站里其他的内容已经被全部清空，只剩下网站的文章内容了。如下图。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-d28e243e657dce7d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>但这还不够噢，因为文章主体里用户如果用的是<code>markdown</code>编写的还好，倘若使用了富文本编辑所生成的<code>html</code>，将导致内联一些样式在里面。当我们在<code>android</code>上渲染的时候，文字不会自动换行，还有图片可能巨大无比，不方便阅读。</p>
+<p> 接下来我们来处理这个问题。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-aadd398ff4e2e394.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们在控制台中将所有的<code>div、a、h1、h2、h3、h4、h5、h6、img</code>，这种常用元素的<code>class、id</code>和内联<code>css</code>样式一并删除。为什么要删掉呢？因为网站里使用了各种样式来修饰。倘若我们针对某个<code>id</code>来修改样式，不能兼顾内联样式。势必导致我们的网页长相奇怪。索性一并删除。</p>
+<p>而后添加样式，使图片充满，<code>h</code>元素用标准的<code>markdown</code>字体大小。这里我参考了<code>github</code>的原生样式，使用的是<code>em</code>属性来动态设置<code>fontSize</code>。</p>
+<p>下面是完整的js注入代码。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $jquery = jQuery.noConflict();</span><br><span class="line"><span class="keyword">var</span> content=$jquery(<span class="string">'.article'</span>);</span><br><span class="line">$jquery(<span class="string">'body'</span>).empty();</span><br><span class="line">content.css(&#123;</span><br><span class="line">background:<span class="string">"#fff"</span>,</span><br><span class="line">position:<span class="string">"absolute"</span>,</span><br><span class="line">top:<span class="string">"0"</span>,<span class="attr">left</span>:<span class="string">"0"</span>,</span><br><span class="line">&#125;);</span><br><span class="line">$jquery(<span class="string">'body'</span>).append(content);</span><br><span class="line">$jquery(<span class="string">"div"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"a"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h1"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h2"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h3"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h4"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h5"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"h6"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"img"</span>).removeAttr(<span class="string">"class"</span>).removeAttr(<span class="string">"style"</span>).removeAttr(<span class="string">"id"</span>);</span><br><span class="line">$jquery(<span class="string">"img"</span>).css(&#123;<span class="attr">width</span>: <span class="string">"100%"</span>,<span class="attr">height</span>:<span class="string">"100%"</span>,<span class="attr">objecFit</span>:<span class="string">"cover"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h1"</span>).css(&#123;<span class="attr">paddingBottom</span>: <span class="string">"0.3em"</span>,<span class="attr">fontSize</span>:<span class="string">"2em"</span>,<span class="attr">borderBottom</span>:<span class="string">"1px solid #eaecef"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h2"</span>).css(&#123;<span class="attr">paddingBottom</span>: <span class="string">"0.3em"</span>,<span class="attr">fontSize</span>:<span class="string">"1.5em"</span>,<span class="attr">borderBottom</span>:<span class="string">"1px solid #eaecef"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h3"</span>).css(&#123;<span class="attr">fontSize</span>:<span class="string">"1.25em"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h4"</span>).css(&#123;<span class="attr">fontSize</span>:<span class="string">"1em"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h5"</span>).css(&#123;<span class="attr">fontSize</span>:<span class="string">"0.875em"</span>&#125;);</span><br><span class="line">$jquery(<span class="string">"h6"</span>).css(&#123;<span class="attr">fontSize</span>:<span class="string">"0.85em"</span>&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>我们在<code>android</code>中<code>WebVIew</code>渲染结束后调用即可。<br>我们使用了<code>WebViewClient</code>来处理，在<code>onPageFinished</code>回调后说明网页已被加载成功。在此处注入<code>js</code>即可。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> llWeb.setWebViewClient(mWebViewClient);</span><br><span class="line"> <span class="keyword">private</span> WebViewClient mWebViewClient = <span class="keyword">new</span> WebViewClient() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> o</span><br><span class="line"></span><br><span class="line">nPageFinished(WebView view, String url) &#123;</span><br><span class="line">            mWebView.loadUrl(<span class="string">"javascript:XXXXXXX"</span>) <span class="comment">//注入我们前面调试用的Jquery代码 XXXXXXX为省略</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/1110736-2479eb623cd5ab03.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>注入完整代码见：<a href="https://github.com/BolexLiu/ApkBusBlog/blob/4881ce9633dded832d83ef29cb3d0f7812ce571f/app/src/main/java/bolex/com/apkbus/Blog/act/BlogDetailAct.java" target="_blank" rel="noopener">BlogDetailAct.java</a></p>
+<hr>
+<h2 id="内容加载优化"><a href="#内容加载优化" class="headerlink" title="内容加载优化"></a>内容加载优化</h2><p>经过测试一段时间后，我们发现<code>WebViewClient</code>里使用<code>nPageFinished</code>方法加载太慢了。因为它必须要等待页面完整的渲染完成后才会回调。一般来说文中都会有图片，当图片资源过大的时候。就会导致页面阻塞。时间长的可达到数分钟之久。（也许是我的网络太慢吧。）</p>
+<p>但这终究不是一个很好的体验。怎么办？</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-3fd2584ea568d7ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt=""></p>
+<p>看来老夫又要去睡一觉，让女神姐姐拖个梦给我了。</p>
+<p>····<br>天黑了，请闭眼。</p>
+<p>请狼人出来活动。</p>
+<p>啊呜~~</p>
+<p>天亮了</p>
+<p>这不睡一觉马上来神了。</p>
+<p>我去参考了其他项目发现，一般<code>WebView</code>里都会带有一个进度条。那就说明网页在<code>WebVIew</code>中解析的时候是可以知道他的进度的。最终找到了。<br><code>WebChromeClient</code>这个牛逼的家伙。</p>
+<p><code>onProgressChanged</code>方法会回调网页的加载进度。如果我们不想让图片加载来阻塞整个活动。那么可以在进度达到95的这个阀值的时候，注入<code>js</code>。这样就会比在整个网页渲染完成后注入，时间短很多。代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> WebChromeClient mWebChromeClient = <span class="keyword">new</span> WebChromeClient() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onProgressChanged</span><span class="params">(WebView view, <span class="keyword">int</span> newProgress)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (newProgress &gt; <span class="number">95</span> &amp;&amp; isNeedExe) &#123;</span><br><span class="line">              isNeedExe = !isNeedExe;</span><br><span class="line">              view.loadUrl(<span class="string">"javascript:function myFunction()&#123;\n"</span> +</span><br><span class="line">                      <span class="string">"var $jquery = jQuery.noConflict();\n"</span> +</span><br><span class="line">                      <span class="string">"var content=$jquery('.article');\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery('body').empty();\n"</span> +</span><br><span class="line">                      <span class="string">"content.css(&#123;\n"</span> +</span><br><span class="line">                      <span class="string">"background:\"#fff\",\n"</span> +</span><br><span class="line">                      <span class="string">"position:\"absolute\",\n"</span> +</span><br><span class="line">                      <span class="string">"top:\"0\",left:\"0\",\n"</span> +</span><br><span class="line">                      <span class="string">"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery('body').append(content);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"div\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"a\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h1\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h2\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h3\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h4\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h5\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h6\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"img\").removeAttr(\"class\").removeAttr(\"style\").removeAttr(\"id\");\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"img\").css(&#123;width: \"100%\",height:\"100%\",objecFit:\"cover\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h1\").css(&#123;paddingBottom: \"0.3em\",fontSize:\"2em\",borderBottom:\"1px solid #eaecef\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h2\").css(&#123;paddingBottom: \"0.3em\",fontSize:\"1.5em\",borderBottom:\"1px solid #eaecef\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h3\").css(&#123;fontSize:\"1.25em\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h4\").css(&#123;fontSize:\"1em\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h5\").css(&#123;fontSize:\"0.875em\"&#125;);\n"</span> +</span><br><span class="line">                      <span class="string">"$jquery(\"h6\").css(&#123;fontSize:\"0.85em\"&#125;);\n&#125;"</span>);</span><br><span class="line">              view.loadUrl(<span class="string">"javascript:myFunction()"</span>);</span><br><span class="line">              pDialog.cancel();</span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">super</span>.onProgressChanged(view, newProgress);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+<p>先生乃神人也。</p>
+<p>呵，兄弟！此言差矣，汝可知道鸡排与汝最大的区别是什么吗？</p>
+<p>鸡排，只是在晚上会有女神托梦于老夫，教导老夫写代码。岂是尔等能比的？</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e00c3bd42c9ccf92.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<hr>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p><strong>配色</strong><br>在配色上选用了巴士网站本身长久使用的三个主色调，搭配另外颜色鲜艳的七种颜色作为文章列表的Item背景色，同时使用共享元素动画，将<code>Item</code>的背景色和详情页利用<code>Intent</code>传递，做成了沉浸式。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e203654f2166fb90.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>项目结构</strong></p>
+<p>非常典型的<code>MVP</code>结构，这次本文的重点解析层都在<code>model</code>内，详情页的<code>WebView</code>优化在<code>Act</code>内。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4e4d713a8c0a6dda.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>如果你对这个架构感兴趣可以去参考这篇文章：<a href="http://www.jianshu.com/p/06d417b554ef" target="_blank" rel="noopener">少年，老夫带你撸一把Android项目框架，你可想学</a></p>
+<p>本次的项目地址：<a href="https://github.com/BolexLiu/ApkBusBlog" target="_blank" rel="noopener">ApkBusBlog</a></p>
+<hr>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>我没有把项目中每一个细节都贴代码来讲，如果感兴趣可自行翻阅源码看。因为本文的重点不是教大家如何去写代码，而是结合其它技术。将一些本该难以实现，或者说不是那么容易做到的东西，融会贯通。我也更倾向于去传递思想，而不喜欢死扣细节代码上。</p>
+<p>这里只简单的拿了两份数据和一个详情页。其他的页面也是一样的做法，所以如果要把客户端做完整，后面还有很多事情可以做，可以优化。后续我打算将WebView阅读模式像苹果的Safari一样再封装得完善一些然后开源出来，我相信也许有很多人需要用。</p>
+<p>本篇的内容可能需要读者有一些综合能力，熟悉前端知识和移动端知识。毕竟来说移动端同样也属于大前端的一个分支，尚且js现在也比较火。对比来说如今kotlin在android正营里处于火热的状态下。其实如果你有学习过js的ES6，你会觉得当你同时掌握了动态语言和静态语言后，学习另一门语言是如此之容易，并不需要系统的从零学习。大概一周内，就可以很快速的转过去。上手即可用。思想都是想通的嘛。</p>
+<hr>
+<h1 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h1><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/MyNote" target="_blank" rel="noopener">https://github.com/BolexLiu/MyNote</a>  (可以关注)<br><img src="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/网站撸成App/" rel="tag"># 网站撸成App</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/9e86a7ad.html" rel="next" title="IntentService源码解析">
+                <i class="fa fa-chevron-left"></i> IntentService源码解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/1a0307d1.html" rel="prev" title="逆向小米rom层应用做碎片化适配">
+                逆向小米rom层应用做碎片化适配 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#进入主题"><span class="nav-number">1.</span> <span class="nav-text">进入主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计思路"><span class="nav-number">3.</span> <span class="nav-text">设计思路</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Banner"><span class="nav-number">3.1.</span> <span class="nav-text">Banner :</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#博客列表"><span class="nav-number">3.2.</span> <span class="nav-text">博客列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#详情页"><span class="nav-number">3.3.</span> <span class="nav-text">详情页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆解数据思路"><span class="nav-number">3.4.</span> <span class="nav-text">拆解数据思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-页面分析与调试"><span class="nav-number">4.</span> <span class="nav-text">Chrome 页面分析与调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析页面数据"><span class="nav-number">5.</span> <span class="nav-text">解析页面数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebView阅读模式"><span class="nav-number">6.</span> <span class="nav-text">WebView阅读模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内容加载优化"><span class="nav-number">7.</span> <span class="nav-text">内容加载优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">8.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">9.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何下次找到我"><span class="nav-number"></span> <span class="nav-text">如何下次找到我?</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

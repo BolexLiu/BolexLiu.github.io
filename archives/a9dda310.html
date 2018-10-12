@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计划任务定时框架,定时框架,定时任务" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="在我讲解框架之前，我们先来看我一天中的计划需求。 计划任务：  7:30～8:30  起床8:40~9:00   去公司的路上9:10~9:30  早会10:00~11:00  技术群里吹水11:00~11:10  改了XXXActivity的变量命名（高大上的重构。懂吗？）11:10~12:00   思考中午吃什么   13:00～14:00   睡午觉14:30～18:00  群里斗图 吃零食">
+<meta name="keywords" content="计划任务定时框架,定时框架,定时任务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动手写Android内的计划任务定时框架">
+<meta property="og:url" content="http://www.dajipai.cc/archives/a9dda310.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="在我讲解框架之前，我们先来看我一天中的计划需求。 计划任务：  7:30～8:30  起床8:40~9:00   去公司的路上9:10~9:30  早会10:00~11:00  技术群里吹水11:00~11:10  改了XXXActivity的变量命名（高大上的重构。懂吗？）11:10~12:00   思考中午吃什么   13:00～14:00   睡午觉14:30～18:00  群里斗图 吃零食">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3eacc5c00f2bfd71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-8f20ae74784e449d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-43edf81fb758f5c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-eb261d6912567360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-607a7e858bc60cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-bfa02e429b3f4897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6333945a28aa9490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-ee7c10ba951a8a88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="动手写Android内的计划任务定时框架">
+<meta name="twitter:description" content="在我讲解框架之前，我们先来看我一天中的计划需求。 计划任务：  7:30～8:30  起床8:40~9:00   去公司的路上9:10~9:30  早会10:00~11:00  技术群里吹水11:00~11:10  改了XXXActivity的变量命名（高大上的重构。懂吗？）11:10~12:00   思考中午吃什么   13:00～14:00   睡午觉14:30～18:00  群里斗图 吃零食">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-3eacc5c00f2bfd71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/a9dda310.html"/>
+
+
+
+
+
+  <title>动手写Android内的计划任务定时框架 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-Android" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/a9dda310.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">动手写Android内的计划任务定时框架</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-10T16:30:00+08:00">
+                2017-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在我讲解框架之前，我们先来看我一天中的计划需求。</p>
+<p><strong>计划任务：</strong></p>
+<blockquote>
+<p>7:30～8:30  起床<br>8:40~9:00   去公司的路上<br>9:10~9:30  早会<br>10:00~11:00  技术群里吹水<br>11:00~11:10  改了XXXActivity的变量命名（高大上的重构。懂吗？）<br>11:10~12:00   思考中午吃什么</p>
+</blockquote>
+<blockquote>
+<p>13:00～14:00   睡午觉<br>14:30～18:00  群里斗图 吃零食 撩妹子 喝茶 玩手机 逛淘宝（今晚双十一呀）<br>18:00~18:30 要下班了随便搞了两下代码 顺便git commit -m ‘今天劳资做得最有意义的事情就是删掉了两行代码 真它娘赞’<br><a id="more"></a><br>19:00～20:00  回家的路上<br>21:00～22:00  会所X模 大保健<br>23:00~3:00  刷微博 内X段子 转发在群里 然后吹上一句，我tm才是嗨到最晚的男人<br>4:00～7:30  该睡觉了</p>
+</blockquote>
+<p>这一天天过得，好呀。 好！  这才叫生活，不叫活着。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-3eacc5c00f2bfd71.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我:<br><strong>“别和我讲什么番茄工作法、四相图，我只知道我的todoList 每天都是这般重复。”</strong></p>
+<p>旁白君：</p>
+<p><strong>“哥，你们公司还有空岗位不。我也想….。”</strong></p>
+<p>我:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-8f20ae74784e449d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<hr>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>需求分析</li>
+<li>设计框架</li>
+<li>如何使用</li>
+<li>API</li>
+<li>注意</li>
+<li>引入</li>
+<li>使用场景</li>
+</ul>
+<hr>
+<h3 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h3><p>在上面的时间轴里，我们可以把某段时间点，做某件事情当作是一个任务包。这样如果用代码来表示它就像是这样的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">       OneDayTask morning = <span class="keyword">new</span> OneDayTask();</span><br><span class="line">       morning.setStarTime(dataOne(<span class="string">"2017-11-11 07:30:00"</span>));  </span><br><span class="line">       morning.setEndTime(dataOne(<span class="string">"2017-11-11 08:30:00"</span>));  </span><br><span class="line">       morning.msg = <span class="string">"起床啦"</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       OneDayTask work = <span class="keyword">new</span> OneDayTask();</span><br><span class="line">       work.setStarTime(dataOne(<span class="string">"2017-11-11 14:30:00"</span>));</span><br><span class="line">       work.setEndTime(dataOne(<span class="string">"2017-11-11 18:00:00"</span>));</span><br><span class="line">       work.msg = <span class="string">"群里斗图 吃零食 撩妹子 喝茶 玩手机 逛淘宝"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//为方便展示，省略其它任务</span></span><br></pre></td></tr></table></figure></p>
+<p>我们用android手机来模拟一下，这些骚操作。那么也就是说：</p>
+<p>我们需要在7:30这个时间点上收到一条通知，叫”起床啦”任务。<br>下午14:30收到一条通知，为下午的工作任务。</p>
+<p>这样来想问题的话，想必我们需要一个基于观察者模式的通知，我们想一想如何在指定的时间来触发发送操作呢？</p>
+<p><strong>假设1：</strong><br>开启一个子线程，里面写上一个死循环。不断的获取系统当前时间来判断是否满足任务的开始时间和结束时间。当满足条件时就从队列中取出这个条任务分发出去。<br>请思考一下，这个有没有毛病？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//伪代码如下</span></span><br><span class="line"> OneDayTask morning = <span class="keyword">new</span> OneDayTask();</span><br><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(getNowTime()== morning.getStarTime())&#123;</span><br><span class="line">  <span class="comment">//todo 取出任务 分发出去</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;<span class="keyword">while</span> (<span class="keyword">true</span>);</span><br></pre></td></tr></table></figure>
+<p>首先，我想说这个设计时有问题的。</p>
+<p>1.cpu在切换代码的执行片段时，可能很快，但是也许有那么一瞬间已经过了那一秒钟，而if语句还未得到执行。当getNowTime方法真正执行时，就已经过期了。</p>
+<p>2.线程里做死循环操作，你觉着合适吗？反正我觉得挺不合适的。</p>
+<p>然鹅。wing神-大精告诉我说，底层处理还是逃离不了。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-43edf81fb758f5c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-eb261d6912567360.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当然我不存在说用系统给我发的每秒钟一个的广播去使用，这样不友好。目前的方案是封装AlarmMannager定时任务+广播通知回掉。每解决一个任务塞入下一个任务交给AlarmMannager来处理，当AlarmMannager定时任务结束后会发起广播。广播会再次调用下一组任务注册给AlarmMannager，如此循环。听着有点绕啊。但其实就两个角色，我们可以把它当作类似递归调用。但是好处是我们不需要写什么死循环这种东西。因为AlarmMannager支持定时任务。</p>
+<p>没忍住去翻了下系统闹钟的定时实现源码。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-607a7e858bc60cbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-bfa02e429b3f4897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>接下来我们就要考虑下面的问题。</p>
+<p>1.AlarmMannager在不同的碎片化机型的处理。<br>2.如果使用AlarmMannager作为核型就必须把队列中的任务按起始时间进行排序。<br>3.如果使用到了广播，在多组定时任务时，aciton不能重复。否则广播会紊乱。<br>4.广播最好不要用静态的，要用动态的，因为做成开源轮子，用户如果使用了类似360的插件化框架，将导致静态广播无效的问题。</p>
+<h2 id="设计框架"><a href="#设计框架" class="headerlink" title="设计框架"></a>设计框架</h2><p>如果不进行封装裸裸的调用定时任务+广播的话，整个代码会非常散乱，毫无设计可言。也无法复用。那么我们索性花点时间给写好一点的。</p>
+<p>先来一张UML图。这是整个框架的设计。非常简洁只有两个类和一个接口。其中要处理的任务做了泛型。我把这个框架叫TimeTask。</p>
+<p> <img src="http://upload-images.jianshu.io/upload_images/1110736-6333945a28aa9490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>首先来看Task类。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  get set 省略</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Task</span> </span>&#123;</span><br><span class="line">  <span class="keyword">long</span>  starTime;</span><br><span class="line">  <span class="keyword">long</span>  endTime;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里的Task我们可以把它看作是一个任务，他仅仅只有两个字段。一个开始时间，一个结束时间。后续我们自定义的任务都必须继承Task。(这里有点类似Recyclerview.ViewHolder的设计。)</p>
+<p><strong>TimeHandler</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TimeHandler</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Task</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">exeTask</span><span class="params">(T mTask)</span></span>;<span class="comment">//马上要执行</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">overdueTask</span><span class="params">(T mTask)</span></span>;<span class="comment">//已过期</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">futureTask</span><span class="params">(T mTask)</span></span>;<span class="comment">//未来会执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>TimeHandler是一个接收器，也可以理解为观察者模式里的监听器。它主要接受马上要执行的&amp;已经过期的&amp;未来会执行的任务。</p>
+<p><strong>TimeTask</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeTask</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">Task</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;TimeHandler&gt; mTimeHandlers = <span class="keyword">new</span> ArrayList&lt;TimeHandler&gt;();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> PendingIntent mPendingIntent;</span><br><span class="line">    <span class="keyword">private</span> List&lt;T&gt; mTasks= <span class="keyword">new</span> ArrayList&lt;T&gt;();</span><br><span class="line">    <span class="keyword">private</span>  List&lt;T&gt; mTempTasks;</span><br><span class="line">    String mActionName;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">boolean</span> isSpotsTaskIng = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> cursor = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> Context mContext;</span><br><span class="line">    <span class="keyword">private</span> TimeTaskReceiver receiver;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mContext</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> actionName action不要重复</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TimeTask</span><span class="params">(Context mContext,@NonNull String actionName)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.mContext=mContext;</span><br><span class="line">       <span class="keyword">this</span>.mActionName=actionName;</span><br><span class="line">        initBreceiver(mContext);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initBreceiver</span><span class="params">(Context mContext)</span> </span>&#123;</span><br><span class="line">        receiver = <span class="keyword">new</span> TimeTaskReceiver();</span><br><span class="line">        IntentFilter filter = <span class="keyword">new</span> IntentFilter();</span><br><span class="line">        filter.addAction(mActionName);</span><br><span class="line">        mContext.registerReceiver(receiver, filter);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTasks</span><span class="params">(List&lt;T&gt; mES)</span> </span>&#123;</span><br><span class="line">        cursorInit();</span><br><span class="line">        <span class="keyword">if</span> (mTempTasks !=<span class="keyword">null</span>)&#123;</span><br><span class="line">            mTempTasks = mES;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.mTasks = mES;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 任务计数归零</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">cursorInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cursor = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加任务监听</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> mTH</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> TimeTask <span class="title">addHandler</span><span class="params">(TimeHandler&lt;T&gt; mTH)</span> </span>&#123;</span><br><span class="line">        mTimeHandlers.add(mTH);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 开始任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">startLooperTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (isSpotsTaskIng&amp;&amp;mTasks.size() == cursor)&#123; <span class="comment">//恢复普通任务</span></span><br><span class="line">            recoveryTask();</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mTasks.size() &gt; cursor)&#123;</span><br><span class="line">            T mTask = mTasks.get(cursor);</span><br><span class="line">            <span class="keyword">long</span> mNowtime = System.currentTimeMillis();</span><br><span class="line">            <span class="comment">//在当前区间内立即执行</span></span><br><span class="line">            <span class="keyword">if</span> (mTask.getStarTime() &lt; mNowtime &amp;&amp; mTask.getEndTime() &gt; mNowtime) &#123;</span><br><span class="line">                <span class="keyword">for</span> (TimeHandler mTimeHandler : mTimeHandlers) &#123;</span><br><span class="line">                    mTimeHandler.exeTask(mTask);</span><br><span class="line">                &#125;</span><br><span class="line">                Log.d(<span class="string">"TimeTask"</span>,<span class="string">"推送cursor:"</span> + cursor + <span class="string">"时间："</span> + <span class="keyword">new</span> Date(mTask.getStarTime()));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//还未到来的消息 加入到定时任务</span></span><br><span class="line">            <span class="keyword">if</span> (mTask.getStarTime() &gt; mNowtime &amp;&amp; mTask.getEndTime() &gt; mNowtime) &#123;</span><br><span class="line">                <span class="keyword">for</span> (TimeHandler mTimeHandler : mTimeHandlers) &#123;</span><br><span class="line">                    mTimeHandler.futureTask(mTask);</span><br><span class="line">                &#125;</span><br><span class="line">                Log.d(<span class="string">"TimeTask"</span>,<span class="string">"预约cursor:"</span> + cursor + <span class="string">"时间："</span> + <span class="keyword">new</span> Date(mTask.getStarTime()));</span><br><span class="line">                configureAlarmManager(mTask.getStarTime());</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//消息已过期</span></span><br><span class="line">            <span class="keyword">if</span> (mTask.getStarTime() &lt; mNowtime &amp;&amp; mTask.getEndTime() &lt; mNowtime) &#123;</span><br><span class="line">                <span class="keyword">for</span> (TimeHandler mTimeHandler : mTimeHandlers) &#123;</span><br><span class="line">                    mTimeHandler.overdueTask(mTask);</span><br><span class="line">                &#125;</span><br><span class="line">                Log.d(<span class="string">"TimeTask"</span>,<span class="string">"过期cursor:"</span> + cursor + <span class="string">"时间："</span> + <span class="keyword">new</span> Date(mTask.getStarTime()));</span><br><span class="line">            &#125;</span><br><span class="line">            cursor++;</span><br><span class="line">            <span class="keyword">if</span> (isSpotsTaskIng&amp;&amp;mTasks.size() == cursor)&#123; <span class="comment">//恢复普通任务</span></span><br><span class="line">                configureAlarmManager(mTask.getEndTime());</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            startLooperTask();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 停止任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stopLooper</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        cancelAlarmManager();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 装在定时任务</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> Time</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">configureAlarmManager</span><span class="params">(<span class="keyword">long</span> Time)</span> </span>&#123;</span><br><span class="line">        AlarmManager manager = (AlarmManager) mContext.getSystemService(ALARM_SERVICE);</span><br><span class="line">        PendingIntent pendIntent = getPendingIntent();</span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M) &#123;</span><br><span class="line">            manager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, Time, pendIntent);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">            manager.setExact(AlarmManager.RTC_WAKEUP, Time, pendIntent);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            manager.set(AlarmManager.RTC_WAKEUP, Time, pendIntent);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  取消定时器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">cancelAlarmManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        AlarmManager manager = (AlarmManager) mContext.getSystemService(ALARM_SERVICE);</span><br><span class="line">        manager.cancel(getPendingIntent());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> PendingIntent <span class="title">getPendingIntent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (mPendingIntent == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> requestCode = <span class="number">0</span>;</span><br><span class="line">            Intent intent = <span class="keyword">new</span> Intent();</span><br><span class="line">            intent.setAction(mActionName);</span><br><span class="line">            mPendingIntent = PendingIntent.getBroadcast(mContext, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mPendingIntent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 插播任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">spotsTask</span><span class="params">(List&lt;T&gt; mSpotsTask)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 2017/10/16 暂停 任务分发</span></span><br><span class="line">        isSpotsTaskIng = <span class="keyword">true</span>;</span><br><span class="line">        <span class="keyword">synchronized</span> (mTasks) &#123;</span><br><span class="line">            <span class="keyword">if</span> (mTempTasks == <span class="keyword">null</span>&amp;&amp;mTasks!=<span class="keyword">null</span>) &#123;<span class="comment">//没有发生过插播</span></span><br><span class="line">                mTempTasks = <span class="keyword">new</span> ArrayList&lt;T&gt;();</span><br><span class="line">                <span class="keyword">for</span> (T mTask : mTasks) &#123;</span><br><span class="line">                    mTempTasks.add(mTask);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            mTasks = mSpotsTask;</span><br><span class="line">            <span class="comment">//  2017/10/16 恢复 任务分发</span></span><br><span class="line">            cancelAlarmManager();</span><br><span class="line">            cursorInit();</span><br><span class="line">            startLooperTask();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 恢复普通任务</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">recoveryTask</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (mTasks) &#123;</span><br><span class="line">            isSpotsTaskIng = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (mTempTasks != <span class="keyword">null</span>) &#123;<span class="comment">//有发生过插播</span></span><br><span class="line">                mTasks = mTempTasks;</span><br><span class="line">                mTempTasks = <span class="keyword">null</span>;</span><br><span class="line">                cancelAlarmManager();</span><br><span class="line">                cursorInit();</span><br><span class="line">                startLooperTask();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onColse</span><span class="params">()</span></span>&#123;</span><br><span class="line">        mContext.unregisterReceiver(receiver);</span><br><span class="line">        mContext=<span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>  <span class="class"><span class="keyword">class</span> <span class="title">TimeTaskReceiver</span> <span class="keyword">extends</span> <span class="title">BroadcastReceiver</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onReceive</span><span class="params">(Context context, Intent intent)</span> </span>&#123;</span><br><span class="line">            TimeTask.<span class="keyword">this</span>.startLooperTask(); <span class="comment">//预约下一个</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这段代码略长了点，听我拆开了给大家慢慢道来。<br>1.首先TimeTask泛型指定了任务必须强制继承Task。在构造方法中。我们调用了initBreceiver注册了一个广播。这里就是我们前面提到的AlarmManager发通知给他的。</p>
+<p>2.我们再看addHandler方法接受一个TimeHandler，这里可以多次注册。也就是说内部通过List装了监听器。到时候分发的时候也会多处可收到消息。</p>
+<p>3.startLooperTask也就是开启任务执行的方法。内部主要做三件事。恢复插播任务、分发任务、预约任务。</p>
+<p>4.上面提到了预约任务，实际预约任务就是利用AlarmManager定时指定时间发送广播通知我们到时间了该做事了。而广播内的onReceive方法回再次回掉startLooperTask方法。这样下来任务会被分发出去。同时会预约一下组任务。</p>
+<p>5.需求分析的时候我们提到了AlarmMannager适配实际上就是针对M和KITKAT进行特殊的API处理。</p>
+<h3 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h3><p>1.定义一个Task为你的任务对象，注意基类Task对象已经包含了任务的启动时间和结束时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span>  <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">Task</span> </span>&#123;</span><br><span class="line">    <span class="comment">//// <span class="doctag">TODO:</span> 这里可以放置你自己的资源,务必继承Task对象</span></span><br><span class="line">    String name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.定义一个任务接收器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">TimeHandler&lt;MyTask&gt; timeHandler = <span class="keyword">new</span> TimeHandler&lt;MyTask&gt;() &#123;</span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exeTask</span><span class="params">(MyTask mTask)</span> </span>&#123;</span><br><span class="line">            <span class="comment">//准时执行</span></span><br><span class="line">           <span class="comment">// 一般来说，在exeTask方法中处理你的逻辑就好可以，过期和未来的都不需要关注</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">overdueTask</span><span class="params">(MyTask mTask)</span> </span>&#123;</span><br><span class="line">              <span class="comment">///已过期的任务</span></span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">futureTask</span><span class="params">(MyTask mTask)</span> </span>&#123;</span><br><span class="line">           <span class="comment">//未来将要执行的任务</span></span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure></p>
+<p>3.定义一个任务分发器，并添加接收器<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">TimeTask&lt;MyTask&gt; myTaskTimeTask = <span class="keyword">new</span> TimeTask&lt;&gt;(MainActivity.<span class="keyword">this</span>,ACTION); <span class="comment">// 创建一个任务处理器</span></span><br><span class="line">myTaskTimeTask.addHandler(timeHandler); <span class="comment">//添加时间回掉</span></span><br></pre></td></tr></table></figure></p>
+<p>4.配置你的任务时间间隔，（启动时间，结束时间）<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> List&lt;MyTask&gt; <span class="title">creatTasks</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">new</span> ArrayList&lt;MyTask&gt;() &#123;&#123;</span><br><span class="line">        MyTask BobTask = <span class="keyword">new</span> MyTask();</span><br><span class="line">                    <span class="comment">//******测试demo请务必修改时间******</span></span><br><span class="line">                  BobTask.setStarTime(dataOne(<span class="string">"2017-11-08 21:57:00"</span>));   <span class="comment">//当前时间</span></span><br><span class="line">                  BobTask.setEndTime(dataOne(<span class="string">"2017-11-08 21:57:05"</span>));  <span class="comment">//5秒后结束</span></span><br><span class="line">                  BobTask.name=<span class="string">"Bob"</span>;</span><br><span class="line">                  add(BobTask);</span><br><span class="line"></span><br><span class="line">                  MyTask benTask = <span class="keyword">new</span> MyTask();</span><br><span class="line">                  benTask.setStarTime(dataOne(<span class="string">"2017-11-08 21:57:10"</span>)); <span class="comment">//10秒开始</span></span><br><span class="line">                  benTask.setEndTime(dataOne(<span class="string">"2017-11-08 21:57:15"</span>)); <span class="comment">//15秒后结束</span></span><br><span class="line">                  benTask.name=<span class="string">"Ben"</span>;</span><br><span class="line">                  add(benTask);</span><br><span class="line">    &#125;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5.添加你的任务队列，跑起来.<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">myTaskTimeTask.setTasks(creatTasks());<span class="comment">//创建时间任务资源 把资源放进去处理</span></span><br><span class="line">myTaskTimeTask.startLooperTask();<span class="comment">//  启动</span></span><br></pre></td></tr></table></figure></p>
+<p>这样下来，当调用 myTaskTimeTask.startLooperTask()后，会先分发给timeHandler名称为Bob的任务。<br>随后10秒分发Ben名称的任务。 任务处理器会根据我们配置的启动时间和结束时间进行分发工作。</p>
+<h3 id="Api"><a href="#Api" class="headerlink" title="Api"></a>Api</h3><p><strong>TimeTask</strong></p>
+<ul>
+<li>TimeTask(Context mContext,String actionName);//初始化</li>
+<li>setTasks(List<t> mES);//设置任务列表</t></li>
+<li>addHandler(TimeHandler<t> mTH);//添加任务监听器</t></li>
+<li>startLooperTask();//启动任务</li>
+<li>stopLooper();//停止任务</li>
+<li>spotsTask(List<t> mSpotsTask);//插播任务</t></li>
+<li>onColse();//关闭 防止内存泄漏</li>
+</ul>
+<p>代码中已有详细注释,代码不是很复杂看原理读最好了。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h3><ul>
+<li>1.务必确保你的任务队列中的任务时已经按照时间排序的。</li>
+<li>2.务必使用泛型继承Task任务。</li>
+<li>3.如果你需要用到多组TimeTask，要保证actionName不要重复，就是自己给取一个名字。</li>
+</ul>
+<h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>根gradle上添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">		...</span><br><span class="line">		maven &#123; url &apos;https://jitpack.io&apos; &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile &apos;com.github.BolexLiu:TimeTask:1.1&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>github：</strong> <a href="https://github.com/BolexLiu/TimeTask" target="_blank" rel="noopener">https://github.com/BolexLiu/TimeTask</a></p>
+<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>简单来说满足以下应用场景：</p>
+<ul>
+<li>1.当你需要为任务定时启动和结束</li>
+<li>2.你有多组任务,时间线上可能存在重叠的情况</li>
+</ul>
+<p>目前线上正式环境的使用情况：</p>
+<ul>
+<li>1.电视机顶盒媒体分发</li>
+<li>2.android大屏幕广告机任务轮播</li>
+</ul>
+<hr>
+<h2 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h2><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/DevNote" target="_blank" rel="noopener">https://github.com/BolexLiu/DevNote</a> (可以关注)<br><img src="http://upload-images.jianshu.io/upload_images/1110736-ee7c10ba951a8a88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<p><strong>本文首发 <a href="http://www.dajipai.cc">http://www.dajipai.cc</a> -香脆的大鸡排。原创文章转载请先取得联系。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/定时任务/" rel="tag"># 定时任务</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/ec8af0f7.html" rel="next" title="hexo博客SEO优化">
+                <i class="fa fa-chevron-left"></i> hexo博客SEO优化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/3903596e.html" rel="prev" title="线下技术沙龙分享稿《code之外的技能》">
+                线下技术沙龙分享稿《code之外的技能》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求分析"><span class="nav-number">1.1.</span> <span class="nav-text">需求分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计框架"><span class="nav-number">2.</span> <span class="nav-text">设计框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用"><span class="nav-number">2.1.</span> <span class="nav-text">如何使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Api"><span class="nav-number">2.2.</span> <span class="nav-text">Api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">2.3.</span> <span class="nav-text">注意:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入"><span class="nav-number">3.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用场景"><span class="nav-number">4.</span> <span class="nav-text">使用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何下次找到我"><span class="nav-number">5.</span> <span class="nav-text">如何下次找到我?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

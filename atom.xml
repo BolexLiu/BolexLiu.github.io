@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>最近和后面</title>
+    <link href="http://www.dajipai.cc/archives/a8f25f46.html"/>
+    <id>http://www.dajipai.cc/archives/a8f25f46.html</id>
+    <published>2018-10-12T17:52:59.085Z</published>
+    <updated>2018-12-02T08:22:24.199Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>接受知识付费吗？</li><li>有不接受的吗？</li><li>时间和钱</li></ul><a id="more"></a><h2 id="接受知识付费吗？"><a href="#接受知识付费吗？" class="headerlink" title="接受知识付费吗？"></a>接受知识付费吗？</h2><p>接受！为什么有人说是在割韭菜，收智商税。但是还是有人在买。因为有市场需求。我觉得可以这样解释，我们想获得某种知识，但如果市面上资料寥寥无几，或者杂乱。你需要花更多的时间去啃、去过滤无意义的内容。这时如果有人跳出来说五毛钱给我们。想必原本要花更多的时间用钱就可以买回了。</p><h2 id="有不接受的吗？"><a href="#有不接受的吗？" class="headerlink" title="有不接受的吗？"></a>有不接受的吗？</h2><p>有，比如一门课程，我确定是否要买，取决于获得成本。我很少买编程类的课程，因为这是我所处熟悉的行业，这个行业只有通过多看多写和总结才能吸收（不含窄领域知识）。</p><p>但我又乐意给非软件行业知识付费，因为在其它领域我完全就是小白。我也就是想图个方便快速知道一下里面在讲个什么、玩个什么。</p><h2 id="时间和钱"><a href="#时间和钱" class="headerlink" title="时间和钱"></a>时间和钱</h2><p>越平穷，就越舍不得花钱。越舍不得花钱，就需要花更多的时间，把更多的时间花费在了低级消耗上就会变得更平穷。这有点儿像死循环。</p><p>举个例子。为了每个月能省下更多的钱宁可住在偏离公司远的地方，每天花两个小时在上班路上。上班不打出租车，只敢坐公交。那是因为当前的每天两个小时还赚不回出租车钱和公司附近的房租钱。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;ul&gt;
+&lt;li&gt;接受知识付费吗？&lt;/li&gt;
+&lt;li&gt;有不接受的吗？&lt;/li&gt;
+&lt;li&gt;时间和钱&lt;/li&gt;
+&lt;/ul&gt;
+    
+    </summary>
+    
+    
+      <category term="随笔" scheme="http://www.dajipai.cc/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
     <link href="http://www.dajipai.cc/archives/ead4653c.html"/>
     <id>http://www.dajipai.cc/archives/ead4653c.html</id>
@@ -461,32 +485,6 @@
       <category term="sqlite" scheme="http://www.dajipai.cc/tags/sqlite/"/>
     
       <category term="Shell" scheme="http://www.dajipai.cc/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>免拆ROM获取系统应用dex、oat、odex</title>
-    <link href="http://www.dajipai.cc/archives/7cf1aebb.html"/>
-    <id>http://www.dajipai.cc/archives/7cf1aebb.html</id>
-    <published>2018-01-26T10:40:11.000Z</published>
-    <updated>2018-10-12T17:52:59.078Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="http://upload-images.jianshu.io/upload_images/1110736-7864e42a7f26ed3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/720" alt=""></p><p>去年写过一篇<a href="http://www.dajipai.cc/archives/1a0307d1.html">逆向小米ROM</a>做适配的文章，操作上有些繁琐，要借助很多的工具。比较大的弊端是，官方有提供ROM下载的情况下，且可以解包才可以做。</p><p>今天说另一种思路利用adb+shell的方式去拿dex文件。关于更多dex、oat、odex的描述，如果不明白可以先看<a href="http://www.dajipai.cc/archives/1a0307d1.html">之前的这篇逆向文章</a>文章里面有一些解释。</p><a id="more"></a><p>这种获取方法很方便，仅需要一台root的设备就可以啦。下面开始表演骚操作。</p><hr><p>1.准备一个你需要获取的应用，并找到它的包名。链接shell输入</p><p><strong>pm path [包名]</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> adb shell</span><br><span class="line"><span class="meta">$</span> su //管理员身份也就是root权限</span><br><span class="line"><span class="meta">$</span> pm path path com.android.email #获取应用包路径</span><br><span class="line">  package:/system/app/Email/Email.apk  #返回结果</span><br></pre></td></tr></table></figure><p>2.打开该路径</p><p><strong>cd [路径]</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> cd /system/app/Email/ #system路径需要root权限</span><br></pre></td></tr></table></figure></p><p>3.查看目录下的文件，并找到dex文件</p><p><strong>ls</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ls</span><br><span class="line">  Email.apk #返回结果</span><br><span class="line">  oat #返回结果</span><br><span class="line"><span class="meta">$</span> cd oat</span><br><span class="line"><span class="meta">$</span> ls</span><br><span class="line">  arm  #返回结果</span><br><span class="line"><span class="meta">$</span> cd arm  #继续打开arm文件夹，注意这里的路径不一定每台设备都一致，根据实际情况去打开就行了。</span><br><span class="line"><span class="meta">$</span> ls</span><br><span class="line">Email.odex #返回结果 找到odex文件</span><br></pre></td></tr></table></figure></p><p>4.记住这个路径，复制下来</p><p><strong>pwd</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> pwd</span><br><span class="line">/system/app/Email/oat/arm </span><br><span class="line"><span class="meta">$</span> exit </span><br><span class="line"><span class="meta">$</span> exit #可能需要输入两遍，因为你要先退出root用户，再退出shell</span><br></pre></td></tr></table></figure></p><p>5.使用adb拉去到电脑上来<br><strong> adb pull [手机里的路径] [电脑上的路径]</strong></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> adb pull /system/app/Email/oat/arm ./</span><br></pre></td></tr></table></figure><p>这个时候你已经拿到了odex文件。剩下的工作就是拖到工具里去反编译看代码了。这种方式比去折腾一个ROM会省时间很多。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/1110736-7864e42a7f26ed3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/720&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;去年写过一篇&lt;a href=&quot;http://www.dajipai.cc/archives/1a0307d1.html&quot;&gt;逆向小米ROM&lt;/a&gt;做适配的文章，操作上有些繁琐，要借助很多的工具。比较大的弊端是，官方有提供ROM下载的情况下，且可以解包才可以做。&lt;/p&gt;
-&lt;p&gt;今天说另一种思路利用adb+shell的方式去拿dex文件。关于更多dex、oat、odex的描述，如果不明白可以先看&lt;a href=&quot;http://www.dajipai.cc/archives/1a0307d1.html&quot;&gt;之前的这篇逆向文章&lt;/a&gt;文章里面有一些解释。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Android" scheme="http://www.dajipai.cc/tags/Android/"/>
-    
-      <category term="Shell" scheme="http://www.dajipai.cc/tags/Shell/"/>
-    
-      <category term="逆向" scheme="http://www.dajipai.cc/tags/%E9%80%86%E5%90%91/"/>
     
   </entry>
   

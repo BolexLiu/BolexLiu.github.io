@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/a8f25f46.html</loc>
-    <lastmod>2018-12-02T08:22:24.199Z</lastmod>
+    <lastmod>2018-12-02T08:23:48.375Z</lastmod>
     <data>
         <display>
-        <title>最近和后面</title>
+        <title>知识付费</title>
         <pubTime>2018-10-12T17:52:59.085Z</pubTime>
         
         <tag>随笔</tag>
@@ -40,7 +40,6 @@
     
     
     
-    
   <url>
     <loc>http://www.dajipai.cc/archives/9e832a56.html</loc>
     <lastmod>2018-10-12T17:52:59.089Z</lastmod>
@@ -59,6 +58,7 @@
     </data>
     </url>
 
+    
     
   <url>
     <loc>http://www.dajipai.cc/archives/1a0307d1.html</loc>
@@ -84,6 +84,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
+    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
+    <data>
+        <display>
+        <title>重拾git命令</title>
+        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
@@ -96,23 +113,6 @@
         <tag>源码分析</tag>
          
         <tag>适配</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
-    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
-    <data>
-        <display>
-        <title>重拾git命令</title>
-        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
-        
-        <tag>git</tag>
          
          
            
@@ -255,12 +255,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/75c64cfc.html</loc>
+    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
     <lastmod>2018-10-12T17:52:59.084Z</lastmod>
     <data>
         <display>
-        <title>瞎扯-学技术</title>
-        <pubTime>2018-05-12T02:05:37.000Z</pubTime>
+        <title>瞎扯-颠覆性</title>
+        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -272,12 +272,29 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
+    <loc>http://www.dajipai.cc/archives/9f0b14d0.html</loc>
     <lastmod>2018-10-12T17:52:59.084Z</lastmod>
     <data>
         <display>
-        <title>瞎扯-颠覆性</title>
-        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
+        <title>瞎扯-表达</title>
+        <pubTime>2018-05-17T00:00:37.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/75c64cfc.html</loc>
+    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
+    <data>
+        <display>
+        <title>瞎扯-学技术</title>
+        <pubTime>2018-05-12T02:05:37.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -301,23 +318,6 @@
         <tag>逆向</tag>
          
         <tag>嵌入式</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/9f0b14d0.html</loc>
-    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
-    <data>
-        <display>
-        <title>瞎扯-表达</title>
-        <pubTime>2018-05-17T00:00:37.000Z</pubTime>
-        
-        <tag>随笔</tag>
          
          
            
@@ -367,6 +367,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
+    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
+    <data>
+        <display>
+        <title>无接口写网站App端</title>
+        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>网站撸成App</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/58cfb872.html</loc>
     <lastmod>2018-10-12T17:52:59.082Z</lastmod>
     <data>
@@ -391,16 +410,14 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
-    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/95d21ebb.html</loc>
+    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
     <data>
         <display>
-        <title>无接口写网站App端</title>
-        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
+        <title>感谢被教育了</title>
+        <pubTime>2018-02-25T15:50:00.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>网站撸成App</tag>
+        <tag>随笔</tag>
          
          
            
@@ -429,23 +446,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/95d21ebb.html</loc>
-    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
-    <data>
-        <display>
-        <title>感谢被教育了</title>
-        <pubTime>2018-02-25T15:50:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/1099feff.html</loc>
     <lastmod>2018-10-12T17:52:59.081Z</lastmod>
     <data>
@@ -462,25 +462,6 @@
              
               <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
-    <data>
-        <display>
-        <title>动手写Android内的计划任务定时框架</title>
-        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>定时任务</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -516,6 +497,25 @@
         <tag>踩坑</tag>
          
         <tag>so冲突</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <data>
+        <display>
+        <title>动手写Android内的计划任务定时框架</title>
+        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>定时任务</tag>
          
          
            
@@ -581,6 +581,63 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>你敢叫Android程序员找bug？不存在的这辈子都不会找bug</title>
+        <pubTime>2018-04-30T17:05:37.000Z</pubTime>
+        
+        <tag>异常</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/b253952b.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>《From Java To Kotlin》从Java到Kotlin·译</title>
+        <pubTime>2017-05-21T16:42:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Kotlin</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>免拆ROM获取系统应用dex、oat、odex</title>
+        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
+         
+        <tag>逆向</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -591,23 +648,6 @@
         <tag>Android</tag>
          
         <tag>内存空间</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>你敢叫Android程序员找bug？不存在的这辈子都不会找bug</title>
-        <pubTime>2018-04-30T17:05:37.000Z</pubTime>
-        
-        <tag>异常</tag>
          
          
            
@@ -656,37 +696,16 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/dfc93914.html</loc>
+    <lastmod>2018-10-12T17:52:59.077Z</lastmod>
     <data>
         <display>
-        <title>免拆ROM获取系统应用dex、oat、odex</title>
-        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
+        <title>③:干大事不择手段</title>
+        <pubTime>2017-06-26T16:32:00.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>Shell</tag>
-         
-        <tag>逆向</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/b253952b.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>《From Java To Kotlin》从Java到Kotlin·译</title>
-        <pubTime>2017-05-21T16:42:11.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Kotlin</tag>
+        <tag>黑科技</tag>
          
          
            
@@ -734,25 +753,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dfc93914.html</loc>
-    <lastmod>2018-10-12T17:52:59.077Z</lastmod>
-    <data>
-        <display>
-        <title>③:干大事不择手段</title>
-        <pubTime>2017-06-26T16:32:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>黑科技</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/73f054ba.html</loc>
     <lastmod>2018-10-12T17:52:59.076Z</lastmod>
     <data>
@@ -765,6 +765,50 @@
         <tag>Shell</tag>
          
         <tag>ADB</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <data>
+        <display>
+        <title>View单位转换的秘密</title>
+        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>单位转换</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/39fa9566.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <data>
+        <display>
+        <title>View的滑动视图理解</title>
+        <pubTime>2018-03-14T09:16:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>View</tag>
+         
+        <tag>滑动</tag>
          
          
            
@@ -799,41 +843,14 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/39fa9566.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
         <display>
-        <title>View的滑动视图理解</title>
-        <pubTime>2018-03-14T09:16:00.000Z</pubTime>
+        <title>MAC下树莓派烧写Ubuntu+SSH</title>
+        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>View</tag>
-         
-        <tag>滑动</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
-    <data>
-        <display>
-        <title>View单位转换的秘密</title>
-        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>单位转换</tag>
+        <tag>树莓派</tag>
          
          
            
@@ -884,14 +901,16 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
+    <loc>http://www.dajipai.cc/archives/dfa370cf.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
         <display>
-        <title>MAC下树莓派烧写Ubuntu+SSH</title>
-        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
+        <title>RePlugin插件化的问题和解决办法</title>
+        <pubTime>2017-09-29T09:00:00.000Z</pubTime>
         
-        <tag>树莓派</tag>
+        <tag>Android</tag>
+         
+        <tag>插件化</tag>
          
          
            
@@ -922,16 +941,14 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dfa370cf.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/ec8af0f7.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
         <display>
-        <title>RePlugin插件化的问题和解决办法</title>
-        <pubTime>2017-09-29T09:00:00.000Z</pubTime>
+        <title>hexo博客SEO优化</title>
+        <pubTime>2017-10-27T10:40:11.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>插件化</tag>
+        <tag>SEO优化</tag>
          
          
            
@@ -941,14 +958,40 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/ec8af0f7.html</loc>
+    <loc>http://www.dajipai.cc/archives/e8998065.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
         <display>
-        <title>hexo博客SEO优化</title>
-        <pubTime>2017-10-27T10:40:11.000Z</pubTime>
+        <title>FlexBox布局属性笔记</title>
+        <pubTime>2016-09-11T06:20:03.000Z</pubTime>
         
-        <tag>SEO优化</tag>
+        <tag>FlexBox</tag>
+         
+        <tag>React-Native</tag>
+         
+         
+           
+             
+              <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/afceb456.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>HandlerThread线程间通信</title>
+        <pubTime>2017-07-17T17:16:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>HandlerThread</tag>
          
          
            
@@ -1015,55 +1058,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/e8998065.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>FlexBox布局属性笔记</title>
-        <pubTime>2016-09-11T06:20:03.000Z</pubTime>
-        
-        <tag>FlexBox</tag>
-         
-        <tag>React-Native</tag>
-         
-         
-           
-             
-              <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/afceb456.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>HandlerThread线程间通信</title>
-        <pubTime>2017-07-17T17:16:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>HandlerThread</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
+    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-概念入门</title>
-        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
+        <title>Android与物联网设备通信-网络模型分层</title>
+        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1092,6 +1092,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
+    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
+    <data>
+        <display>
+        <title>Android与物联网设备通信-概念入门</title>
+        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
+        
+        <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
@@ -1102,23 +1119,6 @@
         <tag>Android</tag>
          
         <tag>开发技巧</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
-    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
-    <data>
-        <display>
-        <title>Android与物联网设备通信-网络模型分层</title>
-        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
-        
-        <tag>物联网</tag>
          
          
            

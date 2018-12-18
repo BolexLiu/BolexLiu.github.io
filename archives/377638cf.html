@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
 <meta property="og:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T15:32:49.823Z">
+<meta property="og:updated_time" content="2018-12-18T15:34:29.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-fd（文件描述符）">
 <meta name="twitter:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-18T21:19:22+08:00">
-                2018-12-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-18T21:19:22+08:00">
+                2017-12-18
               </time>
             
 
@@ -378,7 +378,7 @@
 <li>断网前：95左右跳动（这里的跳动是正常close）</li>
 <li>断网后：从95自增飙升到一千多随后开始IO不可用</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 72 -&gt; /system/app/webview/webview.apk</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 73 -&gt; /dev/urandom</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 74 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 75 -&gt; socket:[13214]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 76 -&gt; socket:[13215]</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 77 -&gt; pipe:[13216]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 78 -&gt; pipe:[13216]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 79 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 8 -&gt; /dev/binder</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 80 -&gt; socket:[13218]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 81 -&gt; socket:[13219]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 82 -&gt; /dev/ashmem</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 83 -&gt; pipe:[13220]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 84 -&gt; pipe:[13220]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2018-06-07 10:33 85 -&gt; socket:[17045]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 72 -&gt; /system/app/webview/webview.apk</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 73 -&gt; /dev/urandom</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 74 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 75 -&gt; socket:[13214]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 76 -&gt; socket:[13215]</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 77 -&gt; pipe:[13216]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 78 -&gt; pipe:[13216]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 79 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 8 -&gt; /dev/binder</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 80 -&gt; socket:[13218]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 81 -&gt; socket:[13219]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 82 -&gt; /dev/ashmem</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 83 -&gt; pipe:[13220]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 84 -&gt; pipe:[13220]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 85 -&gt; socket:[17045]</span><br></pre></td></tr></table></figure>
 <p>可以看到有pipe和socket，这里的pipe是Linux进程通信管道。暂时不去管它。socket的数目明显不对。断网重连网络，再到释放网络。这里的释放根本不起作用。虽然java调用了close方法。但是在fd里的描述符仍然被持续占用。到占满后就导致不允许再创建任何文件描述符。</p>
 <p>带着这样的疑问，我又尝试在4.4和6.0的android版本中做测试，发现在android4.4中会释放。到android 6.0却不会释放。由于真设备是从4.4升级到了6.0在当初开发这个模块的时候问题并没有暴露出来。而换了6.0以后也需要再非常极端的网络不稳定和数个小时候才能复现。问题迟迟被拖了这么久没有被解决。</p>
 <p>从用户反馈的角度来看就是设备（应用）死机了。表象上去看没有任何错误日志，实际是日志系统并没有记录下来，因为压根没法记录(IO不可用)。</p>
@@ -397,7 +397,7 @@
 <li><strong>数量:</strong> <code>ls | wc -w</code></li>
 </ul>
 <p>我们只需要上面这些命令就可以了。检测的方式就是查看数目的抖动情况，如果维持比较平衡。不会出现不释放的情况则为正常。如果抖动情况很大，或者只增长不减少则存在fd泄漏。目前为止认知受限，还没弄明白为什么java层已经明确调用了释放但底层却没有释放的原因。不过我们可以在应用层控制频繁的创建和及时的检测，一般的App应用很少会遇见这种问题，因为用户用完就关了App。但是做平板、机顶盒、大屏触控（突然想起TNT工作站）等需要长时间运行的app。涉及到了频繁的网络创建和IO操作的就有可能会碰到。</p>
-<p>上面的内容大部分是去年做的笔记，其本质是如果我们无法了解外围环境本身，就很有可能在当前的认知维度上做出错误的判断。<br>假如当时我咬定是rom的错误，而不去学linux，基本上这个问题也就没法解决了。<br>经常我会犯认知错误，就是站在自己所了解的情况，去认为一件事。结果往往还是错误的。</p>
+<p>上面的内容大部分是去年做的笔记，其本质是如果我们无法了解外围环境本身，就很有可能在当前的认知维度上做出错误的判断。假如当时我咬定是rom的错误，而不去学linux，基本上这个问题也就没法解决了。经常我会犯认知错误，就是站在自己所了解的情况，去认为一件事。结果往往还是错误的。</p>
 
       
     </div>
@@ -457,8 +457,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/archives/28d1a7a.html" rel="next" title="无效社交">
-                <i class="fa fa-chevron-left"></i> 无效社交
+              <a href="/archives/3903596e.html" rel="next" title="线下技术沙龙分享稿《code之外的技能》">
+                <i class="fa fa-chevron-left"></i> 线下技术沙龙分享稿《code之外的技能》
               </a>
             
           </div>
@@ -466,6 +466,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/cd4232c0.html" rel="prev" title="Say goodbye 2017">
+                Say goodbye 2017 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.dajipai.cc/"/>
-  <updated>2018-12-09T11:11:54.582Z</updated>
+  <updated>2018-12-18T15:36:42.718Z</updated>
   <id>http://www.dajipai.cc/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Android-fd（文件描述符）</title>
+    <link href="http://www.dajipai.cc/archives/377638cf.html"/>
+    <id>http://www.dajipai.cc/archives/377638cf.html</id>
+    <published>2018-12-18T13:19:22.000Z</published>
+    <updated>2018-12-18T15:36:42.718Z</updated>
+    
+    <content type="html"><![CDATA[<p>进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？</p><a id="more"></a><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>去年工作中发现应用跑了很长一段时间后，突然：</p><ul><li>数据库打不开</li><li>sharedpreferences无法读取</li><li>网络无法连接</li><li>文件不可读写<br>总之就是一切涉及IO的操作都不能做。其中找了很多办法来试图解决这个问题，都是不痛不痒的无法定位到问题所在。如追溯日志、debug立即调试均无异常。</li></ul><p>最终在使用多机型和不同的android版本上复现了。复现的步骤比较粗暴，就是把网络断掉。然后让程序跑一会儿。也是后面才发现可以这样复现，之前每次要跑十几个小时才会出一次这样的问题。还是非必现的。</p><p>一般的应用也许很难碰到这样的场景，我先讲一个前置条件。</p><ul><li>频繁创建socket</li><li>频繁的IO读写</li><li>频繁的线程创建和关闭</li></ul><p>先简单说一下这个问题的产生原因和解决办法，后面我们再从中分析原理。</p><p>应用具备了和服务端保持长链接的能力，保持实时push数据给服务器，由于我们做了重连机制，最后发现在弱网环境下由于消息无法送达socket会重复的断开和重连服务器。又因为使用socket是在java层写的<code>close()</code>并非真实关闭释放，android虚拟机在4.4以后的版本在某些场景下就有可能无法成功释放linux层fd。导致每重连一次fd就会+1。最终会因为fd达到了linux默认值上限后而无法创建导致android层看不到异常也无法正常使用IO相关的api工作。</p><p>解决的办法就是优化重连机制，把socket下沉到native去维护。java不要在干这件事了。</p><h2 id="fd是什么"><a href="#fd是什么" class="headerlink" title="fd是什么"></a>fd是什么</h2><p><strong>fd（file descriptor）</strong>：</p><p>直译就是文件描述符，它表示当前打开的文件索引。不管我们是创建socket、io、线程最终对应到linux底层都是文件描述符的形式,相信对linux有认识的同学都听说过一句话叫：“Linux下，一切皆文件”。在这个平台上其实不管我们做的什么操作，最终都对应成了文件。我们看一下维基百科怎么说的吧。</p><p><strong><a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6" target="_blank" rel="noopener">维基百科</a></strong></p><blockquote><p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</p></blockquote><h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>如果你现在手上有一台root过的android设备，可以通过shell到/proc/{PID}/fd目录下使用查看当前应用的文件描述符数量。如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">su</span><br><span class="line">cd /proc/&#123;PID&#125;/fd</span><br><span class="line">ls | wc -w</span><br></pre></td></tr></table></figure></p><p>其中PID是进程id。去年验证该问题的时候我采用了观察断网前后来排查该错误，以下是当时的笔记部分：</p><ul><li>断网前：95左右跳动（这里的跳动是正常close）</li><li>断网后：从95自增飙升到一千多随后开始IO不可用</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ls -l</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 72 -&gt; /system/app/webview/webview.apk</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 73 -&gt; /dev/urandom</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 74 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 75 -&gt; socket:[13214]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 76 -&gt; socket:[13215]</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 77 -&gt; pipe:[13216]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 78 -&gt; pipe:[13216]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 79 -&gt; anon_inode:[eventpoll]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 8 -&gt; /dev/binder</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 80 -&gt; socket:[13218]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 81 -&gt; socket:[13219]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 82 -&gt; /dev/ashmem</span><br><span class="line">lr-x------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 83 -&gt; pipe:[13220]</span><br><span class="line">l-wx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 84 -&gt; pipe:[13220]</span><br><span class="line">lrwx------ 1 u0_a52 u0_a52 64 2017-06-07 10:33 85 -&gt; socket:[17045]</span><br></pre></td></tr></table></figure><p>可以看到有pipe和socket，这里的pipe是Linux进程通信管道。暂时不去管它。socket的数目明显不对。断网重连网络，再到释放网络。这里的释放根本不起作用。虽然java调用了close方法。但是在fd里的描述符仍然被持续占用。到占满后就导致不允许再创建任何文件描述符。</p><p>带着这样的疑问，我又尝试在4.4和6.0的android版本中做测试，发现在android4.4中会释放。到android 6.0却不会释放。由于真设备是从4.4升级到了6.0在当初开发这个模块的时候问题并没有暴露出来。而换了6.0以后也需要再非常极端的网络不稳定和数个小时候才能复现。问题迟迟被拖了这么久没有被解决。</p><p>从用户反馈的角度来看就是设备（应用）死机了。表象上去看没有任何错误日志，实际是日志系统并没有记录下来，因为压根没法记录(IO不可用)。</p><ul><li>1.本地log自动记录失效。</li><li>2.网络上报不可用。</li></ul><p>fd描述符被占满了导致文件和网络都不可用，这就是为什么，<strong>线上的设备（应用）挂了，而去拿日志的时候什么都没有的原因。</strong></p><h2 id="fd最大值"><a href="#fd最大值" class="headerlink" title="fd最大值"></a>fd最大值</h2><p>我们可以通过<code>/proc/pid/limits</code>,来查看当前进程允许使用的IO数目总量。如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">hx_s905x:/proc/4973 # cat limits                                                                      </span><br><span class="line">Limit                     Soft Limit           Hard Limit           Units     </span><br><span class="line">Max cpu time              unlimited            unlimited            seconds   </span><br><span class="line">Max file size             unlimited            unlimited            bytes     </span><br><span class="line">Max data size             unlimited            unlimited            bytes     </span><br><span class="line">Max stack size            8388608              unlimited            bytes     </span><br><span class="line">Max core file size        0                    unlimited            bytes     </span><br><span class="line">Max resident set          unlimited            unlimited            bytes     </span><br><span class="line">Max processes             6811                 6811                 processes </span><br><span class="line">Max open files            1024                 1024                 files     </span><br><span class="line">Max locked memory         65536                65536                bytes     </span><br><span class="line">Max address space         unlimited            unlimited            bytes     </span><br><span class="line">Max file locks            unlimited            unlimited            locks     </span><br><span class="line">Max pending signals       6811                 6811                 signals   </span><br><span class="line">Max msgqueue size         819200               819200               bytes     </span><br><span class="line">Max nice priority         40                   40                   </span><br><span class="line">Max realtime priority     0                    0                    </span><br><span class="line">Max realtime timeout      unlimited            unlimited            us</span><br></pre></td></tr></table></figure><p>这里的 Max open files 字段就是指明我们的fd描述符允许被创建的总数。</p><h2 id="排查总结"><a href="#排查总结" class="headerlink" title="排查总结"></a>排查总结</h2><ul><li><strong>fd允许的最大值:</strong> <code>/proc/pid/limits</code></li><li><strong>获取当前应用的pid:</strong> <code>ps</code></li><li><strong>当前应用的状态:</strong> <code>/proc/pid/fd</code></li><li><strong>数量:</strong> <code>ls | wc -w</code></li></ul><p>我们只需要上面这些命令就可以了。检测的方式就是查看数目的抖动情况，如果维持比较平衡。不会出现不释放的情况则为正常。如果抖动情况很大，或者只增长不减少则存在fd泄漏。目前为止认知受限，还没弄明白为什么java层已经明确调用了释放但底层却没有释放的原因。不过我们可以在应用层控制频繁的创建和及时的检测，一般的App应用很少会遇见这种问题，因为用户用完就关了App。但是做平板、机顶盒、大屏触控（突然想起TNT工作站）等需要长时间运行的app。涉及到了频繁的网络创建和IO操作的就有可能会碰到。</p><p>上面的内容大部分是去年做的笔记，其本质是如果我们无法了解外围环境本身，就很有可能在当前的认知维度上做出错误的判断。假如当时我咬定是rom的错误，而不去学linux，基本上这个问题也就没法解决了。经常我会犯认知错误，就是站在自己所了解的情况，去认为一件事。结果往往还是错误的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="android" scheme="http://www.dajipai.cc/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>无效社交</title>
@@ -454,31 +474,6 @@
     
     
       <category term="随笔" scheme="http://www.dajipai.cc/tags/%E9%9A%8F%E7%AC%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开年第一炮，浅尝逆向嵌入式设备拿Shell</title>
-    <link href="http://www.dajipai.cc/archives/d08afece.html"/>
-    <id>http://www.dajipai.cc/archives/d08afece.html</id>
-    <published>2018-02-23T01:30:00.000Z</published>
-    <updated>2018-10-12T17:52:59.084Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一次实验性的去获取一台硬件设备中的shell。我不是专门做嵌入式开发的，不够专业。可能存在多处笔误，怕误人子弟，有问题的地方希望被指出。</p><p>我们身边的嵌入式设备其实非常多，大大小小的比如：摄像头、机顶盒、字幕屏、门禁、考勤机、路由器、娃娃机、街机…甚至是你家新买的智能电饭煲！他们大多数都是基于Linux嵌入式开发的。</p><a id="more"></a><p><strong>思路：</strong></p><ul><li>通过串口进入shell，屏蔽掉正在运行的主程序。</li></ul><h2 id="详细过程："><a href="#详细过程：" class="headerlink" title="详细过程："></a>详细过程：</h2><ul><li>拆机</li><li>试串口</li><li>调频段</li><li>找主程序关掉日志</li><li>屏蔽自启动</li><li>找到启动项配置</li></ul><h3 id="拆机"><a href="#拆机" class="headerlink" title="拆机"></a>拆机</h3><p>就是把壳子给卸了，然后找电路板上的串口或引脚，这里串口的长相还有引脚种类貌似挺多的，我不是太懂。</p><h3 id="试串口"><a href="#试串口" class="headerlink" title="试串口"></a>试串口</h3><p>一般来说板子上都会留下串口，我们找到相对应的串口线搭配串口调试工具去试,如果连接成功可能第一反应是花屏乱码的情况。则说明有信号输入了。</p><p>比如下面这种情况，就代表连接成功了。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-5ab4035fc425bb6d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><h3 id="调频段"><a href="#调频段" class="headerlink" title="调频段"></a>调频段</h3><p>针对不同的频段一个个试。总有一个是对的。</p><p><img src="http://upload-images.jianshu.io/upload_images/1110736-ec12ccc746450b33.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>值得注意的是，修改频段后一定要重新连接，否则可能出现还是乱码的问题。</p><p>直到出现这样的画面，则表示正常连接且频段也是正确的。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-cc9d164a80c273a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p><p>有些嵌入式是默认没有账号的，我这台默认使用了root作为账号密码为空。关于这个只能自求多福烧录的时候没有写死一个特殊的账号就会很方便。这里也同样说明了，产品的安全性问题最好还是不要使用root账号烧写在系统里。</p><h3 id="找主程序关掉日志"><a href="#找主程序关掉日志" class="headerlink" title="找主程序关掉日志"></a>找主程序关掉日志</h3><p>一般Linux嵌入式设备都会放一个该产品的主程序，该程序如果没有关闭日志，接上串口后会打印一大堆日志，这样我们很不方便操作系统。那么就可以先选择把他们屏蔽掉。</p><p>我们可以通过<code>ps –a</code>来取到一些敏感的进程和路径。使用<code>kill -9 [PID]</code> 强制结束掉主程序。注意这里有个问题，有些产品做得比较完善，他们会启一个守护进程相互守护，如果被Kill就会立刻重启，导致你无法操作。</p><h3 id="屏蔽自启动"><a href="#屏蔽自启动" class="headerlink" title="屏蔽自启动"></a>屏蔽自启动</h3><p>实际上，面对守护进程最好的办法就是把程序在自启动的时候干掉。由于我对Linux不是特别熟悉，找了一下好像很多地方都可以配置自动动，索性想了一个比较取巧的办法绕过。通过 ps命令找到进程路径，找到路径下的该程序，把名称改掉。然后重启设备，让设备无法找到该程序。就自然无法启动了。守护进程也起不来。</p><h3 id="找到启动项配置"><a href="#找到启动项配置" class="headerlink" title="找到启动项配置"></a>找到启动项配置</h3><p>因为我们改了主程序的名称，这样会导致在启动设备时Linux会抛异常说找不到路径，根据这个异常日志就可以知道配置写在哪里了。</p><p>剩下的操作，我们可以随便玩了。</p><p><img src="http://upload-images.jianshu.io/upload_images/1110736-a4243b265292f12c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;这是一次实验性的去获取一台硬件设备中的shell。我不是专门做嵌入式开发的，不够专业。可能存在多处笔误，怕误人子弟，有问题的地方希望被指出。&lt;/p&gt;
-&lt;p&gt;我们身边的嵌入式设备其实非常多，大大小小的比如：摄像头、机顶盒、字幕屏、门禁、考勤机、路由器、娃娃机、街机…甚至是你家新买的智能电饭煲！他们大多数都是基于Linux嵌入式开发的。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="Shell" scheme="http://www.dajipai.cc/tags/Shell/"/>
-    
-      <category term="逆向" scheme="http://www.dajipai.cc/tags/%E9%80%86%E5%90%91/"/>
-    
-      <category term="嵌入式" scheme="http://www.dajipai.cc/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
     
   </entry>
   

@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/377638cf.html</loc>
-    <lastmod>2018-12-18T15:30:44.826Z</lastmod>
+    <lastmod>2018-12-18T15:32:49.823Z</lastmod>
     <data>
         <display>
         <title>Android-fd（文件描述符）</title>
@@ -654,18 +654,16 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
+    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
         <display>
-        <title>免拆ROM获取系统应用dex、oat、odex</title>
-        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
+        <title>使用Termux，将Android当做Linux玩</title>
+        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
         
         <tag>Android</tag>
          
         <tag>Shell</tag>
-         
-        <tag>逆向</tag>
          
          
            
@@ -694,16 +692,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
+    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
         <display>
-        <title>使用Termux，将Android当做Linux玩</title>
-        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
+        <title>免拆ROM获取系统应用dex、oat、odex</title>
+        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
         
         <tag>Android</tag>
          
         <tag>Shell</tag>
+         
+        <tag>逆向</tag>
          
          
            

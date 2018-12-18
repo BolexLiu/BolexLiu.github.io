@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
 <meta property="og:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T15:25:42.266Z">
+<meta property="og:updated_time" content="2018-12-18T15:26:47.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-fd（文件描述符）">
 <meta name="twitter:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
@@ -368,7 +368,7 @@
 <p>解决的办法就是优化重连机制，把socket下沉到native去维护。java不要在干这件事了。</p>
 <h2 id="fd是什么"><a href="#fd是什么" class="headerlink" title="fd是什么"></a>fd是什么</h2><p>相信对linux有认识的同学都听说过一句话叫：“Linux下，一切皆文件”。在这个平台上其实不管我们做的什么操作，最终都对应成了文件。</p>
 <p><strong>fd（file descriptor）</strong>：直译就是文件描述符，它表示当前打开的文件索引。不管我们是创建socket、io、线程最终对应到linux底层都是文件描述符的形式。</p>
-<p><strong>(维基百科)[<a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6]" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6]</a></strong></p>
+<p><strong><a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6" target="_blank" rel="noopener">维基百科</a></strong></p>
 <blockquote>
 <p>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核向进程返回一个文件描述符。在程序设计中，<br>一些涉及底层的程序编写往往会围绕着文件描述符展开。但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。每个Unix进程（除了可能的守护进程）应均有三个标准的POSIX文件描述符，对应于三个标准流</p>
 </blockquote>

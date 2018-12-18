@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
 <meta property="og:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T15:37:41.787Z">
+<meta property="og:updated_time" content="2018-12-18T15:38:36.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android-fd（文件描述符）">
 <meta name="twitter:description" content="进程中android中io、socket、thread对于操作系统是什么？最多能创建多少个？">
@@ -354,8 +354,9 @@
 <li>数据库打不开</li>
 <li>sharedpreferences无法读取</li>
 <li>网络无法连接</li>
-<li>文件不可读写<br>总之就是一切涉及IO的操作都不能做。其中找了很多办法来试图解决这个问题，都是不痛不痒的无法定位到问题所在。如追溯日志、debug立即调试均无异常。</li>
+<li>文件不可读写</li>
 </ul>
+<p>总之就是一切涉及IO的操作都不能做。其中找了很多办法来试图解决这个问题，都是不痛不痒的无法定位到问题所在。如追溯日志、debug立即调试均无异常。</p>
 <p>最终在使用多机型和不同的android版本上复现了。复现的步骤比较粗暴，就是把网络断掉。然后让程序跑一会儿。也是后面才发现可以这样复现，之前每次要跑十几个小时才会出一次这样的问题。还是非必现的。</p>
 <p>一般的应用也许很难碰到这样的场景，我先讲一个前置条件。</p>
 <ul>

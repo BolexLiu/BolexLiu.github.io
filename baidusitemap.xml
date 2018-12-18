@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/377638cf.html</loc>
-    <lastmod>2018-12-18T15:37:41.787Z</lastmod>
+    <lastmod>2018-12-18T15:38:36.301Z</lastmod>
     <data>
         <display>
         <title>Android-fd（文件描述符）</title>
@@ -95,27 +95,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
-    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
-    <data>
-        <display>
-        <title>重推导设备尺寸</title>
-        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>适配</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
@@ -156,12 +135,33 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4300e823.html</loc>
+    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
+    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
+    <data>
+        <display>
+        <title>重推导设备尺寸</title>
+        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>适配</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/6bab0cfe.html</loc>
     <lastmod>2018-10-12T17:52:59.087Z</lastmod>
     <data>
         <display>
-        <title>这位写代码的小师傅，停一下，我想跟你聊聊</title>
-        <pubTime>2017-05-17T16:54:00.000Z</pubTime>
+        <title>踏过2016一名刚毕业的android初级工程师是如何成长的</title>
+        <pubTime>2017-01-20T05:00:00.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -176,12 +176,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/6bab0cfe.html</loc>
+    <loc>http://www.dajipai.cc/archives/4300e823.html</loc>
     <lastmod>2018-10-12T17:52:59.087Z</lastmod>
     <data>
         <display>
-        <title>踏过2016一名刚毕业的android初级工程师是如何成长的</title>
-        <pubTime>2017-01-20T05:00:00.000Z</pubTime>
+        <title>这位写代码的小师傅，停一下，我想跟你聊聊</title>
+        <pubTime>2017-05-17T16:54:00.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -270,23 +270,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
-    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
-    <data>
-        <display>
-        <title>瞎扯-颠覆性</title>
-        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/9fdc7db.html</loc>
     <lastmod>2018-10-12T17:52:59.084Z</lastmod>
     <data>
@@ -297,6 +280,23 @@
         <tag>Android</tag>
          
         <tag>逆向</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
+    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
+    <data>
+        <display>
+        <title>瞎扯-颠覆性</title>
+        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
+        
+        <tag>随笔</tag>
          
          
            
@@ -502,44 +502,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4fd5e7fe.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
-    <data>
-        <display>
-        <title>大佬们的博客，我要串起来玩了【持续更新中】</title>
-        <pubTime>2018-01-07T10:20:11.000Z</pubTime>
-        
-        <tag>node</tag>
-         
-        <tag>爬虫</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
-    <data>
-        <display>
-        <title>动手写Android内的计划任务定时框架</title>
-        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>定时任务</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/572de294.html</loc>
     <lastmod>2018-10-12T17:52:59.080Z</lastmod>
     <data>
@@ -578,14 +540,35 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dd694c2c.html</loc>
-    <lastmod>2018-10-12T17:52:59.079Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
     <data>
         <display>
-        <title>分层框架</title>
-        <pubTime>2017-02-26T15:08:11.000Z</pubTime>
+        <title>动手写Android内的计划任务定时框架</title>
+        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
         
         <tag>Android</tag>
+         
+        <tag>定时任务</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/4fd5e7fe.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <data>
+        <display>
+        <title>大佬们的博客，我要串起来玩了【持续更新中】</title>
+        <pubTime>2018-01-07T10:20:11.000Z</pubTime>
+        
+        <tag>node</tag>
+         
+        <tag>爬虫</tag>
          
          
            
@@ -615,20 +598,17 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/dd694c2c.html</loc>
+    <lastmod>2018-10-12T17:52:59.079Z</lastmod>
     <data>
         <display>
-        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
-        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
+        <title>分层框架</title>
+        <pubTime>2017-02-26T15:08:11.000Z</pubTime>
         
-        <tag>随笔</tag>
+        <tag>Android</tag>
          
          
            
-             
-              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
-          
         </display>
     </data>
     </url>
@@ -667,6 +647,26 @@
          
          
            
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
+        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
+          
         </display>
     </data>
     </url>
@@ -749,12 +749,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/8a7f75e7.html</loc>
+    <loc>http://www.dajipai.cc/archives/4f0f8e78.html</loc>
     <lastmod>2018-10-12T17:52:59.077Z</lastmod>
     <data>
         <display>
-        <title>②:欺骗的艺术</title>
-        <pubTime>2017-06-20T17:10:00.000Z</pubTime>
+        <title>①:只要活着，就有希望</title>
+        <pubTime>2017-06-15T13:29:00.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -768,12 +768,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4f0f8e78.html</loc>
+    <loc>http://www.dajipai.cc/archives/8a7f75e7.html</loc>
     <lastmod>2018-10-12T17:52:59.077Z</lastmod>
     <data>
         <display>
-        <title>①:只要活着，就有希望</title>
-        <pubTime>2017-06-15T13:29:00.000Z</pubTime>
+        <title>②:欺骗的艺术</title>
+        <pubTime>2017-06-20T17:10:00.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -799,27 +799,6 @@
         <tag>Shell</tag>
          
         <tag>ADB</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
-    <data>
-        <display>
-        <title>View单位转换的秘密</title>
-        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>单位转换</tag>
          
          
            
@@ -877,6 +856,86 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <data>
+        <display>
+        <title>View单位转换的秘密</title>
+        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>单位转换</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>MAC下树莓派烧写Ubuntu+SSH</title>
+        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>IntentService源码解析</title>
+        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>IntentService</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/51430a0e.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>Maven私仓Gradle下依赖阻塞临时解决</title>
+        <pubTime>2018-01-11T07:41:46.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Gradle</tag>
+         
+        <tag>踩坑</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/dfa370cf.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
@@ -910,65 +969,6 @@
              
               <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>MAC下树莓派烧写Ubuntu+SSH</title>
-        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
-        
-        <tag>树莓派</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/51430a0e.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>Maven私仓Gradle下依赖阻塞临时解决</title>
-        <pubTime>2018-01-11T07:41:46.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Gradle</tag>
-         
-        <tag>踩坑</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>IntentService源码解析</title>
-        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>IntentService</tag>
-         
-         
-           
         </display>
     </data>
     </url>

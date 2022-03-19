@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,Shell,逆向,适配," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="keywords" content="Android,Shell,逆向,适配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向小米rom层应用做碎片化适配">
+<meta property="og:url" content="http://www.dajipai.cc/archives/1a0307d1.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-7864e42a7f26ed3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/720">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-8e0d455022210de1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3b25c7242b2a8b7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-42b3a996cc17db91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4a7c9babe27c42fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-b714d2482d1be616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-fc3e805ac42db49e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1d41f28648ab2023.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-51050b0dea2c04c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1ab716a957afeac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/400">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-5932dd50ae4d8312.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6b3e7515c8833916.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-1ee1a86a9e36cad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-25aea0aefc55bae8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-b7c32b6b27f207fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-0fae04edc0b22c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-abb884d791b47a31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e57dd40a8628b692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-dfa99937f3f0d330.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-12563548f2dc5c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f32f4e63e8af08ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4d1a1837b99e2e9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-0f795a0cb5e205da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-81f89ba9c3ae8417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f6754c45d68de4d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f53d4aeabbc55329.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-87d037a199a4710c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-9760802cb374bbb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4cb41685d15cfd39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e1028421f5db15c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.088Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="逆向小米rom层应用做碎片化适配">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-7864e42a7f26ed3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/720">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/1a0307d1.html"/>
+
+
+
+
+
+  <title>逆向小米rom层应用做碎片化适配 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-逆向" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/1a0307d1.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">逆向小米rom层应用做碎片化适配</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T17:40:11+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/1110736-7864e42a7f26ed3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/720" alt=""></p>
+<a id="more"></a>
+<p><strong>为什么要逆向rom层？</strong><br> 先解释下我们为什么要这样做吧，<code>Android</code>的碎片化不用我说大家都懂的，五花八门。时常应用层开发者痛不欲生，明明在我这里开发时运行没有问题，tm的一上线就出问题。为什么？这个机型<code>rom</code>被改动了呀。真好烦哦。这种说bug又不是bug，但确实又是bug的问题还得你修。特别是某些小公司条件限制没能力买齐全主流的机型供开发人员工作使用。（<strong>想要猪儿肥又壮，光吃草，还不给喂饱！！！</strong>）而你还得默默的给适配好，怎么办？办法也不是没有，业界内我在网上资料查找少又公开这个思路，不过我觉得如果能逆向一把厂商的<code>rom</code>，（估计大厂的爱paipai适配应该也会这样做，因为我没有在大厂待过呀。所以只能估计了。）看看<code>rom</code>厂商的实现怎么写的，难道还不能适配好了嘛！所以就有了下文。</p>
+<p>这篇文章拖了很久，大纲我是一个月前写好的，一直没来得及填充内容。罪过，醉过！~ 工作上实在抽不出时间了，一回家倒床就迷迷糊糊睡着了。后面有同学问我说:”你咋还没发布？那个逆向适配的，我等着打赏一波呢。”听完这句话，我又忍不住我的麒麟臂。乘着周末，来，快扶老夫起来，开整。</p>
+<p>为了能保证后面看文章的同学能够顺利跟着本文去实践，我清空了电脑上已有所有反编译工具环境，从头来过一遍，（其实就是从头再踩一遍坑啦。经验告诉我们，做这种事情，从来就不会那么顺利。(┬＿┬)哭~）已尽量保证本章在写作的过程中不会出现疏漏而导致的大家掉坑里了，但是不可避免还是可能会疏忽笔误之类的，那么大家可以给我留言，可能回复慢一点，但是一定会认真回答的。</p>
+<p> 感谢白手、追风917、imesong 提供的帮助，谢谢 。还有林学森大大的一本书推荐《深入理解 Android 内核设计思想》，对本篇文章提供了学习参考。</p>
+<p><strong>温馨提示：前方长篇预警，看不完，又觉得精彩的时候。收藏一下点个喜欢吧。咱们慢慢来哈。</strong></p>
+<hr>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li><p>基础知识</p>
+<ul>
+<li>dex</li>
+<li>odex</li>
+<li>smali</li>
+</ul>
+</li>
+<li><p>rom层应用分析</p>
+<ul>
+<li>odex与apk</li>
+<li>框架文件</li>
+</ul>
+</li>
+<li><p>逆向工具箱</p>
+<ul>
+<li>baksmali</li>
+<li>dex2jar</li>
+<li>apktools</li>
+<li>gd-gui</li>
+<li>SVADeodexerForArt</li>
+<li><p>apkDB</p>
+</li>
+<li><p>当前Activity</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>实战逆向MIUI系统设置WIFI<ul>
+<li>需求</li>
+<li>思路</li>
+<li>寻找切入点</li>
+<li>下载固件</li>
+<li>拆包与合并资源</li>
+<li>翻源码</li>
+<li>反射API</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h2><p>基础这部分特别重要，如果不是很扎实同学一定要认真学习噢。熟悉的同学就往后跳着看吧，为了照顾大多数同学，这部分就不能丢了。</p>
+<ul>
+<li>dex</li>
+</ul>
+<p><code>dex</code>大家应该不会陌生，我们平时写的类都会被转换成<code>class</code>然后打包成<code>dex</code>。你可以尝试解压缩你的<code>apk</code>文件查看。</p>
+<p>也可以下面的方式转换<code>java</code>类直接转换成<code>dex</code>，步骤如下：</p>
+<blockquote>
+<p>1.<code>javac xxx.java</code> （得到&gt;&gt;&gt; <code>xxx.class</code>文件）<br>2.配置环境变量 Android SDK开发包下的dx工具 （路径:<code>/build-tools/编译版本/dx</code> ）<br>3.<code>dx --dex --output=xxx.dex xxx.class</code>  （得到&gt;&gt;&gt; <code>xxx.dex</code>文件）</p>
+</blockquote>
+<p>这样得到的dex是可以直接用Android虚拟机执行的，可以使用<code>adb shell</code>进入并输入<code># dalvikvm -cp /sdcard/name.dex name</code> 可直接运行。</p>
+<ul>
+<li>odex</li>
+</ul>
+<p><code>odex???</code>,没毛病。用百度百科原话说：</p>
+<blockquote>
+<p><code>ODEX</code>是安卓上的应用程序<code>apk</code>中提取出来的可运行文件，即将APK中的<code>classes.dex</code>文件通过<code>dex</code>优化过程将其优化生成一个<code>dex</code>文件单独存放。</p>
+</blockquote>
+<p>如果经常刷机的朋友肯定不会陌生，经常有民间<code>rom</code>作者说已优化<code>odex</code>。那么其实他就是把<code>apk</code>包中的<code>dex</code>提取出来转成<code>odex</code>。这个过程为什么说是优化呢？因为在 <code>4.4ART</code>虚拟机之前，<code>DVM</code>虚拟机每次打开一个应用程序前都需要先解压缩包，然后杀鸡取卵的拿到<code>dex</code>再读到虚拟机内。这个过程中解压是要花时间的。为了让开机和启动应用速度加快。将<code>apk</code>中的<code>dex</code>提前取出来就省去了解压的耗时。第二一个以前很老的机器往往可供系统用的存储空间不够大，常规的做法除了提前拿到<code>odex</code>以外，还会把<code>apk</code>包中<code>dex</code>删除掉，已节约空间。不得不说<code>rom</code>工程师都是在绞尽脑汁的做优化。也许就是只为提升那0.1秒的时间吧，也要不折手段做到极致。</p>
+<ul>
+<li>smali</li>
+</ul>
+<p>smali是虚拟机指令语言，是给虚拟机看的。我们如果把dex文件反编译后就可以看到。里面的指令集，读者无需深究这部分的指令集。本篇也不涉及这些内容。我们了解个大概就行了。这些工作就留给专门的反编译工作者吧。（你要深入学，也没人会拦着你的。哈哈）</p>
+<p>好，这里我们了解了三个基础的东西，我们来总结一下。<br><strong><code>dex、 odex、smali</code></strong><br>我们脑子里过一下，有个映像知道它们都是干嘛的就可以了。下面我们就进入<code>rom</code>层的逆向流程，干货来了，准备好哦。</p>
+<hr>
+<h2 id="rom层应用分析"><a href="#rom层应用分析" class="headerlink" title="rom层应用分析"></a>rom层应用分析</h2><p><strong>提示：</strong>本章只是在粗糙的分析系统应用结构，不涉及从<code>rom</code>包下载到解压和找应用路径的来龙去脉，在后面的实战章节中会细细讲解，读者无需纠结下面要讲到的app从哪里变出来的。（问题是我也变不出来呀。QAQ）</p>
+<ul>
+<li>odex与apk<br>为什么<code>apk</code>要和<code>odex</code>合并？前面我们在上以一个基础篇章节讲过，<code>odex</code>的优化。<code>rom</code>厂商的会把<code>app</code>把系统级别的<code>App</code>的源码和资源文件做分离。我们来看一幅图。</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-8e0d455022210de1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>上面这幅图左边是常规APP，右边是小米SettingsAPP。可以清楚的看到Settings里面没有<code>classes.dex</code>文件。如果按照往常应用层打包发布apk的思路走。apk内至少会有一个<code>classes.dex</code>。（dex分包会有多个）<br>而我们知道一个app里的源码就在dex里，如果用常规的应用层反编译去反编译则什么都看不到，还会导致一些反编译工具抛出无法找到dex的异常。这个问题先放到这里。</p>
+<p>我们再看另一附图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-3b25c7242b2a8b7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>老司机可能一眼就看到了这个目录非同寻常，没错，正是MIUI的<code>rom</code>解压缩后的目录。其中<code>\system\priv-app\Settings</code>是系统设置应用的路径。我们发现其中有一个<code>oat\arm</code>目录打开后可以发现里面有一个Settings.odex文件。而这个文件正是<code>Settings.app</code>的源码文件。</p>
+<ul>
+<li>框架文件<br>往常我们的apk中会包含一个<code>Resources.arsc</code>文件，简单来说它是App的资源文件索引表，包括xml、图片、文件等索引都被存在内。而系统应用除了在<code>Resources.arsc</code>有索引，还会跟framework的资源产生关联。由于我不是做<code>framework</code>层开发的，可能存误区，欢迎各位指正。</li>
+</ul>
+<p>框架文件是指<code>framework的framework.apk、core.jar</code>文件等。在反编译系统应用时必须要借助他们做资源映射。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-42b3a996cc17db91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4a7c9babe27c42fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>rom层对系统应用进行了<code>odex</code>优化，其中就包括了资源文件的依赖，有一部分是存放在<code>framework.apk、core.jar</code>等。并不像我们平时开发app的时候只存在于<code>Resources.arsc</code>文件中。不过因为厂商和系统版本不同，它们的名称可能也有点差别，没有关系。总之我们后面不管是合并odex和apk的时候，或者反编译源码的时候就需要使用到它们。大家留个映象看后面的操作。对应的目录是：<code>\system\framework</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-b714d2482d1be616.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>我们可以看到里面并没有包含<code>dex</code>文件，只有<code>res</code>和<code>assets</code>资源文件。</p>
+<hr>
+<h2 id="逆向工具箱"><a href="#逆向工具箱" class="headerlink" title="逆向工具箱"></a>逆向工具箱</h2><p>下面我们一起来看一下现在主流的反编译工具，我会依依简单介绍。</p>
+<ul>
+<li><p>baksmali<br><code>baksmali</code>用于将<code>odex</code>解析成<code>smali</code>的工具。可能改个名字叫（<code>odex2dex</code>更合适）</p>
+</li>
+<li><p>dex2jar<br>将dex转换成jar文件。</p>
+</li>
+<li><p>gd-gui</p>
+</li>
+</ul>
+<p>反编译整个<code>jar</code>可以对把smali文件解析成<code>java</code>源码查看的一款工具。</p>
+<ul>
+<li><p>apktools<br>拥有对<code>apk</code>编译、反编译、签名等功能。</p>
+</li>
+<li><p>SVADeodexerForArt<br>自动合并框架工具，可以通过简单的配置，就可以合并出<code>rom</code>里的<code>app</code>和<code>odex</code>文件。</p>
+</li>
+<li><p>apkDB<br>中文名称安卓逆手，整合了反编译多款工具的一个工具集合，功能很强大，几乎你想要的一切操作都能在里面找到对应的工具命令。</p>
+</li>
+<li><p>当前Activity<br>这是一款app应用，用于显示当前手机界面上的<code>Activity</code>等包名信息。</p>
+</li>
+</ul>
+<p><strong>工具下载地址：</strong><br><strong><a href="https://github.com/JesusFreke/smali" target="_blank" rel="noopener">baksmali</a></strong><br> <strong><a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">dex2jar</a></strong><br><strong><a href="http://www.softpedia.com/get/Programming/Debuggers-Decompilers-Dissasemblers/JD-GUI.shtml" target="_blank" rel="noopener">JD-GUI</a></strong><br><strong><a href="https://ibotpeaches.github.io/Apktool/" target="_blank" rel="noopener">Apktool</a></strong><br><strong><a href="http://htcui.com/download.php?id=7791" target="_blank" rel="noopener">SVADeodexerForArt</a></strong><br><strong><a href="https://www.idoog.cn/?p=2933" target="_blank" rel="noopener">apkDB</a></strong><br><strong><a href="https://play.google.com/store/apps/details?id=com.willme.topactivity&amp;hl=zh_CN" target="_blank" rel="noopener">当前Activity</a></strong> (需要过墙)</p>
+<hr>
+<h2 id="实战逆向MIUI系统设置WIFI"><a href="#实战逆向MIUI系统设置WIFI" class="headerlink" title="实战逆向MIUI系统设置WIFI"></a>实战逆向MIUI系统设置WIFI</h2><p>前面的知识比较揉杂，下面我们通过一个实际案列来分析具体rom逆向过程。</p>
+<ul>
+<li><p>需求</p>
+<p>我们有一个这样的需求，需要在应用内切换WIFI。<br>这个需求很普通很正常吧？没错，我也是这样想的。但是呢，不久你就会发现部分小米高版本机型切换wifi的API调用了不起作用。我们来看一眼代码。</p>
+</li>
+</ul>
+<p><a href="https://developer.android.com/reference/android/net/wifi/WifiManager.html" target="_blank" rel="noopener">https://developer.android.com/reference/android/net/wifi/WifiManager.html</a><br><img src="http://upload-images.jianshu.io/upload_images/1110736-fc3e805ac42db49e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这是官方提供的切换热点的API。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-1d41f28648ab2023.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>我们拿起来直接调用了。这一切都看似正常。可就是在小米上出现这种问题。遇到这个问题，我们先静下心来分析下。</p>
+<p>除了小米还有别的机型也有问题？<br>跟android版本也有关系，API高版本变更？</p>
+<p>第一个问题可以暂时排除放一边，能测的都测了都没毛病，上云测平台也试过了。</p>
+<p>第二个问题关于变更情况。下面是官方文档，6.0WLAN的变更情况。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-51050b0dea2c04c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>注意：</strong>我翻译下，官方的意思是说由用户手动创建和其他app创建的<code>WifiConfiguration</code>配置信息是不能被我们修改的。明白了吗？和切换没有什么关系。因为我们不修改，只是连接切换操作。</p>
+<ul>
+<li>思路</li>
+</ul>
+<p>这下就比较操蛋了，既然<code>api</code>没有做切换限制为何不能切<code>wifi</code>。带着这个疑问我想了想别家的应用是如何做的呢？比如WIFI万能钥匙。我如果反编译他们家的APP会被加壳和代码混淆的。（其实我尝试过了，但没有脱开。）</p>
+<p>想问题掉了一地头发后，最后我想到了为什么系统的设置他自己又能切？是不是有隐藏的<code>API</code>调用。就这样半猜测，半怀疑的态度去打算搞事情了。首先得去拿到系统设置APP的源码吧？我得反编译回来<code>rom</code>里的设置APP。</p>
+<p>说一个小插曲：文章里看起来还算顺畅，但是实际操作的时候各种艰难险阻。问题重重。在APK导出系统设置程序这里浪费了不少时间，一直天真的认为系统的apk也能直接导出来反编译的。结果是压根不知道<code>odex</code>优化了。（什么你也不知道<code>odex</code>优化？说明你没有看我前面章节讲到的东西。）</p>
+<ul>
+<li>寻找切入点</li>
+</ul>
+<p>这里我们一步步来，首先打开系统设置，跳转到WIFI设置界面。<br>它是酱样子的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-1ab716a957afeac6.png?imageMogr2/auto-orient/strip%7CimageView2/2/h/400" alt=""></p>
+<p>接下来我们需要知道这个<code>Activity</code>的包名和<code>fragment</code>的叫什么。<br>打开Android ADB shell<br>输入：<strong><code>dumpsys activity top</code></strong><br>如下图所示，我们可以清晰的看到我们需要的信息。<br><strong>Activity:</strong> com.android.settings.SubSettings<br><strong>Fragment:</strong> MiuiWifiSettings<br><img src="http://upload-images.jianshu.io/upload_images/1110736-5932dd50ae4d8312.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>一会儿我们反编译后的<code>App</code>就可以通过包名+名称来找到对应的切换wifi代码来。<br>这里除了使用<code>adb shell</code>的方式还可以用 当前<code>Activity App</code> 进行查看，只不过信息没有这么全面。</p>
+<ul>
+<li>下载固件</li>
+</ul>
+<p>我们找到MIUI官网，下载稳定版的固件就行了。</p>
+<p><a href="http://www.miui.com/download.html" target="_blank" rel="noopener">http://www.miui.com/download.html</a></p>
+<p>这里我用的是米max</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-6b3e7515c8833916.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下载后，我们直接解压即可，它是酱样的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-1ee1a86a9e36cad3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>拆包与合并资源</li>
+</ul>
+<p>我们先来找一下SettingsApp的路径。<br>这里我已经找好了，路径是：<code>\system\priv-app\Settings\</code></p>
+<p>如果你想问我，怎么知道的路径的？<br>网上搜呀，自己翻目录哇，翻烂了就出来啦。<br>噢，对了，在windows下有一款叫Everything的神器也可以试试，超好用的。</p>
+<p>  我们打开SVADeodexerForArt自动合并框架工具。<br>选择我们解压好的目录至system下。依次全部勾选下面三个选项，点击Execute后就会出现下面这幅图的样子，只需要静静等待几分钟就可以了。他会将odex资源与apk进行合并。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-25aea0aefc55bae8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>注意合并odex不止这一种方式，这是目前为止最简单，最傻瓜的操作方式。<br>读者如果有需要深究可以尝试<code>baksmali.jar+ smali.jar +apktools</code>进行或者apkDB回编。工具下载地址在上个章节有给出。</p>
+<p>使用列子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -jar baksmali.jar -d ./system/framework -x Settings.odex</span><br><span class="line">java -jar smali.jar classout/ -o classes.dex</span><br></pre></td></tr></table></figure></p>
+<p>因为很麻烦，有很多坑，我踩了很多次。主要两个问题：<br>1.框架文件不齐全找不到<br>2.smali回编抛出奇奇怪怪的异常，好像和代码混淆还有关系，因为有一些暗桩代码<br>目前我也不知道怎么解决，网上也没有找到可参考的资料，所以我推荐大家直接用SVADeodexerForArt就好了，别费那个事浪费时间。</p>
+<p>好言归于好，我们来看一下执行完后生成的目录：</p>
+<p>会在当前工具下的根目录上out出以下几个文件夹，这里分别包含系统framework、UI、预装APP和系统APP。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-b7c32b6b27f207fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这里我们重点关注<code>SettingsApp</code>，打开<code>priv-app\Settings</code>,如下图所示。上面的是合并后的13905kb，下面是合并之前的12370kb。这里就可以看出已经合并成功了。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-0fae04edc0b22c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们用压缩工具看一眼：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-abb884d791b47a31.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>很明显已经合并成功了噢。<br>下面我们使用<code>ApkTools</code>反编译过来查看。</p>
+<p>使用 <code>ApkTools</code>输入命令：<code>apktool.bat d -f Settings.apk</code> （注意Settings.apk的路径，我这里是拷贝到了apktool 同一个目录下）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e57dd40a8628b692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>对应会生成一个同名的文件夹叫Settings，我们来看一眼里面有什么</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-dfa99937f3f0d330.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>简直完美，这里我们可以看到<code>smali</code>文件夹出现了。我们现在要做的就将<code>smali</code>文件合并成<code>dex</code>。</p>
+<p>继续下一步<br>使用smali.jar工具<br>命令：<code>java -jar smali-2.1.3.jar ./Settings/smali/ -o setting.dex</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-12563548f2dc5c67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="440765BBCB9145882A58EF3A2D4CD58F.png"></p>
+<p>将生成dex文件：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f32f4e63e8af08ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>别急就快看到源码了。马上，我保证。</p>
+<p>使用<strong><a href="https://github.com/pxb1988/dex2jar" target="_blank" rel="noopener">dex2jar</a></strong>工具，将dex转jar。</p>
+<p>输入：<code>d2j-dex2jar.bat Settings.dex</code><br>得到 <code>settings-dex2jar.jar</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4d1a1837b99e2e9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们打开jd-jui工具，将jar拽入加载打开。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-0f795a0cb5e205da.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>至此，我们就拿到了源码。好，我们稍微整理一下。一会儿一起来看源码。</p>
+<p>1.下载rom包<br>2.–&gt;解压<br>3.–&gt; <code>SVADeodexerForArt</code>合并<code>odex</code><br>4.–&gt;<code>apktools</code>反编译<br>5.–&gt;<code>smali.jar</code>打包<code>smali</code>成<code>dex</code><br>6.–&gt;<code>dex2jar.jar</code>转换<code>dex</code>成<code>jar</code><br>7.–&gt;<code>jd-jui</code>工具加载jar查看</p>
+<p>至此一共七个步骤，其实这个操作并不难，只是需要借助多款工具来完成就略显步骤复杂。然后中间可能会有些小坑，卡住的话就容易让人失去信心。新手别去强记这些，用多了就自然就熟悉了。</p>
+<ul>
+<li>翻源码<br>好，还记得我吗的需求吗？需要在应用内切换<code>wifi</code>。但是小米内无效。<br>嗯，现在我们有源码了，来，一起来看看系统怎么做的吧。<br>这是我们之前寻找切入点拿到的信息，我们直接通过jd-jui切入源码。</li>
+</ul>
+<p><strong>Activity:</strong> com.android.settings.SubSettings<br><strong>Fragment:</strong> MiuiWifiSettings</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-81f89ba9c3ae8417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这里我们发现里面什么都没有，唯一有用的是它继承了<code>iy</code>，没猜错的话iy一定是一个<code>Activity</code>，这里应该是被混淆了，我们点进去看。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f6754c45d68de4d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以发现里面比之前那层壳里的内容丰富多了，还记得我们之前分析过那里不是<code>Activity</code>直接展示的而用了<code>fragment</code>我们搜索一下<code>MiuiWifiSettings</code>。果然存在这里。</p>
+<p>继续点过去。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f53d4aeabbc55329.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>发现又是一个空壳子，我们直捣黄龙深入一点看父类。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-87d037a199a4710c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>果不其然，持有了<code>WifiManager</code>对象，这就是用来管理wifi的对象。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-9760802cb374bbb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我们看看它是如何处理<code>wifi</code>切换的，最终发现<code>jn.connect</code>方法。看到没果然有自己一套。死活切不过去，原来是有隐藏<code>api</code>调用的。而<code>sdk</code>层并没有暴露出来，谷歌官方开发文档中也不存在这个方法。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4cb41685d15cfd39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt=""></p>
+<p>好气哦，居然偷摸调用一下～～</p>
+<ul>
+<li>反射API</li>
+</ul>
+<p>好，既然知道了是使用了隐藏api我们可以用反射来解决，代码如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Class cls = mWifiManager.getClass();</span><br><span class="line">  Method method = cls.getDeclaredMethod(<span class="string">"connect"</span>, WifiConfiguration.class, Class.forName(<span class="string">"android.net.wifi.WifiManager$ActionListener"</span>));</span><br><span class="line">        method.invoke(mWifiManager, mWifiConfiguration, <span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
+<p>这样我们的疑问就解决了，测试在miui上通过。</p>
+<p>到这里我们的实战就完成了。以后麻麻再也不用担心厂商改了。顶多我们麻烦一丢丢啦。不至于卡住完全被动的情况。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>对不起，我骗了大家。我是一个大骗纸。其实这个<code>api</code>不是小米私有的，是系统隐藏API。只是说常规的切换方式在小米上无效。正好小米的  <code>Settings</code>内部用的是<code>connect</code>方法系统隐藏<code>Api</code>。我们来看一眼  <code>WifiManager</code>官方源码。<br><a href="https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/wifi/java/android/net/wifi/WifiManager.java" target="_blank" rel="noopener">https://android.googlesource.com/platform/frameworks/base/+/refs/heads/master/wifi/java/android/net/wifi/WifiManager.java</a></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e1028421f5db15c3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>我真的好害怕小米的工程师看到了这篇文章以后，表示这个锅，我们不背。所以这里要澄清一下。</p>
+<p>然后大家的重点不要纠结这个<code>API</code>啦，思路，思路，思路很重要。关键是逆向<code>rom</code>层带来的便利真的不是一点半点的。几乎可以解决绝大部分因为厂商改动导致代码碎片化带来的疑难杂症。希望本文能给广大的应用层开发者提供一丝帮助，诶呦，我就超开心的。🙏</p>
+<hr>
+<h1 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h1><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/MyNote" target="_blank" rel="noopener">https://github.com/BolexLiu/MyNote</a>  (可以关注)<br><img src="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+<p><strong>原创文章，未授权禁止转载。</strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Shell/" rel="tag"># Shell</a>
+          
+            <a href="/tags/逆向/" rel="tag"># 逆向</a>
+          
+            <a href="/tags/适配/" rel="tag"># 适配</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/aa7f67b7.html" rel="next" title="无接口写网站App端">
+                <i class="fa fa-chevron-left"></i> 无接口写网站App端
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/dfa370cf.html" rel="prev" title="RePlugin插件化的问题和解决办法">
+                RePlugin插件化的问题和解决办法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础知识"><span class="nav-number">1.1.</span> <span class="nav-text">基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rom层应用分析"><span class="nav-number">1.2.</span> <span class="nav-text">rom层应用分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆向工具箱"><span class="nav-number">1.3.</span> <span class="nav-text">逆向工具箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战逆向MIUI系统设置WIFI"><span class="nav-number">1.4.</span> <span class="nav-text">实战逆向MIUI系统设置WIFI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">1.5.</span> <span class="nav-text">后记</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何下次找到我"><span class="nav-number">2.</span> <span class="nav-text">如何下次找到我?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

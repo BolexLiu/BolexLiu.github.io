@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,开发技巧," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="不知不觉我已有一个月没有更新了。 群里有朋友说:“鸡排，你变了。现在天天传播鸡汤。技术文章也不写了。” 抱歉抱歉，最近工作上确实太忙了。是时候上盘新菜了。请各位大佬们品尝品尝。">
+<meta name="keywords" content="Android,开发技巧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发中相见恨晚的冷知识">
+<meta property="og:url" content="http://www.dajipai.cc/archives/fd5d316d.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="不知不觉我已有一个月没有更新了。 群里有朋友说:“鸡排，你变了。现在天天传播鸡汤。技术文章也不写了。” 抱歉抱歉，最近工作上确实太忙了。是时候上盘新菜了。请各位大佬们品尝品尝。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e6df3071bd916abc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f29ba19131e375fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-877ed978cc9ab760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-cfcdcff005abb131.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6a817277641d4d91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-b5ef60ad6068ba99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发中相见恨晚的冷知识">
+<meta name="twitter:description" content="不知不觉我已有一个月没有更新了。 群里有朋友说:“鸡排，你变了。现在天天传播鸡汤。技术文章也不写了。” 抱歉抱歉，最近工作上确实太忙了。是时候上盘新菜了。请各位大佬们品尝品尝。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-e6df3071bd916abc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/fd5d316d.html"/>
+
+
+
+
+
+  <title>Android开发中相见恨晚的冷知识 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-Android" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/fd5d316d.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android开发中相见恨晚的冷知识</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-10T22:38:45+08:00">
+                2017-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不知不觉我已有一个月没有更新了。</p>
+<p>群里有朋友说:“鸡排，你变了。现在天天传播鸡汤。技术文章也不写了。”<br><img src="http://upload-images.jianshu.io/upload_images/1110736-e6df3071bd916abc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500" alt=""></p>
+<p>抱歉抱歉，最近工作上确实太忙了。是时候上盘新菜了。请各位大佬们品尝品尝。</p>
+<a id="more"></a>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f29ba19131e375fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<hr>
+<h2 id="本篇都讲些什么"><a href="#本篇都讲些什么" class="headerlink" title="本篇都讲些什么?"></a>本篇都讲些什么?</h2><ul>
+<li>如何排除第三方传递依赖导致的aar冲突</li>
+<li>如何保持依赖最新的aar</li>
+<li>fragment里getActivity()空指针</li>
+<li>代码new 出来的VIew没有ID</li>
+<li>不传递的方式巧取context</li>
+<li>不使用handle回到主线程（即UI线程）</li>
+<li>防止VIew上信息被其他软件截屏或系统截图泄漏信息</li>
+<li>专制接二手渣渣项目快速看方法调用栈顺序</li>
+</ul>
+<hr>
+<h3 id="如何排除第三方传递依赖导致的aar冲突"><a href="#如何排除第三方传递依赖导致的aar冲突" class="headerlink" title="如何排除第三方传递依赖导致的aar冲突"></a>如何排除第三方传递依赖导致的aar冲突</h3><p>开发过程中经常出现你需要依赖第三方的某个库,比如下面的代码所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">          compile &apos;com.github.BolexLiu:PressScanCode:v1.0.0&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>PressScanCode是一个长按扫描屏幕上的二维码工具库，他底层的二维码识别使用了zxing库。我们假设作者开发时使用了老版本zxing 1.0.1的版本。而我们集成进来以后却发现本身项目里也依赖Zxing 但是我们的版本是3.3.0的。由于包管理具有传递性。这时就会起冲突。gradle无法自己处理你到底是该依赖哪个。下面是处理办法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile(&apos;com.github.BolexLiu:PressScanCode:v1.0.0&apos;&apos;, &#123;</span><br><span class="line">       exclude group: &apos;com.google.zxing&apos; //排除依赖</span><br><span class="line">    &#125;)</span><br><span class="line">  compile &apos;com.google.zxing:core:3.3.0&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">这样做的意思排除PressScanCode原有的依赖。而选择依赖我们自己设定的3.3.0的zxing库。</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="如何保持依赖最新的aar"><a href="#如何保持依赖最新的aar" class="headerlink" title="如何保持依赖最新的aar"></a>如何保持依赖最新的aar</h3><p>这个相当容易，代码如下。你只需要将appcompat-v7:25.1.1这个版本好替换成“+”号即可每次都依赖最新的版本。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  // compile &apos;com.android.support:appcompat-v7:25.1.1&apos;</span><br><span class="line">    compile &apos;com.android.support:+&apos;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="fragment里getActivity-空指针"><a href="#fragment里getActivity-空指针" class="headerlink" title="fragment里getActivity()空指针"></a>fragment里getActivity()空指针</h3><p>重写fragment然后在onAttach方法存下一个Activity引用。在其他地方需用用到context或者Activity的时候使用该引用。而不使用getActivity()。可以规避这个问题。但请留意强引用可能会导致内存泄漏的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">protected Activity mActivity;</span><br><span class="line">@Override</span><br><span class="line">public void onAttach(Activity activity) &#123;</span><br><span class="line">    super.onAttach(activity);</span><br><span class="line">    this.mActivity = activity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="代码new-出来的VIew没有ID"><a href="#代码new-出来的VIew没有ID" class="headerlink" title="代码new 出来的VIew没有ID"></a>代码new 出来的VIew没有ID</h3><p>通常我们的VIew是通过布局文件依照@+id的方式在R文件中生成对映的一个Int值。这是用于运行时保证资源唯一性。但有一种情况，我们需要动态的在代码中new出一个VIew来。如果一个VIew还好。多个view的时，没有id会导致你不方便持有一个引用。那么可以 View的generateViewId() 方法来生成 id，让系统来保证唯一。而不是用随机数产生或者手写一个具体的值。<code>注：API17++</code></p>
+<hr>
+<h3 id="不传递的方式巧取context"><a href="#不传递的方式巧取context" class="headerlink" title="不传递的方式巧取context"></a>不传递的方式巧取context</h3><p>context是我们经常用到的一个对象，这里我们不深入的讲解context，它的本质只是android组件的一个抽象接口，封装了一些统一的标准方法。有兴趣可以自己去查资料或翻阅源码。下面这张图已经说明了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-877ed978cc9ab760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>下面提供一种思路通过VIew直接获取context的api。特别是适配器中。别再传递这个对象了。<code>注:从View上拿到的一定是Activity对象，但是如果你通过Service中或者Application中获取的Context是不能用做操作View的。本质区别就是抽象方法和对象是无法保证你要操作的具体对象是你要的对象(这句话没读懂的多读几遍，慢点读。说到底它就是依赖倒置原则问题)</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">View.getContext()  //任何被创建的VIEW都持有了context对象</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="不使用handle回到主线程（即UI线程）"><a href="#不使用handle回到主线程（即UI线程）" class="headerlink" title="不使用handle回到主线程（即UI线程）"></a>不使用handle回到主线程（即UI线程）</h3><p>通常我们使用Activity.runOnUiThread在子线程完成逻辑后更新UI。否则系统不会同意你在子线程中更新UI的。还有一种场景可以用下面的api<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">View.post(new Runnable() ) //同样可以切回UI线程执行。</span><br></pre></td></tr></table></figure></p>
+<p>当然现在Rxjava和EventBus可以完美的解决此类问题。我更推荐Rxjava。</p>
+<hr>
+<h3 id="防止VIew上信息被其他软件截屏或系统截图泄漏信息"><a href="#防止VIew上信息被其他软件截屏或系统截图泄漏信息" class="headerlink" title="防止VIew上信息被其他软件截屏或系统截图泄漏信息"></a>防止VIew上信息被其他软件截屏或系统截图泄漏信息</h3><p>在某些特殊的场景下，你的app可能和用户隐私有关系。如果需求需要禁止截图行为和覆盖你当前的Acitivity行为，可以使用 如下API。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getWindow().addFlags(WindowManager.LayoutParams.FLAG_SECURE)</span><br></pre></td></tr></table></figure></p>
+<h3 id="专制接二手渣渣项目快速看方法调用栈顺序"><a href="#专制接二手渣渣项目快速看方法调用栈顺序" class="headerlink" title="专制接二手渣渣项目快速看方法调用栈顺序"></a>专制接二手渣渣项目快速看方法调用栈顺序</h3><p>我们可能因为跳槽，或者其他原因接触到了一个陌生的项目。可能它就是那种神才能看懂的代码。有没有办法看某个方法到底是谁发起调用。都经过了什么过程呢？方法还是有的。如图： one&gt;tow&gt;printStack。我们需要找出printStack的调用顺序。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-cfcdcff005abb131.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//在最后你想看的方法中加入以下代码，就可以神奇的在日志中打印出来方法调用顺序</span><br><span class="line">   RuntimeException here = new RuntimeException(&quot;bolex&quot;);</span><br><span class="line">        here.fillInStackTrace();</span><br><span class="line">        Log.w(&quot;myTag&quot;, &quot;Called: &quot; + this, here);</span><br></pre></td></tr></table></figure>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-6a817277641d4d91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<hr>
+<p>嗯。今天就到这里爸，不是不是，是吧(•‾̑⌣‾̑•)✧。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-b5ef60ad6068ba99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<hr>
+<h1 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h1><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/MyNote" target="_blank" rel="noopener">https://github.com/BolexLiu/MyNote</a>  (可以关注)<br><img src="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/开发技巧/" rel="tag"># 开发技巧</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/aee243ac.html" rel="next" title="AS记单词翻译插件">
+                <i class="fa fa-chevron-left"></i> AS记单词翻译插件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/baae41ed.html" rel="prev" title="写给技术群内的你和群主，为什么你提问，而总没人回你">
+                写给技术群内的你和群主，为什么你提问，而总没人回你 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#本篇都讲些什么"><span class="nav-number">1.</span> <span class="nav-text">本篇都讲些什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何排除第三方传递依赖导致的aar冲突"><span class="nav-number">1.1.</span> <span class="nav-text">如何排除第三方传递依赖导致的aar冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何保持依赖最新的aar"><span class="nav-number">1.2.</span> <span class="nav-text">如何保持依赖最新的aar</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#fragment里getActivity-空指针"><span class="nav-number">1.3.</span> <span class="nav-text">fragment里getActivity()空指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码new-出来的VIew没有ID"><span class="nav-number">1.4.</span> <span class="nav-text">代码new 出来的VIew没有ID</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不传递的方式巧取context"><span class="nav-number">1.5.</span> <span class="nav-text">不传递的方式巧取context</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不使用handle回到主线程（即UI线程）"><span class="nav-number">1.6.</span> <span class="nav-text">不使用handle回到主线程（即UI线程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#防止VIew上信息被其他软件截屏或系统截图泄漏信息"><span class="nav-number">1.7.</span> <span class="nav-text">防止VIew上信息被其他软件截屏或系统截图泄漏信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#专制接二手渣渣项目快速看方法调用栈顺序"><span class="nav-number">1.8.</span> <span class="nav-text">专制接二手渣渣项目快速看方法调用栈顺序</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何下次找到我"><span class="nav-number"></span> <span class="nav-text">如何下次找到我?</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

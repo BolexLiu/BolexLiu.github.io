@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="物联网," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="有很多小伙伴私聊我说更新太慢，夺命吹吹吹。一周一次，还不能满足你们吗？ 好，那我不写了。╭(╯^╰)╮！！！ 额，尽量保持完成审核后就交货发布啦。实际上前面的章节都是周末完成等到周三才发的。 上一节我们细说了网络模型分层。知道了七层分法实际现在只有五层了。今天我们展开来学习传输层UDP和TCP的协议。因为这两个协议关联性比较大，且篇幅不高。故合并层一个小节学习。">
+<meta name="keywords" content="物联网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android与物联网设备通信-UDP&amp;TCP协议">
+<meta property="og:url" content="http://www.dajipai.cc/archives/d555ca34.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="有很多小伙伴私聊我说更新太慢，夺命吹吹吹。一周一次，还不能满足你们吗？ 好，那我不写了。╭(╯^╰)╮！！！ 额，尽量保持完成审核后就交货发布啦。实际上前面的章节都是周末完成等到周三才发的。 上一节我们细说了网络模型分层。知道了七层分法实际现在只有五层了。今天我们展开来学习传输层UDP和TCP的协议。因为这两个协议关联性比较大，且篇幅不高。故合并层一个小节学习。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-75324d19ff9037b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-03866fa54fd863ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-9a517cfaf40920a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android与物联网设备通信-UDP&amp;TCP协议">
+<meta name="twitter:description" content="有很多小伙伴私聊我说更新太慢，夺命吹吹吹。一周一次，还不能满足你们吗？ 好，那我不写了。╭(╯^╰)╮！！！ 额，尽量保持完成审核后就交货发布啦。实际上前面的章节都是周末完成等到周三才发的。 上一节我们细说了网络模型分层。知道了七层分法实际现在只有五层了。今天我们展开来学习传输层UDP和TCP的协议。因为这两个协议关联性比较大，且篇幅不高。故合并层一个小节学习。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1110736-75324d19ff9037b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/d555ca34.html"/>
+
+
+
+
+
+  <title>Android与物联网设备通信-UDP&TCP协议 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/d555ca34.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android与物联网设备通信-UDP&TCP协议</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-12T13:00:37+08:00">
+                2018-06-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>有很多小伙伴私聊我说更新太慢，夺命吹吹吹。一周一次，还不能满足你们吗？</p>
+<p>好，那我不写了。╭(╯^╰)╮！！！</p>
+<p>额，尽量保持完成审核后就交货发布啦。实际上前面的章节都是周末完成等到周三才发的。</p>
+<p>上一节我们细说了网络模型分层。知道了七层分法实际现在只有五层了。今天我们展开来学习传输层UDP和TCP的协议。因为这两个协议关联性比较大，且篇幅不高。故合并层一个小节学习。</p>
+<a id="more"></a>
+<h2 id="章节"><a href="#章节" class="headerlink" title="章节"></a>章节</h2><ul>
+<li><a href="http://www.dajipai.cc/archives/fe5f6231.html">Android与物联网设备通信-概念入门</a></li>
+<li><a href="http://www.dajipai.cc/archives/f1d847c5.html">Android与物联网设备通信-数据传递的本质</a></li>
+<li><a href="http://www.dajipai.cc/archives/dcba528a.html">Android与物联网设备通信-网络模型分层</a></li>
+<li><a href="http://www.dajipai.cc/archives/d555ca34.html">Android与物联网设备通信-UDP协议原理</a></li>
+<li><a href="http://www.dajipai.cc/archives/d555ca34.html">Android与物联网设备通信-TCP协议原理</a></li>
+<li><a href="http://www.dajipai.cc/archives/dbd40ba8.html">Android与物联网设备通信-基于TCP/IP自定义报文</a></li>
+<li><a href="http://www.dajipai.cc/archives/dbd40ba8.html">Android与物联网设备通信-什么是字节序</a></li>
+<li><a href="http://www.dajipai.cc/archives/22074801.html">Android与物联网设备通信- 字节报文组装与解析</a></li>
+<li><a href="http://www.dajipai.cc/archives/ead4653c.html">Android与物联网设备通信-利用UDP广播来做设备查找</a></li>
+<li>Android与物联网设备通信-实现远程控制Android客户端</li>
+<li>Android与物联网设备通信-Android做小型服务器</li>
+<li>Android与物联网设备通信-调试技巧</li>
+<li>Android与物联网设备通信-并行串行与队列</li>
+<li>Android与物联网设备通信-数据安全</li>
+<li>Android与物联网设备通信-心跳</li>
+<li>Android与物联网设备通信-网络IO模型</li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>UDP</li>
+<li>TCP</li>
+</ul>
+<hr>
+<h2 id="UDP-（User-Datagram-Protocol）"><a href="#UDP-（User-Datagram-Protocol）" class="headerlink" title="UDP （User Datagram Protocol）"></a>UDP （User Datagram Protocol）</h2><p>它是一种高速但数据不可靠的协议，为什么说它不可靠呢？是因为与之对应的TCP是非常可靠和稳定的。我们先看一下UDP的报文结构再讲解传递数据过程的原理。</p>
+<h3 id="UDP报文"><a href="#UDP报文" class="headerlink" title="UDP报文"></a>UDP报文</h3><p><img src="https://upload-images.jianshu.io/upload_images/1110736-75324d19ff9037b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>可以看到很简单，没有什么东西需要特别说明的，根据前几节的知识就可以推断出来。UDP的效率高并非在报文上，而是它的传输机制就是只管往外发，对方能不能接收到（是否存在），并不关心。</p>
+<p>你一定还记得网络不通的时候ping一下，这种小秀的骚操作的把？没有错它的底层就是依靠UDP协议直接实现的，ping的过程就是客户端组装UDP报文，和DNS服务器接收解析UDP并响应客户端的过程。当ping不通的时候就会出现超时，即DNS服务器不回复客户端。</p>
+<p>所以UDP的传输可理解成来数据了，就不管三七二一就是一个走你，拜拜了您勒。也不去校验到底有没有收到。</p>
+<p>正常情况下一条报文会被路由、交换机经过一层层转发，最后到该接收的位置。他们依靠上一节提到的数据链路层和网络层来寻找主机。UDP协议只关心端口。这种最典型的UDP称为<strong>单播UDP</strong>，除此之外还有<strong>组播</strong>和<strong>广播</strong>。关于组播和广播，我们后续的章节讲到做查找设备时会详细讲解，并做一个小demo。</p>
+<h2 id="TCP（Transmission-Control-Protocol）"><a href="#TCP（Transmission-Control-Protocol）" class="headerlink" title="TCP（Transmission Control Protocol）"></a>TCP（Transmission Control Protocol）</h2><p>相对UDP来说TCP协议就要稳定很多了。同样我们先看报文结构，再学习传输原理。</p>
+<h3 id="TCP报文"><a href="#TCP报文" class="headerlink" title="TCP报文"></a>TCP报文</h3><p><img src="https://upload-images.jianshu.io/upload_images/1110736-03866fa54fd863ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>我们重点看几个字段说明：</p>
+<ul>
+<li><p><strong>序号：</strong> 表示发送端当前包位于整组数据的第几个字节，也叫流水号。用于确保数据组的稳定性。</p>
+</li>
+<li><p><strong>ack号：</strong> 也叫确认号，表示接收方收到了多少个字节，表示期待下一组数据的字节序号。</p>
+</li>
+<li><p><strong>数据偏移：</strong> 一般不用，但是出现在TCP头里如果可选字段增加后，就要在数据偏移中指明偏移的位置，最多可以将20字节的头扩展到60个字节。</p>
+</li>
+<li><p><strong>控制位：</strong> 6个标志位<strong>URG  ACK  PSH  RST  SYN  FIN</strong>每一个表示一个控制功能，也就是告诉对方当前的包是做什么用的标识。</p>
+</li>
+<li><p><strong>窗口：</strong> 接收端告诉发送端自身的缓存大小的。避免过大的数据包导致接收端接受不过来而丢失数据。</p>
+</li>
+</ul>
+<h4 id="控制位详解"><a href="#控制位详解" class="headerlink" title="控制位详解"></a>控制位详解</h4><ul>
+<li><p><strong>URG：</strong> 紧急指针标志是否有效。</p>
+</li>
+<li><p><strong>ACK：</strong> 确认序号是否有效。</p>
+</li>
+<li><p><strong>PSH：</strong> 刷新缓存标志1有效，0忽略，要求把数据尽快给应用，而不要放在缓存里。（java里的flush方法）</p>
+</li>
+<li><p><strong>RST：</strong> 异常标志，表示强制断开连接，在异常的情况下。</p>
+</li>
+<li><p><strong>SYN：</strong> 连接过程同步序号标志。</p>
+</li>
+<li><p><strong>FIN：</strong> finish标志，用于释放连接1表示关闭连接。</p>
+</li>
+</ul>
+<p>咋一看你会发现TCP的报文比UDP复杂了好多，一大堆东西。我的老伙计，别担心。那么底层的事情又不要你处理。你只需要知道它们在干嘛。并且值得说的是在Java上做socket编程时，你根本就感知不到底层字段的状态。到上层在处理数据的时候仅仅只有一个输入流和输出流了。这样极大的方便了应用层的简便开发。</p>
+<h3 id="TCP协议分析"><a href="#TCP协议分析" class="headerlink" title="TCP协议分析"></a>TCP协议分析</h3><p>我们知道TCP是面向连接的，它严格的把控住了每一次传输的数据的稳定性。那么它是如何做到的呢？干巴巴的说太过于抽象，现在我们实际动手写一下代码(<code>kotlin</code>)搭配利刃<code>wireshark</code>分析一下。</p>
+<h4 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">  <span class="keyword">val</span> ss=  ServerSocket(<span class="number">22222</span>);</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)&#123;</span><br><span class="line">        <span class="keyword">val</span> accept = ss.accept()</span><br><span class="line">        <span class="keyword">val</span> dataInputStream = DataInputStream(accept.getInputStream())</span><br><span class="line">        <span class="keyword">val</span> dataOutputStream = DataOutputStream(accept.getOutputStream())</span><br><span class="line">        <span class="keyword">val</span> s = dataInputStream.readUTF()</span><br><span class="line">        dataOutputStream.writeUTF(<span class="string">"hello Server"</span>)</span><br><span class="line">        dataInputStream.close()</span><br><span class="line">        dataOutputStream.close()</span><br><span class="line">        accept.close()</span><br><span class="line">        println(s)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h4><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">(args: <span class="type">Array</span>&lt;<span class="type">String</span>&gt;)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> socket = Socket(<span class="string">"192.168.0.5"</span>, <span class="number">22222</span>);</span><br><span class="line">    <span class="keyword">val</span> dataOutputStream = DataOutputStream(socket.getOutputStream())</span><br><span class="line">    <span class="keyword">val</span> dataInputStream = DataInputStream(socket.getInputStream())</span><br><span class="line">    dataOutputStream.writeUTF(<span class="string">"hello"</span>)</span><br><span class="line">    <span class="keyword">val</span> s = dataInputStream.readUTF()</span><br><span class="line">    dataInputStream.close()</span><br><span class="line">    dataOutputStream.close()</span><br><span class="line">    socket.close()</span><br><span class="line">    println(s)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得注意的是wireshark无法直接抓到TCP在本地的回路包，但是我们可以使用命令行配置一下就可以了，不然抓不到本机的回路包。</p>
+<ul>
+<li><p>给路由表添加一条<br><code>route add 本机IP mask 255.255.255.255 路由IP metric 1</code></p>
+</li>
+<li><p>抓完删除<code>route delete 本机IP</code></p>
+</li>
+</ul>
+<p>为了方便演示，我这里使用了两块网卡。所以往路由里添加了两次回路IP。</p>
+<p>这里首先我们开启服务端，进入了循环监听状态，随后开启了客户端连接上后发送一个<code>hello</code>，服务端收到后回复了一个<code>hello Server</code>。再没有做更多的事情了。我们来看一下通过wireshark抓到的包。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1110736-9a517cfaf40920a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>客户端： <code>192.168.0.4</code>端口：<code>55705</code>（操作系统协议栈分配）</li>
+<li>服务端： <code>192.168.0.5</code> 端口：<code>22222</code>（我们定义的）</li>
+</ul>
+<p>1.启动服务端后，操作系统将开始对<code>22222</code>端口的<code>SYN</code>包进行监听。</p>
+<p>2.客户端启动，并尝试连接服务端，由操作系统协议栈随机分配一个发送端口。</p>
+<h4 id="握手"><a href="#握手" class="headerlink" title="握手:"></a>握手:</h4><p>3.客户端组装一组<code>SYN</code>报文发送至服务端<code>22222</code>号端，标记客户端<code>seq</code>为<code>0</code>。<strong>（完成第一次握手）</strong></p>
+<p>4.服务端收到<code>SYN</code>包，并组装一组<code>SYN、ACK</code>报文，内容是告诉客户端我确认了你的<code>SYN</code>包，并期待你的下一组数据从<code>1</code>开始，标记服务端<code>seq</code>为<code>0</code>。<strong>（完成第二次握手）</strong></p>
+<p>5.客户端收到服务端返回的<code>SYN、ACK</code>包报文，，标记客户端<code>seq</code>为<code>1</code>，并组装一组<code>ACK</code>报文，内容是告诉服务端期望收到的下一组<code>ack</code>从<code>1</code>开始。<strong>（完成第三次握手）</strong></p>
+<h4 id="发包"><a href="#发包" class="headerlink" title="发包:"></a>发包:</h4><p>6.客户端组装了一组<code>PSH、ACK</code>包，并带上<code>ack=1</code>，内容为<code>hello</code>，发送个服务端。</p>
+<p>7.服务端收到了内容为<code>hello</code>的包，确认后将<code>ack</code>加上收到的内容的长度。组装一组<code>PSH、ACK</code>并带上<code>ack=8</code>发送给客户端。</p>
+<h4 id="挥手"><a href="#挥手" class="headerlink" title="挥手:"></a>挥手:</h4><p>8.客户端收到服务端的消息，更新自己的<code>seq=8</code>,并组装一组<code>FIN、ACK</code>包，并带上<code>ack=15</code>确认号，尝试请求断开连接。<strong>（客户端第一次主动挥手）</strong></p>
+<p>9.服务端收到客户端的<code>FIN</code>包，更新自己的<code>seq=15</code>，并组装一组<code>FIN、ACK</code>包，并带上<code>ack=8</code>发送给客户端。<strong>（服务端确认，开始第二次挥手。）</strong></p>
+<p>10.客户端收到服务端的<code>ack</code>包并检测<code>seq</code>是否一致，组装一组<code>ACK</code>包发送给服务端。<strong>（第三次挥手）</strong></p>
+<p>11.服务端收到客户端的<code>ack</code>并检测<code>seq</code>是否一致,组装一组<code>ACK</code>包发送给客户端。<strong>（第四次挥手）</strong></p>
+<p>上面描述的这个过程从字面上去看并没有太大意义，我希望你真正打开wireshark和代码，调试着玩玩。</p>
+<h4 id="回顾过程："><a href="#回顾过程：" class="headerlink" title="回顾过程："></a>回顾过程：</h4><p><strong>握手：</strong> 客户端和服务端会先进行三次握手，握手的时候会告诉对方自身的窗体大小和ack确认号。这个过包的功能是从<code>ACK、SYN</code>来达到认识的。</p>
+<p><strong>传输数据：</strong> 在接受对方的数据时，在下一组包里带上<code>ACK</code>标记告知对方我已经收到了多少内容，期待下一组内容的起始位置。</p>
+<p><strong>挥手：</strong> 相互确认包是否发送完整，再双方确认了<code>ACK</code>后。才真正挥手完毕。</p>
+<p><strong>丢包或包校验不对情况：</strong> 操作系统协议栈会根据<code>ACK</code>和<code>SEQ</code>号对控制位为<code>ACK</code>的包进行校验，如果对不上则要求重发上一组包。</p>
+<hr>
+<p>到此<code>UDP&amp;TCP</code>的协议我们就学习完了。这里没有去演示<code>UDP</code>包的抓取过程，因为如果<code>TCP</code>都会了<code>UDP</code>就不是什么难题。再一个没有展示<code>wireshark</code>的具体使用过程，因为网上实在有很多优秀的教程了。</p>
+<p>即便如此，我敢打赌的是如果读者是第一次接触<code>TCP/IP</code>绝对会因为很多概念和发来发去的字段搞得头晕或者一知半解。因为我的能力还不足以让你看看文章就完全懂了。（原话出自凯哥 <code>^o^</code>）</p>
+<p>听我一句劝，这个时候不要放弃，成热打铁赶快打开分析工具，照着我前面的代码跑起来。再拿出纸笔写写画一画。深挖一下真正的去感受它们的巧妙之处。你会感觉这个设计是非常棒的。</p>
+<p>话说大家看得真的有收获吗？如果觉得不错，又想奖励我一下戳这里<a href="http://www.dajipai.cc/reward/">打赏</a>（听说打赏有吹更效果噢）。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/物联网/" rel="tag"># 物联网</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/dcba528a.html" rel="next" title="Android与物联网设备通信-网络模型分层">
+                <i class="fa fa-chevron-left"></i> Android与物联网设备通信-网络模型分层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/dbd40ba8.html" rel="prev" title="Android与物联网设备通信-自定义报文与字节序">
+                Android与物联网设备通信-自定义报文与字节序 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#章节"><span class="nav-number">1.</span> <span class="nav-text">章节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UDP-（User-Datagram-Protocol）"><span class="nav-number">3.</span> <span class="nav-text">UDP （User Datagram Protocol）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UDP报文"><span class="nav-number">3.1.</span> <span class="nav-text">UDP报文</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP（Transmission-Control-Protocol）"><span class="nav-number">4.</span> <span class="nav-text">TCP（Transmission Control Protocol）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP报文"><span class="nav-number">4.1.</span> <span class="nav-text">TCP报文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#控制位详解"><span class="nav-number">4.1.1.</span> <span class="nav-text">控制位详解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP协议分析"><span class="nav-number">4.2.</span> <span class="nav-text">TCP协议分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务端"><span class="nav-number">4.2.1.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端"><span class="nav-number">4.2.2.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#握手"><span class="nav-number">4.2.3.</span> <span class="nav-text">握手:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#发包"><span class="nav-number">4.2.4.</span> <span class="nav-text">发包:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挥手"><span class="nav-number">4.2.5.</span> <span class="nav-text">挥手:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回顾过程："><span class="nav-number">4.2.6.</span> <span class="nav-text">回顾过程：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="物联网," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="工作调动。暂时停更了一段时间。续上一篇我们学习了如何去自定义一组报文，今天我们接着解析和组装报文。前面我们讲过在物联网通信中实际上不论我们使用什么方式作为通信介质，其本质就是字节。所以我再一次对本章节的内容进行了调整，我们不讲Socket和ServerSocket这两个阻塞式IO Socket如何写。那个意义不大。">
+<meta name="keywords" content="物联网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android与物联网设备通信 - 字节报文组装与解析">
+<meta property="og:url" content="http://www.dajipai.cc/archives/22074801.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="工作调动。暂时停更了一段时间。续上一篇我们学习了如何去自定义一组报文，今天我们接着解析和组装报文。前面我们讲过在物联网通信中实际上不论我们使用什么方式作为通信介质，其本质就是字节。所以我再一次对本章节的内容进行了调整，我们不讲Socket和ServerSocket这两个阻塞式IO Socket如何写。那个意义不大。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-53f83f51766c33df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-a997d4071b00fdf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-ff5a414f988f009b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1110736-c0320320749d27d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android与物联网设备通信 - 字节报文组装与解析">
+<meta name="twitter:description" content="工作调动。暂时停更了一段时间。续上一篇我们学习了如何去自定义一组报文，今天我们接着解析和组装报文。前面我们讲过在物联网通信中实际上不论我们使用什么方式作为通信介质，其本质就是字节。所以我再一次对本章节的内容进行了调整，我们不讲Socket和ServerSocket这两个阻塞式IO Socket如何写。那个意义不大。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1110736-53f83f51766c33df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/22074801.html"/>
+
+
+
+
+
+  <title>Android与物联网设备通信 - 字节报文组装与解析 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/22074801.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Android与物联网设备通信 - 字节报文组装与解析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-08T00:23:33+08:00">
+                2018-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>工作调动。暂时停更了一段时间。续上一篇我们学习了如何去自定义一组报文，今天我们接着解析和组装报文。<br>前面我们讲过在物联网通信中实际上不论我们使用什么方式作为通信介质，其本质就是字节。所以我再一次对本章节的内容进行了调整，我们不讲Socket和ServerSocket这两个阻塞式IO Socket如何写。那个意义不大。<br><a id="more"></a><br><img src="https://upload-images.jianshu.io/upload_images/1110736-53f83f51766c33df.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>也正式因为在上一节中有读者提出说需要知道报文该如何拆解就有了这一篇。</p>
+<h2 id="章节"><a href="#章节" class="headerlink" title="章节"></a>章节</h2><ul>
+<li><a href="http://www.dajipai.cc/archives/fe5f6231.html">Android与物联网设备通信-概念入门</a></li>
+<li><a href="http://www.dajipai.cc/archives/f1d847c5.html">Android与物联网设备通信-数据传递的本质</a></li>
+<li><a href="http://www.dajipai.cc/archives/dcba528a.html">Android与物联网设备通信-网络模型分层</a></li>
+<li><a href="http://www.dajipai.cc/archives/d555ca34.html">Android与物联网设备通信-UDP协议原理</a></li>
+<li><a href="http://www.dajipai.cc/archives/d555ca34.html">Android与物联网设备通信-TCP协议原理</a></li>
+<li><a href="http://www.dajipai.cc/archives/dbd40ba8.html">Android与物联网设备通信-基于TCP/IP自定义报文</a></li>
+<li><a href="http://www.dajipai.cc/archives/dbd40ba8.html">Android与物联网设备通信-什么是字节序</a></li>
+<li><a href="http://www.dajipai.cc/archives/22074801.html">Android与物联网设备通信- 字节报文组装与解析</a></li>
+<li><a href="http://www.dajipai.cc/archives/ead4653c.html">Android与物联网设备通信-利用UDP广播来做设备查找</a></li>
+<li>Android与物联网设备通信-实现远程控制Android客户端</li>
+<li>Android与物联网设备通信-Android做小型服务器</li>
+<li>Android与物联网设备通信-调试技巧</li>
+<li>Android与物联网设备通信-并行串行与队列</li>
+<li>Android与物联网设备通信-数据安全</li>
+<li>Android与物联网设备通信-心跳</li>
+<li>Android与物联网设备通信-网络IO模型</li>
+</ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>组装报文</li>
+<li>解析报文</li>
+<li>总结</li>
+</ul>
+<hr>
+<h2 id="组装报文"><a href="#组装报文" class="headerlink" title="组装报文"></a>组装报文</h2><p>接上一节的功能拿来，我们到底是怎么做到把下面的结构体转换成字节的呢？</p>
+<p><strong>协议：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1110736-a997d4071b00fdf8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1110736-ff5a414f988f009b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>转换后的字节：</strong></p>
+<p><code>0x00 0x00 0x00 0x11 | 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 | 0x21 | 0x01  |0x57 0x9D</code></p>
+<p>首先我们需要定义一个对象，当做结构体。(不明白为什么要这样定义的同学请看上一节文章)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirCondBaseStructure</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len; <span class="comment">//长度</span></span><br><span class="line">    <span class="keyword">byte</span> sn[]; <span class="comment">//序列号</span></span><br><span class="line">    <span class="keyword">byte</span> code; <span class="comment">//功能码</span></span><br><span class="line">    <span class="keyword">byte</span> data[]; <span class="comment">//透传数据</span></span><br><span class="line">    <span class="keyword">byte</span> crc[]; <span class="comment">//校验</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>针对这个结构体，我们再写一个枚举：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> CodeEnum &#123;</span><br><span class="line">    POWER((<span class="keyword">byte</span>) <span class="number">0x21</span>),<span class="comment">//开关</span></span><br><span class="line">    MODE((<span class="keyword">byte</span>) <span class="number">0x22</span>),<span class="comment">//模式</span></span><br><span class="line">    TEMPERATURE((<span class="keyword">byte</span>) <span class="number">0x23</span>);<span class="comment">//温度</span></span><br><span class="line">    <span class="keyword">byte</span> code;</span><br><span class="line">    CodeEnum(<span class="keyword">byte</span> i) &#123;</span><br><span class="line">        code = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>该枚举器正好对应功能对照表里的功能。</p>
+<p>写一下构造方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">AirCondBaseStructure</span><span class="params">(String sn, AirCondBaseStructure.CodeEnum code, <span class="keyword">byte</span>[] data)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.sn = sn.getBytes(); <span class="comment">// 序列号</span></span><br><span class="line">      <span class="keyword">this</span>.code = code.code;</span><br><span class="line">      <span class="keyword">this</span>.data = data;</span><br><span class="line">      <span class="keyword">this</span>.len=computeLen();<span class="comment">//获取长度</span></span><br><span class="line">      <span class="keyword">this</span>.crc =computeCrc();<span class="comment">//校验</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里构造方法只传入三个参数:</p>
+<ul>
+<li>序列号</li>
+<li>功能</li>
+<li>透传内容</li>
+</ul>
+<p>可以看到实际里面还有<code>长度</code>和<code>crc校验</code>。是根据<code>computeLen();</code>和<code>computeCrc();</code>来自动完成计算的。</p>
+<p>computeLen方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 计算长度</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">computeLen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> sn.length + <span class="number">1</span><span class="comment">/*功能码长度*/</span> + data.length + <span class="number">2</span><span class="comment">/*校验和*/</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里的长度是固定字段+可变长。</p>
+<p>computeCrc方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 计算crc</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">private byte[] computeCrc() &#123;</span><br><span class="line">    byte[] crc=new byte[2];</span><br><span class="line">    byte[] datas=null;</span><br><span class="line">    try &#123;</span><br><span class="line">        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();</span><br><span class="line">        DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);</span><br><span class="line">        dataOutputStream.writeInt(len);</span><br><span class="line">        dataOutputStream.write(sn);</span><br><span class="line">        dataOutputStream.writeByte(code);</span><br><span class="line">        dataOutputStream.write(data);</span><br><span class="line">        dataOutputStream.flush();</span><br><span class="line">         datas = byteArrayOutputStream.toByteArray();</span><br><span class="line">        dataOutputStream.close();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    CRC16M crc16 = new CRC16M();</span><br><span class="line">    crc16.update(datas, datas.length);</span><br><span class="line">    int ri = crc16.getValue();</span><br><span class="line">    crc[0] = (byte) ((0xff00 &amp; ri) &gt;&gt; 8);</span><br><span class="line">    crc[1] = (byte) (0xff &amp; ri);</span><br><span class="line">    return crc;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>crc校验是使用是<code>crc16/modbus</code>标准。完整代码后面贴出来。</p>
+<p>最后是把报文组合起来变成字节。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 序列化</span><br><span class="line"> * @return</span><br><span class="line"> */</span><br><span class="line">public byte[] toBytes()&#123;</span><br><span class="line">    byte[] datas=null;</span><br><span class="line">    try &#123;</span><br><span class="line">        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();</span><br><span class="line">        DataOutputStream dataOutputStream = new DataOutputStream(byteArrayOutputStream);</span><br><span class="line">        dataOutputStream.writeInt(len);</span><br><span class="line">        dataOutputStream.write(sn);</span><br><span class="line">        dataOutputStream.writeByte(code);</span><br><span class="line">        dataOutputStream.write(data);</span><br><span class="line">        dataOutputStream.write(crc);</span><br><span class="line">        dataOutputStream.flush();</span><br><span class="line">        datas = byteArrayOutputStream.toByteArray();</span><br><span class="line">        dataOutputStream.close();</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    return datas;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这里我们使用的就是ByteArrayOutputStream+DataOutputStream把对应的字段按照顺序写入，以保证和协议一致。</p>
+<p>最后我们看看一下使用结果：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">      String sn=<span class="string">"1234567890123"</span>;</span><br><span class="line">      AirCondBaseStructure powerOpen =<span class="keyword">new</span> AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.POWER, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;<span class="number">0x01</span>&#125;);</span><br><span class="line">      System.out.println(<span class="string">"空调打开报文："</span>+hex2Str(powerOpen.toBytes()));</span><br><span class="line"></span><br><span class="line">      AirCondBaseStructure powerCloce =<span class="keyword">new</span> AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.POWER, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;(<span class="keyword">byte</span>)<span class="number">0x00</span>&#125;);</span><br><span class="line">      System.out.println(<span class="string">"空调关闭报文："</span>+hex2Str(powerCloce.toBytes()));</span><br><span class="line"></span><br><span class="line">      AirCondBaseStructure modeAuto =<span class="keyword">new</span> AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.MODE, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;(<span class="keyword">byte</span>)<span class="number">0x03</span>&#125;);</span><br><span class="line">      System.out.println(<span class="string">"空调自动报文："</span>+hex2Str(modeAuto.toBytes()));</span><br><span class="line"></span><br><span class="line">      AirCondBaseStructure modeDeh =<span class="keyword">new</span> AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.MODE, <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;(<span class="keyword">byte</span>)<span class="number">0x05</span>&#125;);</span><br><span class="line">      System.out.println(<span class="string">"空调除湿报文："</span>+hex2Str(modeDeh.toBytes()));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      AirCondBaseStructure temperature =<span class="keyword">new</span> AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.TEMPERATURE,  <span class="keyword">new</span> <span class="keyword">byte</span>[]&#123;(<span class="keyword">byte</span>)<span class="number">0x00</span>, (<span class="keyword">byte</span>) <span class="number">0x19</span>&#125;);</span><br><span class="line">      System.out.println(<span class="string">"空调25度报文："</span>+hex2Str(temperature.toBytes()));</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<p>对上层而言组装的方式比较简单，只需要把对应的枚举功能设置进去，带上该有的数据，剩下的序列化和校验均在内部实现。</p>
+<p>这里我们模拟了五组报文，输出结果如下。</p>
+<p>控制台输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">空调打开报文：0x00 0x00 0x00 0x11 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 0x21 0x01 0x57 0x9D </span><br><span class="line">空调关闭报文：0x00 0x00 0x00 0x11 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 0x21 0x00 0x96 0x5D </span><br><span class="line">空调自动报文：0x00 0x00 0x00 0x11 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 0x22 0x03 0xD6 0xAC </span><br><span class="line">空调除湿报文：0x00 0x00 0x00 0x11 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 0x22 0x05 0x56 0xAE </span><br><span class="line">空调25度报文：0x00 0x00 0x00 0x12 0x31 0x32 0x33 0x34 0x35 0x36 0x37 0x38 0x39 0x30 0x31 0x32 0x33 0x23 0x00 0x19 0x4D 0x94</span><br></pre></td></tr></table></figure></p>
+<p>我们来细看一下他们的变化。<br><img src="https://upload-images.jianshu.io/upload_images/1110736-c0320320749d27d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>到这里我们就已经将报文组装好并转换成了字节数组。</p>
+<p>也许我们此时会想，那怎么发出去呢？我们前面第一节就讲过其实并不管中间用什么在传输。他们最后都是字节或二进制的形式。所以我们都已经转换好了，剩下的都是很简单的事情了。就是把数据喂进去，喂给TCP/IP、UDP、蓝牙、红外、无线电、声波、电磁波….看实际情况来了。</p>
+<p>完整代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.ByteArrayOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.DataOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Bolex on 2018/6/17.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirCondBaseStructure</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len; <span class="comment">//长度</span></span><br><span class="line">    <span class="keyword">byte</span> sn[]; <span class="comment">//序列号</span></span><br><span class="line">    <span class="keyword">byte</span> code; <span class="comment">//功能码</span></span><br><span class="line">    <span class="keyword">byte</span> data[]; <span class="comment">//透传数据</span></span><br><span class="line">    <span class="keyword">byte</span> crc[]; <span class="comment">//校验</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AirCondBaseStructure</span><span class="params">(String sn, AirCondBaseStructure.CodeEnum code, <span class="keyword">byte</span>[] data)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sn = sn.getBytes(); <span class="comment">// 序列号</span></span><br><span class="line">        <span class="keyword">this</span>.code = code.code;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">        <span class="keyword">this</span>.len=computeLen();<span class="comment">//获取长度</span></span><br><span class="line">        <span class="keyword">this</span>.crc =computeCrc();<span class="comment">//校验</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> CodeEnum &#123;</span><br><span class="line">        POWER((<span class="keyword">byte</span>) <span class="number">0x21</span>),<span class="comment">//开关</span></span><br><span class="line">        MODE((<span class="keyword">byte</span>) <span class="number">0x22</span>),<span class="comment">//模式</span></span><br><span class="line">        TEMPERATURE((<span class="keyword">byte</span>) <span class="number">0x23</span>);<span class="comment">//温度</span></span><br><span class="line">        <span class="keyword">byte</span> code;</span><br><span class="line">        CodeEnum(<span class="keyword">byte</span> i) &#123;</span><br><span class="line">            code = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算长度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">computeLen</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sn.length + <span class="number">1</span><span class="comment">/*功能码长度*/</span> + data.length + <span class="number">2</span><span class="comment">/*校验和*/</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算crc</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">byte</span>[] computeCrc() &#123;</span><br><span class="line">        <span class="keyword">byte</span>[] crc=<span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">byte</span>[] datas=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ByteArrayOutputStream byteArrayOutputStream = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">            DataOutputStream dataOutputStream = <span class="keyword">new</span> DataOutputStream(byteArrayOutputStream);</span><br><span class="line">            dataOutputStream.writeInt(len);</span><br><span class="line">            dataOutputStream.write(sn);</span><br><span class="line">            dataOutputStream.writeByte(code);</span><br><span class="line">            dataOutputStream.write(data);</span><br><span class="line">            dataOutputStream.flush();</span><br><span class="line">             datas = byteArrayOutputStream.toByteArray();</span><br><span class="line">            dataOutputStream.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        CRC16M crc16 = <span class="keyword">new</span> CRC16M();</span><br><span class="line">        crc16.update(datas, datas.length);</span><br><span class="line">        <span class="keyword">int</span> ri = crc16.getValue();</span><br><span class="line">        crc[<span class="number">0</span>] = (<span class="keyword">byte</span>) ((<span class="number">0xff00</span> &amp; ri) &gt;&gt; <span class="number">8</span>);</span><br><span class="line">        crc[<span class="number">1</span>] = (<span class="keyword">byte</span>) (<span class="number">0xff</span> &amp; ri);</span><br><span class="line">        <span class="keyword">return</span> crc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 序列化</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">byte</span>[] toBytes()&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] datas=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ByteArrayOutputStream byteArrayOutputStream = <span class="keyword">new</span> ByteArrayOutputStream();</span><br><span class="line">            DataOutputStream dataOutputStream = <span class="keyword">new</span> DataOutputStream(byteArrayOutputStream);</span><br><span class="line">            dataOutputStream.writeInt(len);</span><br><span class="line">            dataOutputStream.write(sn);</span><br><span class="line">            dataOutputStream.writeByte(code);</span><br><span class="line">            dataOutputStream.write(data);</span><br><span class="line">            dataOutputStream.write(crc);</span><br><span class="line">            dataOutputStream.flush();</span><br><span class="line">            datas = byteArrayOutputStream.toByteArray();</span><br><span class="line">            dataOutputStream.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> datas;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public class CRC16M &#123;</span><br><span class="line"></span><br><span class="line">	byte uchCRCHi = (byte) 0xFF;</span><br><span class="line">	byte uchCRCLo = (byte) 0xFF;</span><br><span class="line">	private static byte[] auchCRCHi = &#123; 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01,</span><br><span class="line">			(byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01,</span><br><span class="line">			(byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80,</span><br><span class="line">			(byte) 0x41, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01,</span><br><span class="line">			(byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80,</span><br><span class="line">			(byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x01,</span><br><span class="line">			(byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x01, (byte) 0xC0, (byte) 0x80,</span><br><span class="line">			(byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00, (byte) 0xC1,</span><br><span class="line">			(byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80,</span><br><span class="line">			(byte) 0x41, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x00, (byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40, (byte) 0x01, (byte) 0xC0,</span><br><span class="line">			(byte) 0x80, (byte) 0x41, (byte) 0x00, (byte) 0xC1, (byte) 0x81,</span><br><span class="line">			(byte) 0x40, (byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41,</span><br><span class="line">			(byte) 0x01, (byte) 0xC0, (byte) 0x80, (byte) 0x41, (byte) 0x00,</span><br><span class="line">			(byte) 0xC1, (byte) 0x81, (byte) 0x40 &#125;;</span><br><span class="line"></span><br><span class="line">	private static byte[] auchCRCLo = &#123; (byte) 0x00, (byte) 0xC0, (byte) 0xC1,</span><br><span class="line">			(byte) 0x01, (byte) 0xC3, (byte) 0x03, (byte) 0x02, (byte) 0xC2,</span><br><span class="line">			(byte) 0xC6, (byte) 0x06, (byte) 0x07, (byte) 0xC7, (byte) 0x05,</span><br><span class="line">			(byte) 0xC5, (byte) 0xC4, (byte) 0x04, (byte) 0xCC, (byte) 0x0C,</span><br><span class="line">			(byte) 0x0D, (byte) 0xCD, (byte) 0x0F, (byte) 0xCF, (byte) 0xCE,</span><br><span class="line">			(byte) 0x0E, (byte) 0x0A, (byte) 0xCA, (byte) 0xCB, (byte) 0x0B,</span><br><span class="line">			(byte) 0xC9, (byte) 0x09, (byte) 0x08, (byte) 0xC8, (byte) 0xD8,</span><br><span class="line">			(byte) 0x18, (byte) 0x19, (byte) 0xD9, (byte) 0x1B, (byte) 0xDB,</span><br><span class="line">			(byte) 0xDA, (byte) 0x1A, (byte) 0x1E, (byte) 0xDE, (byte) 0xDF,</span><br><span class="line">			(byte) 0x1F, (byte) 0xDD, (byte) 0x1D, (byte) 0x1C, (byte) 0xDC,</span><br><span class="line">			(byte) 0x14, (byte) 0xD4, (byte) 0xD5, (byte) 0x15, (byte) 0xD7,</span><br><span class="line">			(byte) 0x17, (byte) 0x16, (byte) 0xD6, (byte) 0xD2, (byte) 0x12,</span><br><span class="line">			(byte) 0x13, (byte) 0xD3, (byte) 0x11, (byte) 0xD1, (byte) 0xD0,</span><br><span class="line">			(byte) 0x10, (byte) 0xF0, (byte) 0x30, (byte) 0x31, (byte) 0xF1,</span><br><span class="line">			(byte) 0x33, (byte) 0xF3, (byte) 0xF2, (byte) 0x32, (byte) 0x36,</span><br><span class="line">			(byte) 0xF6, (byte) 0xF7, (byte) 0x37, (byte) 0xF5, (byte) 0x35,</span><br><span class="line">			(byte) 0x34, (byte) 0xF4, (byte) 0x3C, (byte) 0xFC, (byte) 0xFD,</span><br><span class="line">			(byte) 0x3D, (byte) 0xFF, (byte) 0x3F, (byte) 0x3E, (byte) 0xFE,</span><br><span class="line">			(byte) 0xFA, (byte) 0x3A, (byte) 0x3B, (byte) 0xFB, (byte) 0x39,</span><br><span class="line">			(byte) 0xF9, (byte) 0xF8, (byte) 0x38, (byte) 0x28, (byte) 0xE8,</span><br><span class="line">			(byte) 0xE9, (byte) 0x29, (byte) 0xEB, (byte) 0x2B, (byte) 0x2A,</span><br><span class="line">			(byte) 0xEA, (byte) 0xEE, (byte) 0x2E, (byte) 0x2F, (byte) 0xEF,</span><br><span class="line">			(byte) 0x2D, (byte) 0xED, (byte) 0xEC, (byte) 0x2C, (byte) 0xE4,</span><br><span class="line">			(byte) 0x24, (byte) 0x25, (byte) 0xE5, (byte) 0x27, (byte) 0xE7,</span><br><span class="line">			(byte) 0xE6, (byte) 0x26, (byte) 0x22, (byte) 0xE2, (byte) 0xE3,</span><br><span class="line">			(byte) 0x23, (byte) 0xE1, (byte) 0x21, (byte) 0x20, (byte) 0xE0,</span><br><span class="line">			(byte) 0xA0, (byte) 0x60, (byte) 0x61, (byte) 0xA1, (byte) 0x63,</span><br><span class="line">			(byte) 0xA3, (byte) 0xA2, (byte) 0x62, (byte) 0x66, (byte) 0xA6,</span><br><span class="line">			(byte) 0xA7, (byte) 0x67, (byte) 0xA5, (byte) 0x65, (byte) 0x64,</span><br><span class="line">			(byte) 0xA4, (byte) 0x6C, (byte) 0xAC, (byte) 0xAD, (byte) 0x6D,</span><br><span class="line">			(byte) 0xAF, (byte) 0x6F, (byte) 0x6E, (byte) 0xAE, (byte) 0xAA,</span><br><span class="line">			(byte) 0x6A, (byte) 0x6B, (byte) 0xAB, (byte) 0x69, (byte) 0xA9,</span><br><span class="line">			(byte) 0xA8, (byte) 0x68, (byte) 0x78, (byte) 0xB8, (byte) 0xB9,</span><br><span class="line">			(byte) 0x79, (byte) 0xBB, (byte) 0x7B, (byte) 0x7A, (byte) 0xBA,</span><br><span class="line">			(byte) 0xBE, (byte) 0x7E, (byte) 0x7F, (byte) 0xBF, (byte) 0x7D,</span><br><span class="line">			(byte) 0xBD, (byte) 0xBC, (byte) 0x7C, (byte) 0xB4, (byte) 0x74,</span><br><span class="line">			(byte) 0x75, (byte) 0xB5, (byte) 0x77, (byte) 0xB7, (byte) 0xB6,</span><br><span class="line">			(byte) 0x76, (byte) 0x72, (byte) 0xB2, (byte) 0xB3, (byte) 0x73,</span><br><span class="line">			(byte) 0xB1, (byte) 0x71, (byte) 0x70, (byte) 0xB0, (byte) 0x50,</span><br><span class="line">			(byte) 0x90, (byte) 0x91, (byte) 0x51, (byte) 0x93, (byte) 0x53,</span><br><span class="line">			(byte) 0x52, (byte) 0x92, (byte) 0x96, (byte) 0x56, (byte) 0x57,</span><br><span class="line">			(byte) 0x97, (byte) 0x55, (byte) 0x95, (byte) 0x94, (byte) 0x54,</span><br><span class="line">			(byte) 0x9C, (byte) 0x5C, (byte) 0x5D, (byte) 0x9D, (byte) 0x5F,</span><br><span class="line">			(byte) 0x9F, (byte) 0x9E, (byte) 0x5E, (byte) 0x5A, (byte) 0x9A,</span><br><span class="line">			(byte) 0x9B, (byte) 0x5B, (byte) 0x99, (byte) 0x59, (byte) 0x58,</span><br><span class="line">			(byte) 0x98, (byte) 0x88, (byte) 0x48, (byte) 0x49, (byte) 0x89,</span><br><span class="line">			(byte) 0x4B, (byte) 0x8B, (byte) 0x8A, (byte) 0x4A, (byte) 0x4E,</span><br><span class="line">			(byte) 0x8E, (byte) 0x8F, (byte) 0x4F, (byte) 0x8D, (byte) 0x4D,</span><br><span class="line">			(byte) 0x4C, (byte) 0x8C, (byte) 0x44, (byte) 0x84, (byte) 0x85,</span><br><span class="line">			(byte) 0x45, (byte) 0x87, (byte) 0x47, (byte) 0x46, (byte) 0x86,</span><br><span class="line">			(byte) 0x82, (byte) 0x42, (byte) 0x43, (byte) 0x83, (byte) 0x41,</span><br><span class="line">			(byte) 0x81, (byte) 0x80, (byte) 0x40 &#125;;</span><br><span class="line"></span><br><span class="line">	public int value;</span><br><span class="line"></span><br><span class="line">	public CRC16M() &#123;</span><br><span class="line">		value = 0;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void update(byte[] puchMsg, int usDataLen) &#123;</span><br><span class="line">		int uIndex;</span><br><span class="line">		for (int i = 0; i &lt; usDataLen; i++) &#123;</span><br><span class="line">			uIndex = (uchCRCHi ^ puchMsg[i]) &amp; 0xff;</span><br><span class="line"></span><br><span class="line">			uchCRCHi = (byte) (uchCRCLo ^ auchCRCHi[uIndex]);</span><br><span class="line">			uchCRCLo = auchCRCLo[uIndex];</span><br><span class="line">		&#125;</span><br><span class="line">		value = ((((int) uchCRCHi) &lt;&lt; 8 | (((int) uchCRCLo) &amp; 0xff))) &amp; 0xffff;</span><br><span class="line"></span><br><span class="line">		return;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void reset() &#123;</span><br><span class="line">		value = 0;</span><br><span class="line">		uchCRCHi = (byte) 0xff;</span><br><span class="line">		uchCRCLo = (byte) 0xff;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public int getValue() &#123;</span><br><span class="line">		return value;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static byte uniteBytes(byte src0, byte src1) &#123;</span><br><span class="line">		byte _b0 = Byte.decode(&quot;0x&quot; + new String(new byte[] &#123; src0 &#125;))</span><br><span class="line">				.byteValue();</span><br><span class="line">		_b0 = (byte) (_b0 &lt;&lt; 4);</span><br><span class="line">		byte _b1 = Byte.decode(&quot;0x&quot; + new String(new byte[] &#123; src1 &#125;))</span><br><span class="line">				.byteValue();</span><br><span class="line">		byte ret = (byte) (_b0 ^ _b1);</span><br><span class="line">		return ret;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private static byte[] HexString2Buf(String src) &#123;</span><br><span class="line">		int len = src.length();</span><br><span class="line">		byte[] ret = new byte[len / 2+2];</span><br><span class="line">		byte[] tmp = src.getBytes();</span><br><span class="line">		for (int i = 0; i &lt; len; i += 2) &#123;</span><br><span class="line">			ret[i / 2] = uniteBytes(tmp[i], tmp[i + 1]);</span><br><span class="line">		&#125;</span><br><span class="line">		return ret;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public static byte[] getSendBuf(String toSend)&#123;</span><br><span class="line">		byte[] bb = HexString2Buf(toSend);</span><br><span class="line">		CRC16M crc16 = new CRC16M();</span><br><span class="line">		crc16.update(bb, bb.length-2);</span><br><span class="line">		int ri = crc16.getValue();</span><br><span class="line">		bb[bb.length-1]=(byte) (0xff &amp; ri);</span><br><span class="line">		bb[bb.length-2]=(byte) ((0xff00 &amp; ri) &gt;&gt; 8);</span><br><span class="line">		return bb;</span><br><span class="line">	&#125;</span><br><span class="line">	public static boolean checkBuf(byte[] bb)&#123;</span><br><span class="line">		CRC16M crc16 = new CRC16M();</span><br><span class="line">		crc16.update(bb, bb.length-2);</span><br><span class="line">		int ri = crc16.getValue();</span><br><span class="line">		if(bb[bb.length-1]==(byte)(ri&amp;0xff) </span><br><span class="line">				&amp;&amp; bb[bb.length-2]==(byte) ((0xff00 &amp; ri) &gt;&gt; 8))</span><br><span class="line">			return true;</span><br><span class="line">		return false;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">import java.io.*;</span><br><span class="line">import java.nio.ByteBuffer;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by Bolex on 2018/6/17.</span><br><span class="line"> */</span><br><span class="line">public class AirCondMain &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String sn=&quot;1234567890123&quot;;</span><br><span class="line">        AirCondBaseStructure powerOpen =new AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.POWER, new byte[]&#123;0x01&#125;);</span><br><span class="line">        System.out.println(&quot;空调打开报文：&quot;+hex2Str(powerOpen.toBytes()));</span><br><span class="line"></span><br><span class="line">        AirCondBaseStructure powerCloce =new AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.POWER, new byte[]&#123;(byte)0x00&#125;);</span><br><span class="line">        System.out.println(&quot;空调关闭报文：&quot;+hex2Str(powerCloce.toBytes()));</span><br><span class="line"></span><br><span class="line">        AirCondBaseStructure modeAuto =new AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.MODE, new byte[]&#123;(byte)0x03&#125;);</span><br><span class="line">        System.out.println(&quot;空调自动报文：&quot;+hex2Str(modeAuto.toBytes()));</span><br><span class="line"></span><br><span class="line">        AirCondBaseStructure modeDeh =new AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.MODE, new byte[]&#123;(byte)0x05&#125;);</span><br><span class="line">        System.out.println(&quot;空调除湿报文：&quot;+hex2Str(modeDeh.toBytes()));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        AirCondBaseStructure temperature =new AirCondBaseStructure(sn, AirCondBaseStructure.CodeEnum.TEMPERATURE,  new byte[]&#123;(byte)0x00, (byte) 0x19&#125;);</span><br><span class="line">        System.out.println(&quot;空调25度报文：&quot;+hex2Str(temperature.toBytes()));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     static String hex2Str(byte[] raw)&#123;</span><br><span class="line">        String HEXES = &quot;0123456789ABCDEF&quot;;</span><br><span class="line">        if ( raw == null ) &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        final StringBuilder hex = new StringBuilder( 2 * raw.length );</span><br><span class="line">        for ( final byte b : raw ) &#123;</span><br><span class="line">            hex.append(&quot;0x&quot;);</span><br><span class="line">            hex.append(HEXES.charAt((b &amp; 0xF0) &gt;&gt; 4))</span><br><span class="line">                    .append(HEXES.charAt((b &amp; 0x0F)));</span><br><span class="line">            hex.append(&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        return hex.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="解析报文"><a href="#解析报文" class="headerlink" title="解析报文"></a>解析报文</h2><p>解析报文的过程就是把字节数组再反过来转换成对象，也叫反序列化。</p>
+<p>这里由于是文章演示（偷懒），就不像前面组装报文的时候再做封装了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.ByteArrayInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.DataInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by Bolex on 2018/6/17.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AirCondAnalyzeMain</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">byte</span>[] powerOpenBytes = hexStringToBytes(<span class="string">"00000011313233343536373839303132332101579D"</span>);</span><br><span class="line">        ByteArrayInputStream byteArrayInputStream = <span class="keyword">new</span> ByteArrayInputStream(powerOpenBytes);</span><br><span class="line">        DataInputStream dis = <span class="keyword">new</span> DataInputStream(byteArrayInputStream);</span><br><span class="line">        <span class="keyword">int</span> len = dis.readInt(); <span class="comment">//报长</span></span><br><span class="line">        <span class="keyword">byte</span>[] sn = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">13</span>]; <span class="comment">//序列号</span></span><br><span class="line">        <span class="keyword">byte</span>[] code = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1</span>]; <span class="comment">//功能码</span></span><br><span class="line">        <span class="keyword">byte</span>[] crc = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">2</span>]; <span class="comment">//校验</span></span><br><span class="line">        <span class="keyword">byte</span>[] data = <span class="keyword">new</span> <span class="keyword">byte</span>[len - sn.length - code.length - crc.length];</span><br><span class="line">        dis.read(sn);</span><br><span class="line">        dis.read(code);</span><br><span class="line">        dis.read(data);</span><br><span class="line">        dis.read(crc);</span><br><span class="line">        System.out.println(<span class="string">"报文长度："</span> + len);</span><br><span class="line">        System.out.println(<span class="string">"sn："</span> + <span class="keyword">new</span> String(sn));</span><br><span class="line">        System.out.println(<span class="string">"功能码："</span> + hex2Str(code));</span><br><span class="line">        System.out.println(<span class="string">"数据："</span> + hex2Str(data));</span><br><span class="line">        System.out.println(<span class="string">"校验："</span> + hex2Str(crc));</span><br><span class="line">         dis.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] hexStringToBytes(String hexString) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hexString == <span class="keyword">null</span> || hexString.equals(<span class="string">""</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        hexString = hexString.toUpperCase();</span><br><span class="line">        <span class="keyword">int</span> length = hexString.length() / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">char</span>[] hexChars = hexString.toCharArray();</span><br><span class="line">        <span class="keyword">byte</span>[] d = <span class="keyword">new</span> <span class="keyword">byte</span>[length];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> pos = i * <span class="number">2</span>;</span><br><span class="line">            d[i] = (<span class="keyword">byte</span>) (charToByte(hexChars[pos]) &lt;&lt; <span class="number">4</span> | charToByte(hexChars[pos + <span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> d;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Convert char to byte</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> c char</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> byte</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span> <span class="title">charToByte</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">byte</span>) <span class="string">"0123456789ABCDEF"</span>.indexOf(c);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">hex2Str</span><span class="params">(<span class="keyword">byte</span>[] raw)</span> </span>&#123;</span><br><span class="line">        String HEXES = <span class="string">"0123456789ABCDEF"</span>;</span><br><span class="line">        <span class="keyword">if</span> (raw == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">final</span> StringBuilder hex = <span class="keyword">new</span> StringBuilder(<span class="number">2</span> * raw.length);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">final</span> <span class="keyword">byte</span> b : raw) &#123;</span><br><span class="line">            hex.append(<span class="string">"0x"</span>);</span><br><span class="line">            hex.append(HEXES.charAt((b &amp; <span class="number">0xF0</span>) &gt;&gt; <span class="number">4</span>))</span><br><span class="line">                    .append(HEXES.charAt((b &amp; <span class="number">0x0F</span>)));</span><br><span class="line">            hex.append(<span class="string">" "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> hex.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们看到到main方法。主要就是解析一组电源打开的报文。其实没有什么东西，就是利用DataInputStream来读取。只是长度是变动的，所以我们需要先读出长度，然后根据长度再向后读出其它字段。</p>
+<p>然后控制台就会输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">报文长度：17</span><br><span class="line">sn：1234567890123</span><br><span class="line">功能码：0x21 </span><br><span class="line">数据：0x01 </span><br><span class="line">校验：0x57 0x9D</span><br></pre></td></tr></table></figure></p>
+<p>实际的业务情况会比这个复杂,所以最好做一些抽象和封装。不要像我文章里写的流水式编程。因为如果不封装后面维护会看起来很痛苦。还会有大量重复代码。不应该对每一组报文都重复的手写一次解析的过程。</p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>组装和解析字节报文其实是一项非常基础的能力。在java中已经有比较方便的DataInput类型套接字方便解析了。我们平时调试和开发的过程中尽量做到log日志，见行知意，并最好把hex格式转换成字符串来查看。一般出奇两头碰协议的时候容易引发bug。到后期稳定后基本上不用再碰。</p>
+<p>再一个可能会有小伙伴疑惑为什么不直接用json来做透传。这个问题很早之前就讨论过，要尽量避免透传内容太大。用字节位来做字段会增加传播的效率和稳定性。学习本篇的内容后，其实还可以尝试去用字节的方式读取MP3、jpg、apk等文件中的头信息。也是一个好练手的办法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/物联网/" rel="tag"># 物联网</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/dbd40ba8.html" rel="next" title="Android与物联网设备通信-自定义报文与字节序">
+                <i class="fa fa-chevron-left"></i> Android与物联网设备通信-自定义报文与字节序
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/ead4653c.html" rel="prev" title="Android与物联网设备通信-利用UDP广播来做设备查找">
+                Android与物联网设备通信-利用UDP广播来做设备查找 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#章节"><span class="nav-number">1.</span> <span class="nav-text">章节</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">2.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组装报文"><span class="nav-number">3.</span> <span class="nav-text">组装报文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解析报文"><span class="nav-number">4.</span> <span class="nav-text">解析报文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

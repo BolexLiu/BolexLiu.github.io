@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="node,爬虫," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="2017-12 -13我想做一个项目，连接各位IT大佬的私人站点。因为站点多了，评论交流不方便，博客与博客之间没有强关联，大佬更新没有通知推送等问题暴露。现在我的收藏夹里放满了他们的博客。但是如果我每天都要点开一次，是很费时间的。">
+<meta name="keywords" content="node,爬虫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="大佬们的博客，我要串起来玩了【持续更新中】">
+<meta property="og:url" content="http://www.dajipai.cc/archives/4fd5e7fe.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="2017-12 -13我想做一个项目，连接各位IT大佬的私人站点。因为站点多了，评论交流不方便，博客与博客之间没有强关联，大佬更新没有通知推送等问题暴露。现在我的收藏夹里放满了他们的博客。但是如果我每天都要点开一次，是很费时间的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-7172b9b4e18d475c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3f0e510de241f4c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-fd41611fe21c9310.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-3b796814c725b8f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-28570be3f85087f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.080Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="大佬们的博客，我要串起来玩了【持续更新中】">
+<meta name="twitter:description" content="2017-12 -13我想做一个项目，连接各位IT大佬的私人站点。因为站点多了，评论交流不方便，博客与博客之间没有强关联，大佬更新没有通知推送等问题暴露。现在我的收藏夹里放满了他们的博客。但是如果我每天都要点开一次，是很费时间的。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-7172b9b4e18d475c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/4fd5e7fe.html"/>
+
+
+
+
+
+  <title>大佬们的博客，我要串起来玩了【持续更新中】 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-意淫" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/4fd5e7fe.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">大佬们的博客，我要串起来玩了【持续更新中】</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-07T18:20:11+08:00">
+                2018-01-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2017-12-13"><a href="#2017-12-13" class="headerlink" title="2017-12 -13"></a>2017-12 -13</h2><p>我想做一个项目，连接各位IT大佬的私人站点。因为站点多了，评论交流不方便，博客与博客之间没有强关联，大佬更新没有通知推送等问题暴露。现在我的收藏夹里放满了他们的博客。但是如果我每天都要点开一次，是很费时间的。<br><a id="more"></a></p>
+<h2 id="2017-12-14"><a href="#2017-12-14" class="headerlink" title="2017- 12-14"></a>2017- 12-14</h2><p>我想用python或者node这样的工具，爬下各位大佬的博客，每隔几分钟查一下。有更新就推送通知。这种通知可以是基于邮件的。也可以是基于App的。甚至是微信也行。最后我选择了node，因为相比python起来，我稍微要熟悉一些。</p>
+<h2 id="2017-12-20"><a href="#2017-12-20" class="headerlink" title="2017- 12-20"></a>2017- 12-20</h2><p>我开始寻找适合做这件事情的脚手架，最后找到了<a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener">puppeteer</a> 它是chrome团队的项目，挺适合我的需求。</p>
+<h2 id="2017-12-22"><a href="#2017-12-22" class="headerlink" title="2017- 12-22"></a>2017- 12-22</h2><p>好心的小姐姐，帮我申请了一台阿里云6个月的免费服务器给我耍。感谢。</p>
+<h2 id="2017-12-28"><a href="#2017-12-28" class="headerlink" title="2017- 12-28"></a>2017- 12-28</h2><p> 棘手的问题出现了，我在爬数据的时候，试图将HTML中的文章主体提取出来。这没什么毛病。通过api就能拿到。但是我不能直接就这样赤裸裸的存在数据库里。我想把他们转回markdown格式。找了一些前人留下的h2m的库。发现没有几个能完美解析的。多多少少都有点问题。反正这种结果我是无法接受的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-7172b9b4e18d475c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>转markdown<br><img src="http://upload-images.jianshu.io/upload_images/1110736-3f0e510de241f4c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>发现效果很差。针对每一个博客去做适配是不存在的。</p>
+<p>如果针对站点html+css全部提取出来也不太合理，站点太多。</p>
+<p>这时我想起了掘金的分享，通过分析他们对简书、CSND文章的提取变成掘金站内网页。这里一定是在后台做了单独的适配的。</p>
+<p>csnd源页面<br><img src="http://upload-images.jianshu.io/upload_images/1110736-fd41611fe21c9310.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>掘金转换后</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-3b796814c725b8f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>可以清晰的发现不仅仅是class发生了变化，元素也变了。而同样的code标签在简书里提取出来又不一样。但是他们都统一的在掘金里完好的展示。</p>
+<p>另一个办法是全部用pdf生成整页的的博客文章。这个已经在<a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener">puppeteer</a>中得到支持。但这并不友好。我选择了弃用。</p>
+<p>到今天为止，可以抓到文章的链接和标题了。或许我们先做资源整合吧。用户点击就跳到原文上去。然后给粉丝们添加推送功能。我们每五分钟刷新一次数据。</p>
+<h2 id="2018-01-04"><a href="#2018-01-04" class="headerlink" title="2018- 01-04"></a>2018- 01-04</h2><p>今天晚上和老毛把表设计了一下，准备看怎么去适配爬页面。 这里有一点，要注意业务和爬虫一定是分离的。简单来说就是爬虫只负责抓数据往库里塞。业务上只管读数据返回给接口。业务上并不能感知爬虫的存在。只是爬虫每次轮训完成后会通过接口的方式通知业务说爬虫的任务做完啦，业务可以更新业务数据。</p>
+<h2 id="2018-01-05"><a href="#2018-01-05" class="headerlink" title="2018- 01-05"></a>2018- 01-05</h2><p>我准备放弃puppeteer框架，虽然它很棒，但是相比起来比较吃内存。我更需要一个更稳定不吃资源的内核。所有我找到了。cheerio框架，它提供了类似jQuery的语法可以操作dom。再一个我这里要爬的页面大多数都是静态页面。可以不用考虑渲染的问题，即便出现了动态渲染的页面，可以单独提取ajax或其他异步请求的url。</p>
+<p>下面是单独拿一个页面的内容和下一页的内容，我这里不打算爬列表，因为本身也要进详情去拿body，所以一个个往上找，拿到next文章。再一次爬去。存到数据库里就行啦。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> request = <span class="built_in">require</span>(<span class="string">'request'</span>);</span><br><span class="line"><span class="keyword">var</span> cheerio = <span class="built_in">require</span>(<span class="string">'cheerio'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> baseUrl= <span class="string">"http://www.dajipai.cc"</span>;</span><br><span class="line">  request(baseUrl+<span class="string">'/archives/569b6918.html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">error, response, body</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!error &amp;&amp; response.statusCode == <span class="number">200</span>) &#123;</span><br><span class="line">      $ = cheerio.load(body,&#123;<span class="attr">decodeEntities</span>: <span class="literal">false</span>&#125;);</span><br><span class="line">    <span class="keyword">let</span> tite= $(<span class="string">"h2.post-title"</span>).text();</span><br><span class="line">    <span class="keyword">let</span> time= $(<span class="string">"[itemprop='dateCreated datePublished']"</span>).attr(<span class="string">"datetime"</span>); </span><br><span class="line">    <span class="keyword">let</span> content= $(<span class="string">"div.post-body"</span>).html();</span><br><span class="line">    <span class="keyword">let</span> nextUrl= $(<span class="string">"[rel='next']"</span>).attr(<span class="string">"href"</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(&#123;<span class="attr">data</span>: &#123;tite,content,time,nextUrl&#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 直接爬去列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArchives</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> archives=  $(<span class="string">'a.post-title-link'</span>).map(<span class="function">(<span class="params">index,item</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">href</span>: item.attribs.href, <span class="attr">title</span>: item.firstChild.next.childNodes[<span class="number">0</span>].data &#125;</span><br><span class="line">    &#125;).get();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2018-01-08"><a href="#2018-01-08" class="headerlink" title="2018- 01-08"></a>2018- 01-08</h2><p>优化了一下采集策略，可以通过主站host链接访问接口，先拿第一个最新页面，而后往通过详情向下寻找下一个页面，直到最后一个页面。适配了一下hexo的next主题，已经完美的可以拿到整站数据了。其它主题和站点应该需要单独适配。刚在想如果我每一个都去适配一下岂不是累死去，不知道业界其它成熟的方案怎么做的。通过机器学习吗？</p>
+<p>今天还做了下面几个事情：</p>
+<ul>
+<li>中文url转码</li>
+<li>http头自动拼接</li>
+<li>空字符串和换行符内容过滤 </li>
+<li>拆分不同站点模块方便适配</li>
+</ul>
+<h2 id="2018-01-09"><a href="#2018-01-09" class="headerlink" title="2018- 01-09"></a>2018- 01-09</h2><p>阿里云服务器安全规则问题会导致防火墙开放了3306端口也无法穿透，mysql无法远程连接。尝试去修改/etc/sysconfig/iptables来开放端口，发现文件被占用。最后的解决办法是在在宝塔Linux上安全里放行里3306端口。也许就是因为这个宝塔Linux程序导致该文件一直被占用，结果就是自己改防火墙不让改。</p>
+<p>今天碰到了一个比较坑的地方，相信以后也会有很多。在采集吴彦祖大佬（刘望舒)博客时，发现它优化过hexo的文章底部导航。导致我爬第一篇文章后就歇菜了。解决的办法也很简单，单独做一个反向爬适配。如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> nextUrl;</span><br><span class="line"><span class="keyword">if</span>(isReverse)&#123;</span><br><span class="line">nextUrl = $(<span class="string">"[rel='prev']"</span>).attr(<span class="string">"href"</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">nextUrl = $(<span class="string">"[rel='next']"</span>).attr(<span class="string">"href"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在接口上变成这样的：<code>http://127.0.0.1:8088/?blog=liuwangshu.cn&amp;isReverse=true</code></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-28570be3f85087f0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>就可以了，采集其它hexo站点可以默认不传，或者传false即可。</p>
+<p>但很快我就又发现，这种爬法是不对的。如果作者不按顺序出牌，比如首位连接相连，那么很快就会成为一个死循环爬个不停。而且吴彦祖大佬的博客分成了很多tag，也不完全按照顺序来的。那么这样只好放弃之前的思路。改成先爬pagelist再通过pagelist取每一片文章，通过文章再取详情。这样应该总没问题啦吧？</p>
+<h2 id="2018-01-12"><a href="#2018-01-12" class="headerlink" title="2018- 01-12"></a>2018- 01-12</h2><h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><p>这里我简单的把爬去封装成了不同的Map去爬去链接。这里有一个问题暂时不好解决，就是不同类型的网站选择器是不一致的。而我要得到的结果是固定的。我现在只能很愚蠢的写了很多个对象去取。可发发现不管是取巴掌的还是取薇薇的都是同样的方法只是他们的对象不同。<br>好的一方面是我的数据层是剥离开的。这不会影响我统一存储。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">app.get(<span class="string">'/xxx'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> blog= StringUtil.String2httpUrl(req.query.blog);</span><br><span class="line">  <span class="keyword">let</span> isReverse= req.query.isReverse;</span><br><span class="line">  ArchiveDb.getBlogId(blog)</span><br><span class="line">  .then(<span class="function"><span class="params">id</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(id==<span class="number">1</span>||id==<span class="number">2</span>)&#123; <span class="comment">//巴掌、鸡排、刘望舒</span></span><br><span class="line">      HexoBaMap.getFirstArchiveUrl(blog,(nextUrl)=&gt;&#123;</span><br><span class="line">        HexoBaMap.reData(blog,&#123;nextUrl,id&#125;,isReverse)</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(id==<span class="number">4</span>)&#123; <span class="comment">//薇薇</span></span><br><span class="line">      HexoViMap.getFirstArchiveUrl(blog,(nextUrl)=&gt;&#123;</span><br><span class="line">        HexoViMap.reData(blog,&#123;nextUrl,id&#125;,isReverse)</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(id==<span class="number">5</span>)&#123; <span class="comment">//程序亦非猿</span></span><br><span class="line">      HexoYFYMap.getFirstArchiveUrl(blog,(nextUrl)=&gt;&#123;</span><br><span class="line">        HexoYFYMap.reData(blog,&#123;nextUrl,id&#125;,isReverse)</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    .....</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>下面说下问题，一开始还好由于我和巴掌还有薇薇的文章数目都不是特别多。用浏览器Url的方式去调用接口比如这样：<br><code>http://127.0.0.1:8088/XXX?blog=yifeiyuan.me</code></p>
+<p>文章能一个个正常的爬出来存到数据库里。<br>当我爬到刘望舒和程序亦非猿的文章时，就开始出问题了。文章会重复的爬很多进去。而且是死循环。一开始我以为是网页的设计问题导致了循环引用的爬去。我静下去分析着他们的网页节点。最后发现程序亦非猿的第一篇文章和中间的文章并未出现收尾相连的引用方式。</p>
+<p>好吧，直觉告诉我可能是浏览器惹的祸。因为我一直没有调用response。导致谷歌阻塞了。试了一下立刻返回.爬出来的数据就正常了。<code>res.json({re:&quot;ok&quot;});</code></p>
+<h3 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h3><p>再说另一个问题：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 text-center"</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-heading"</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Github Pages+Hexo+阿里云域名绑定<span class="tag">&lt;/<span class="name">h1</span>&gt;</span> </span><br><span class="line">                    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"meta"</span>&gt;</span></span><br><span class="line">                         作者 Vivian陈薇</span><br><span class="line">                        <span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br><span class="line">                          日期 2017-09-11</span><br><span class="line">                         <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在爬去薇薇的博客时，时间标签拿到的selector是<code>span.meta span</code>,到程序亦非猿的时候时间标签一样是<code>span.meta span</code>.但是恐怖的是一旦到程序亦非猿的时候，在很少一部分文章里取到的会多一段奇怪的字符。</p>
+<p>后面发现单独对HTML页面分析，发现我这种取法是不可靠的。会导致一个页面里，多处标签上出现了同样的selector时。就会被拼接进去。解决的办法也很粗暴。我们换一种选择器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> time =  StringUtil.replaceDirtyString($(<span class="string">".post-heading span"</span>).text());</span><br></pre></td></tr></table></figure>
+<p>虽然不是每个标签都有class存在。但是我们可以用父子约束来取。这样就万无一失了。</p>
+<hr>
+<p>更新中，未完。手头的事有点多，可以发现我做得很慢，然后现在还只是一个雏形。基本上只要能有一点点空闲时间我就会切回来捣鼓。期待不？</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/node/" rel="tag"># node</a>
+          
+            <a href="/tags/爬虫/" rel="tag"># 爬虫</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/569b6918.html" rel="next" title="局域网被arp攻击反查与解决">
+                <i class="fa fa-chevron-left"></i> 局域网被arp攻击反查与解决
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/4cc65c41.html" rel="prev" title="为App申请更多的内存空间">
+                为App申请更多的内存空间 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-12-13"><span class="nav-number">1.</span> <span class="nav-text">2017-12 -13</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-12-14"><span class="nav-number">2.</span> <span class="nav-text">2017- 12-14</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-12-20"><span class="nav-number">3.</span> <span class="nav-text">2017- 12-20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-12-22"><span class="nav-number">4.</span> <span class="nav-text">2017- 12-22</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2017-12-28"><span class="nav-number">5.</span> <span class="nav-text">2017- 12-28</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-01-04"><span class="nav-number">6.</span> <span class="nav-text">2018- 01-04</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-01-05"><span class="nav-number">7.</span> <span class="nav-text">2018- 01-05</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-01-08"><span class="nav-number">8.</span> <span class="nav-text">2018- 01-08</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-01-09"><span class="nav-number">9.</span> <span class="nav-text">2018- 01-09</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018-01-12"><span class="nav-number">10.</span> <span class="nav-text">2018- 01-12</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#express"><span class="nav-number">10.1.</span> <span class="nav-text">express</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selector"><span class="nav-number">10.2.</span> <span class="nav-text">selector</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

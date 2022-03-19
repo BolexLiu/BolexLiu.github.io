@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Android,源码分析,IntentService," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="上一篇我们分析了Android中的线程间通信HandlerThread的原理.HandlerThread充分的利用Handler的通信机制和消息队列。本篇将分析IntentService的作用和原理。 警告：本篇的源码可能过于枯燥和乏味，中间涉及到一次采坑，错误的分析。最后纠正回来了。我觉得此处是比较有意义的。读者对着源码的同时细读本篇可能更好一点。 目录 IntentService简单介绍 源码">
+<meta name="keywords" content="Android,源码分析,IntentService">
+<meta property="og:type" content="article">
+<meta property="og:title" content="IntentService源码解析">
+<meta property="og:url" content="http://www.dajipai.cc/archives/9e86a7ad.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="上一篇我们分析了Android中的线程间通信HandlerThread的原理.HandlerThread充分的利用Handler的通信机制和消息队列。本篇将分析IntentService的作用和原理。 警告：本篇的源码可能过于枯燥和乏味，中间涉及到一次采坑，错误的分析。最后纠正回来了。我觉得此处是比较有意义的。读者对着源码的同时细读本篇可能更好一点。 目录 IntentService简单介绍 源码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-2fcc9db226717c78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="IntentService源码解析">
+<meta name="twitter:description" content="上一篇我们分析了Android中的线程间通信HandlerThread的原理.HandlerThread充分的利用Handler的通信机制和消息队列。本篇将分析IntentService的作用和原理。 警告：本篇的源码可能过于枯燥和乏味，中间涉及到一次采坑，错误的分析。最后纠正回来了。我觉得此处是比较有意义的。读者对着源码的同时细读本篇可能更好一点。 目录 IntentService简单介绍 源码">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-2fcc9db226717c78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/9e86a7ad.html"/>
+
+
+
+
+
+  <title>IntentService源码解析 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-源码" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/9e86a7ad.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">IntentService源码解析</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T10:04:00+08:00">
+                2017-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>上一篇我们分析了<a href="http://www.jianshu.com/p/69c826c8a87d" target="_blank" rel="noopener">Android中的线程间通信HandlerThread</a>的原理.<code>HandlerThread</code>充分的利用Handler的通信机制和消息队列。本篇将分析<code>IntentService</code>的作用和原理。</p>
+<p><strong>警告：</strong>本篇的源码可能过于枯燥和乏味，中间涉及到一次采坑，错误的分析。最后纠正回来了。我觉得此处是比较有意义的。读者对着源码的同时细读本篇可能更好一点。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li>IntentService简单介绍</li>
+<li>源码分析</li>
+<li>续错误纠正<a id="more"></a>
+</li>
+</ul>
+<hr>
+<h2 id="IntentService"><a href="#IntentService" class="headerlink" title="IntentService"></a>IntentService</h2><p><code>IntentService</code>继承自<code>Service</code>本质上就是一个服务。但它内部拥有一个完整的<code>HandlerThread</code>。可以这样说<code>IntentService=Service+HandlerThread。</code></p>
+<p>我们先来说下它的常见用法。将复杂耗时操作交由<code>IntentService</code>来处理，你可以通过<code>Intent</code>的方式启动它，然后实现<code>onHandleIntent</code>方法，在<code>onHandleIntent</code>的任何操作将属于内部<code>HandlerThread</code>的子线程。</p>
+<p><strong>代码如下：</strong></p>
+<p>继承一个IntentService</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomIntentService</span> <span class="keyword">extends</span> <span class="title">IntentService</span> </span>&#123;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="title">CustomIntentService</span><span class="params">()</span> </span>&#123;  <span class="keyword">super</span>(<span class="string">"CustomIntentService"</span>); &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(Intent intent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        String msg = intent.getStringExtra(<span class="string">"msg"</span>);</span><br><span class="line">        Log.d(<span class="string">"IntentService"</span>, <span class="string">"耗时操作"</span> + msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.d(<span class="string">"IntentService"</span>, <span class="string">"onDestroy"</span> );</span><br><span class="line">        <span class="keyword">super</span>.onDestroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>启动它，并附带一个消息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(MainActivity.<span class="keyword">this</span>, CustomIntentService.class);</span><br><span class="line">               intent.putExtra(<span class="string">"msg"</span>,<span class="string">"hello"</span>);</span><br><span class="line">               startService(intent);</span><br></pre></td></tr></table></figure>
+<p>这里我们启动了<code>CustomIntentService</code>并附带了一个<code>hello</code>过去。此时<code>onHandleIntent方法</code>会接受到我们这个<code>Intent</code>，并模拟耗时后打印日志。<br><strong>注意两点</strong></p>
+<ul>
+<li>1.这里的<code>Intent</code>是间接性传递过去的，按通常的思路这个<code>Intent</code>是在主线程中，但是这里并不是主线程。后面我们会从源码上来分析。</li>
+<li>2.我们知道<code>IntentService</code>的特性会执行完任务后自动销毁。但有一种情况，如果我们快速调用两次<code>startService</code>会如何？下面是快速调用两次的日志。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">07-20 21:10:57.490 5895-5977IntentService: 耗时操作hello</span><br><span class="line">07-20 21:11:02.480 5895-5977IntentService: 耗时操作hello</span><br><span class="line">07-20 21:11:02.480 5895-5895IntentService: onDestroy</span><br></pre></td></tr></table></figure>
+<p>显然，并不是说每次执行都会销毁掉，当第二条消息过来的时候它并没有销毁，而是做完后才销毁。但是这是为什么呢？先卖个关子，我们带着疑问去看源码吧。</p>
+<h2 id="源码分析："><a href="#源码分析：" class="headerlink" title="源码分析："></a>源码分析：</h2><p>注：<em>此处源码删除了一些不影响阅读的注释和方法</em></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">IntentService</span> <span class="keyword">extends</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> Looper mServiceLooper;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> ServiceHandler mServiceHandler;</span><br><span class="line">    <span class="keyword">private</span> String mName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> mRedelivery;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">ServiceHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ServiceHandler</span><span class="params">(Looper looper)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">super</span>(looper);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">            onHandleIntent((Intent)msg.obj);</span><br><span class="line">            stopSelf(msg.arg1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate();</span><br><span class="line">        HandlerThread thread = <span class="keyword">new</span> HandlerThread(<span class="string">"IntentService["</span> + mName + <span class="string">"]"</span>);</span><br><span class="line">        thread.start();</span><br><span class="line">        mServiceLooper = thread.getLooper();</span><br><span class="line">        mServiceHandler = <span class="keyword">new</span> ServiceHandler(mServiceLooper);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onStart</span><span class="params">(@Nullable Intent intent, <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        Message msg = mServiceHandler.obtainMessage();</span><br><span class="line">        msg.arg1 = startId;</span><br><span class="line">        msg.obj = intent;</span><br><span class="line">        mServiceHandler.sendMessage(msg);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        mServiceLooper.quit();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">onHandleIntent</span><span class="params">(@Nullable Intent intent)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>1.<code>IntentService</code> 内部总共有四个成员变量，我们只需要关注<code>mServiceLooper</code>和<code>mServiceHandler</code>即可。</li>
+<li>2.首先我们看<code>onCreate方法</code>，它创建了一个<code>HandlerThread</code>并向<code>ServiceHandler</code>传递了一个<code>Looper</code>对象。</li>
+<li>3.<code>ServiceHandler</code>的<code>handleMessage</code>内逻辑很简单，它调用了<code>onHandleIntent</code>这个虚拟方法（抽象方法）。并从中取出<code>msg.obj</code>。可以看到它就是一个<code>Intent</code>，接着调用了<code>stopSelf</code>方法携带了<code>msg.arg1（starId）</code>，来终止服务。</li>
+<li>4.onStart方法会率先接受到我们启动服务的<code>Intent</code>对象，他将该对象最终使用<code>mServiceHandler</code>发送给<code>HandlerThread</code>内部的<code>Looper</code>，交由子线程来处理这个消息，所以我们需要重写<code>onHandleIntent</code>来实现自己的需求。<br>HandlerThread原理可参考：<a href="http://www.jianshu.com/p/69c826c8a87d" target="_blank" rel="noopener">HandlerThread线程间通信 源码解析</a></li>
+</ul>
+<p>自此流程就梳理完了，现在我们回到前面提到的问题，当快速两次启动<code>IntentService</code>时，他发生了什么。</p>
+<p>1.由内部的 <code>hander</code>接受到第一条消息，在<code>onHandleIntent</code>里阻塞，立刻第二条消息进入。<br>2.第一条消息的<code>StopSelf方法</code>被调用。此时第二条消息还在处理中。<br>3.<code>StopSelf方法</code>携带了<code>startId</code>调用了。<code>ActivityManager</code>的<code>stopServiceToken</code>来停止服务，我们接着来看一下源码。</p>
+<p>源码路径<strong>/core/android/app/ActivityManagerNative.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">stopServiceToken</span><span class="params">(ComponentName className, IBinder token,</span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="keyword">int</span> startId)</span> <span class="keyword">throws</span> RemoteException </span>&#123;</span><br><span class="line">     Parcel data = Parcel.obtain();</span><br><span class="line">     Parcel reply = Parcel.obtain();</span><br><span class="line">     data.writeInterfaceToken(IActivityManager.descriptor);</span><br><span class="line">     ComponentName.writeToParcel(className, data);</span><br><span class="line">     data.writeStrongBinder(token);</span><br><span class="line">     data.writeInt(startId);</span><br><span class="line">     mRemote.transact(STOP_SERVICE_TOKEN_TRANSACTION, data, reply, <span class="number">0</span>);</span><br><span class="line">     reply.readException();</span><br><span class="line">     <span class="keyword">boolean</span> res = reply.readInt() != <span class="number">0</span>;</span><br><span class="line">     data.recycle();</span><br><span class="line">     reply.recycle();</span><br><span class="line">     <span class="keyword">return</span> res;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到入参里携带了<code>ComponentName Binder</code>和<code>StartId</code>，前面没有讲到，这里补充一下，<code>StartId</code> 是每次启动服务时都会携带过来的一个标记，它用来表示该服务在终止以前被启动了多少次。而后<code>stopServiceToken</code>方法将<code>startId</code>和和<code>Binder</code>一并写入了<code>Parcel</code>对象内。很抱歉，分析到这里翻车了，我没法再根据调试跟进去，断点下了是一把红叉。如果有大神知道这里如何动态调这块，还请告诉我一声，感激不尽。（或者我弄错了这里根本不是这样调的。）</p>
+<p>不过这里已经大致能说明通过<code>Binder</code>传递了消息  <code>mRemote.transact(STOP_SERVICE_TOKEN_TRANSACTION, data, reply, 0);</code>来暂停服务。<del><code>mRemote</code>就是<code>ActivityManagerNative</code></del>（错误）我们再顺着思路找到了<code>onTransact</code>方法里的<code>case</code>语句</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">case</span> STOP_SERVICE_TOKEN_TRANSACTION: &#123;</span><br><span class="line">        data.enforceInterface(IActivityManager.descriptor);</span><br><span class="line">        ComponentName className = ComponentName.readFromParcel(data);</span><br><span class="line">        IBinder token = data.readStrongBinder();</span><br><span class="line">        <span class="keyword">int</span> startId = data.readInt();</span><br><span class="line">        <span class="keyword">boolean</span> res = stopServiceToken(className, token, startId);</span><br><span class="line">        reply.writeNoException();</span><br><span class="line">        reply.writeInt(res ? <span class="number">1</span> : <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><del>非常有意思的是我们可以发现<code>stopServiceToken方法</code>是一个递归调用。此时我更加懵了。没有找到<code>return</code>的点，这将会是死循环。</del>是不是思路错误了。</p>
+<p><strong>但是通过上层日志看出来，当IntentService里有消息存在时它不会结束掉。一定是IntentService内部消息全部被消耗后才会结束。</strong></p>
+<p>今天先到这里，我们来日弄明白了底层如何实现的后再战。</p>
+<hr>
+<h2 id="续错误纠正"><a href="#续错误纠正" class="headerlink" title="续错误纠正"></a>续错误纠正</h2><p>前面的问题我们今天找到答案了。实际上面讲到的<code>mRemote</code>并非<code>ActivityManagerNative</code>，而是代理对象。以至于我误认为他们在递归调用。这是不对的。<code>mRemote</code>实际是<code>ActivityManagerProxy</code>，他是一个本地代理对象，而经过<code>transact</code>调用实际运行的是远端的<code>ActivityManagerService</code>中，这里牵扯到了<code>AMS</code>与<code>ActivityManager</code>通信流程，我们后续再单独分析。先把<code>IntentService</code>给弄明白。<br>源码地址(需要翻墙)：<a href="https://android.googlesource.com/platform/frameworks/base/+/4f868ed/services/core/java/com/android/server/am/ActivityManagerService.java" target="_blank" rel="noopener">ActivityManagerService</a></p>
+<p>我们发现在<code>ActivityManagerService</code>里调用的<code>stopServiceToken</code>调用了<code>mServices.stopServiceTokenLocked</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">stopServiceToken</span><span class="params">(ComponentName className, IBinder token,</span></span></span><br><span class="line"><span class="function"><span class="params">          <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> mServices.stopServiceTokenLocked(className, token, startId);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这里的<code>mServices</code>是<code>ActiveServices</code>，我们跟进去看。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> ServiceLookupResult res =retrieveServiceLocked(service, resolvedType, callingPackage,</span><br><span class="line">                    callingPid, callingUid, userId, <span class="keyword">true</span>, callerFg, <span class="keyword">false</span>);</span><br><span class="line"></span><br><span class="line">ServiceRecord r = res.record;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">boolean</span> <span class="title">stopServiceTokenLocked</span><span class="params">(ComponentName className, IBinder token,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> startId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (r != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (startId &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                ServiceRecord.StartItem si = r.findDeliveredStart(startId, <span class="keyword">false</span>);</span><br><span class="line">                <span class="keyword">if</span> (si != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (r.deliveredStarts.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                        ServiceRecord.StartItem cur = r.deliveredStarts.remove(<span class="number">0</span>);</span><br><span class="line">                        cur.removeUriPermissionsLocked();</span><br><span class="line">                        <span class="keyword">if</span> (cur == si) &#123;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (r.getLastStartId() != startId) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (r.deliveredStarts.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    Slog.w(TAG, <span class="string">"stopServiceToken startId "</span> + startId</span><br><span class="line">                            + <span class="string">" is last, but have "</span> + r.deliveredStarts.size()</span><br><span class="line">                            + <span class="string">" remaining args"</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">synchronized</span> (r.stats.getBatteryStats()) &#123;</span><br><span class="line">                r.stats.stopRunningLocked();</span><br><span class="line">            &#125;</span><br><span class="line">            r.startRequested = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (r.tracker != <span class="keyword">null</span>) &#123;</span><br><span class="line">                r.tracker.setStarted(<span class="keyword">false</span>, mAm.mProcessStats.getMemFactorLocked(),</span><br><span class="line">                        SystemClock.uptimeMillis());</span><br><span class="line">            &#125;</span><br><span class="line">            r.callStart = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">long</span> origId = Binder.clearCallingIdentity();</span><br><span class="line">            bringDownServiceIfNeededLocked(r, <span class="keyword">false</span>, <span class="keyword">false</span>);</span><br><span class="line">            Binder.restoreCallingIdentity(origId);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以看到最关键的<code>if (r.getLastStartId() != startId)</code>不是最后一个startId就直接<code>return false</code>。否则将执行  <code>r.stats.stopRunningLocked();</code>来终止。自此这个问题终于真相大白了。</p>
+<p>回过头了再理一遍。我粗略的画了一张图。顺序从上往下看。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-2fcc9db226717c78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>IntentService的源码本身并不复杂，读者不要被我深究stopSelf方法牵扯到AMS里给绕晕了。AMS这块后续我会单独做文章分析，这一块特别重要。</p>
+<p>如果本篇看得比较云雾头疼，可以先去熟悉下面两篇。<br><a href="http://www.jianshu.com/p/69c826c8a87d" target="_blank" rel="noopener">HandlerThread线程间通信 源码解析</a><br><a href="http://www.jianshu.com/p/6f25729ef62a" target="_blank" rel="noopener">Handler消息源码流程分析（含手写笔记）</a></p>
+<p>下一篇，我们将分析ThreadPoolExecutor线程池。</p>
+<p>本文参考：</p>
+<ul>
+<li><a href="https://github.com/android/platform_frameworks_base" target="_blank" rel="noopener">AndroidFramework官方源码</a></li>
+<li>《Android开发艺术探索》</li>
+</ul>
+<hr>
+<h1 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h1><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/MyNote" target="_blank" rel="noopener">https://github.com/BolexLiu/MyNote</a>  (可以关注)</li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/源码分析/" rel="tag"># 源码分析</a>
+          
+            <a href="/tags/IntentService/" rel="tag"># IntentService</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/afceb456.html" rel="next" title="HandlerThread线程间通信">
+                <i class="fa fa-chevron-left"></i> HandlerThread线程间通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/aa7f67b7.html" rel="prev" title="无接口写网站App端">
+                无接口写网站App端 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IntentService"><span class="nav-number">2.</span> <span class="nav-text">IntentService</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析："><span class="nav-number">3.</span> <span class="nav-text">源码分析：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#续错误纠正"><span class="nav-number">4.</span> <span class="nav-text">续错误纠正</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何下次找到我"><span class="nav-number"></span> <span class="nav-text">如何下次找到我?</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

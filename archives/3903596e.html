@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="随笔,沙龙分享," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="本篇是12月9号参加的广州站android巴士的演讲稿和效果回顾。嘿嘿嘿！先说几个总结吧。">
+<meta name="keywords" content="随笔,沙龙分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="线下技术沙龙分享稿《code之外的技能》">
+<meta property="og:url" content="http://www.dajipai.cc/archives/3903596e.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="本篇是12月9号参加的广州站android巴士的演讲稿和效果回顾。嘿嘿嘿！先说几个总结吧。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-fab6442cfa7a2cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-0ef8a706c829f089.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-6151f616fed1b1d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-191fdb2c0c11a133.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-465d98a4fbc825fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-c79b7a17ab2709c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-e2e7c8aa235ed64b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-c593fe7de1bca88f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-7b682f34d0985d2e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-cc30c67c270b6bd0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-cefa7d8f16cab8bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-a42266d6ee7dc09a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-cd70488d6672b68d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-53d8761631005f58.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-20770ebc140b6502.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-2355ee6f0ba1fd79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-4bc58b3476cc0c27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f18e35f92eb39f13.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.085Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="线下技术沙龙分享稿《code之外的技能》">
+<meta name="twitter:description" content="本篇是12月9号参加的广州站android巴士的演讲稿和效果回顾。嘿嘿嘿！先说几个总结吧。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-fab6442cfa7a2cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/3903596e.html"/>
+
+
+
+
+
+  <title>线下技术沙龙分享稿《code之外的技能》 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-线下分享" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/3903596e.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">线下技术沙龙分享稿《code之外的技能》</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T08:30:00+08:00">
+                2017-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://upload-images.jianshu.io/upload_images/1110736-fab6442cfa7a2cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>本篇是12月9号参加的广州站android巴士的演讲稿和效果回顾。嘿嘿嘿！先说几个总结吧。</p>
+<a id="more"></a>
+<ul>
+<li><p>这次分享观众很多都比我年龄大一些，经验要丰富一些。这也是我之前没有预料到的。而我的主题是准备给刚刚踏入职场的小伙伴，这一点有点唐突。没有关系，并不影响。意外的是尽管如此还是收到了很多小伙伴积极的提问。有点受宠若惊的感觉。甚至有一位很年长的前辈带头叫了我一声刘老师，这一声老师差一点闪了我的小蛮腰，还有一名早年关注过我的读者，说是没想到今天能遇见活得的真人大鸡排了。哈哈哈</p>
+</li>
+<li><p>在座的小伙伴反响还是很乐观的，其中有一个哥们散会后开玩笑跑过来跟我说再包装两下就可以去开公开课了。~~ 其实我没有那么强，只不过我花了点时间在这上面。大概是分享前半月时间每天抽一到两个小时排练。因为在这之前我已经很久没有上台分享过东西了，会卡壳、会紧张不安。所以我大概在家里自己排练了差不多60多次的样子。然后我是通过每次演练的时候在电脑旁录制，左手握住空调遥控器当话筒，右手抓着水果刀当指挥笔。然后一遍遍回放查看。慢慢的调整掉那些不和谐的部分。录制下来的视频时长是从最初的10分钟到20 、30分钟，再到最后实际在场50分钟的样子（含提问环节）。还有一点是录制了一个比较完美的版本后我转成了音频放在手机里听。（我可能有点变态，太完美主义了。）也正是因为如此才会在现场表现还算过得去。自己还算满意的。在很多随机应变的话茬上有延伸很多之前没有写进稿子里的东西。但实际上观众的提问我在之前我有在家里枚举过一些可能会被问到的问题，有自问自答的做准备。怕是碰巧撞见了一个呢？哈哈~ 这可能是个小技巧。</p>
+</li>
+<li><p>广州真的很漂亮，比想象中要美很多。整洁的街道、有序的车流、温馨的巴士刹车安静的等着后边正在追车的路人。反正一下地铁我的第一映象就是非常美好的。然后还认识了几位大佬和GDG的组织者，开心得像个小孩子一样。</p>
+</li>
+</ul>
+<p>下面是分享稿，和现场还是有一些差别。因为我在排练过很多次后基本上没按照稿子上的来，以至于实际分享的时候很多并没有按照稿子上的来讲。但是有小伙伴希望能参考一下，那我就放了出来啦。稿子前半部分我有稍微还原了当时的场景。</p>
+<p>#《code之外的技能》</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-0ef8a706c829f089.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>大家好，很高兴今天能来android巴士广州站的线下分享会，我是刘神恩。今天要和大家分享的主题是《code之外的技能》。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-6151f616fed1b1d5.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><br>这样一个问题其实在半月之前，android巴士官方人员也在问我。</p>
+<p><strong>（戏精时间到!）</strong><br><strong>她说：</strong>“鸡排呀，你来我们android巴士要分享的这个《code之外的技能》到底是什么技能呀？”</p>
+<p><strong>我说：</strong>“code之外的技能就是撩妹咯、吃鸡咯、还有小吃项目创业咯！”</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-191fdb2c0c11a133.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片3.jpg"></p>
+<p><strong>她愤怒的说：</strong>“什么鬼吃鸡撩妹，我们android巴士可是一个正经的干货分享社区，不行不行，不能让你来了！”</p>
+<p><strong>我说：</strong>“我 我 我 我 那 那 那，那我请你吃饭好不好，你就让我来吧，让我见见漂亮的主持小姐姐也好呀，还有听说广州站这次特别多大佬的。”</p>
+<p><strong>她说：</strong>“那行吧，我考虑一下。嗯，既然你都说到这个份上了要请我吃饭，我就勉强答应你吧，不过我有个要求不能跟别人说，你请我吃饭的事。”</p>
+<p><strong>我说：</strong>“好，你放心，就我这嘴，严实着呢。”</p>
+<p>嗯,就这样今天我来了，大家都假装没有听见这件事就好。</p>
+<p><strong>那么今天我来了，要五秒钟掌声太狂，要三秒撑撑场面不过分吧。</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-465d98a4fbc825fd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>支付宝已到帐的观众：</strong>“不过粪！！!”</p>
+<p><strong>临时应对方案：</strong>(注意这里一定要气氛烘托出来，如果不够让观众觉得好笑，那么就需要救场。主要还是吸引台下的目光和焦点。因为我是第三个出场，在这之前大家应该听得很累了，而且技术分享本身也会造成观众疲倦想睡觉。好再是大家都非常热情。并没有出现这种情况)<br><strong>鼓掌：</strong>好，谢谢大家。</p>
+<p><strong>不鼓掌：</strong>还愣着干嘛，鼓掌呀，好让我尴尬呀！</p>
+<p><strong> 零零散散的掌声：</strong>谢谢大家稀稀拉拉的掌声，咳咳，谢谢。要不我们再来一遍吧，我喊预备你们就鼓掌噢。好，预备~，鼓掌。 啪啪啪啪啪！</p>
+<p>好，谢谢大家。我们先说为什么我们程序员这么爱专研这个。我能想到一些理由。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-c79b7a17ab2709c4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片6.jpg"></p>
+<p>灯光有点亮，不知道大家能不能看清楚。</p>
+<p><strong>支付宝已到帐的观众：</strong>“看不清！”**<br>那我给大家念念吧，我妈让我学的、伪装成大佬、我欠世界一行代码、、xxxxxxx</p>
+<p><strong>台下一片哄堂大笑</strong></p>
+<p>但实际我能想到最纯粹的理由只有一个，是什么呢？</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-e2e7c8aa235ed64b.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>干着我们喜欢的事，还有人发工资。这事有没有毛病？ 有没有？</p>
+<p><strong>支付宝已到帐的观众：</strong>“哈哈哈 没猫饼，老铁！”**</p>
+<p>对的，我想我们大多数程序员现在就是这样的态度。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-c593fe7de1bca88f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片8.jpg"><br>我们想一下，我们程序员平时除了工作在写代码，还在干嘛？嗯？还在干嘛？</p>
+<p>在群里吹水吗？斗图吗？ 不不不，我们可是很专注的，我们平时都在研究新技术，新框架。特别是我们广州站小伙伴，我有两个广州的群哦，每天夜里一两点了还在讨论技术。什么Handle的Looper是怎么实现的，什么XXXXX</p>
+<p>（台下的小伙伴在偷笑着）</p>
+<p>看看，我们就是这样，特别爱专研。有没有问题？嗯？有没有问题。<br>正是因为这样，我发现越来越多的我们却慢慢的忽略了这些技能。</p>
+<p>好，正式进入主题，《code之外的技能》，主要给大家分享三点<br><strong>沟通与协作、如何成为核心 、个人提升</strong></p>
+<h2 id="沟通与协作"><a href="#沟通与协作" class="headerlink" title="沟通与协作"></a>沟通与协作</h2><p>好我们先来看什么是沟通与协作。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-7b682f34d0985d2e.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片9.jpg"></p>
+<p>沟通和协作，我们顺着念。当然是先沟通后协作嘛。</p>
+<p>那么沟通是什么。</p>
+<p>很简单，我百度了一下，咳咳。（”台下偷笑”）我对沟通的定义就是人与人之间的思想传递和反馈的一个过程。</p>
+<p>注意这两个关键字，传递和反馈。</p>
+<p>一次有效的沟通一定是双向的。就像一次长连接，握手挥手还需要几次呢。</p>
+<p>这不经意让我想起了我在实习的时候和小伙伴同时面试上了一家公司，我俩都是做android的。进了公司贼开心，为什么贼开心。这个公司里居然没有android大佬。那么也就意味着没有知道我俩有多菜了。</p>
+<p>当时在项目开工前，我们说好了。他写界面，我写数据层和网络层。（原因是我那个时候连界面都不怎么会画）就这样，巴拉巴拉的开发着。</p>
+<p>有一天晚上加班的时候，我俩又在为数据对象的封装较劲了。</p>
+<p>他说：“鸡排你过来看一下，这什么乱七八糟的数据封装。你怎么把后台给你的数据都扔过来了。”</p>
+<p>我说：“我是数据层，不应该考虑到你界面业务层上的具体逻辑。所以我对外提供的查询方法就是将整个对象扔出来，你再过滤成你需要的自己解析。”</p>
+<p>他说：“我的界面要什么样的数据，你就应该返回给我什么样的。”</p>
+<p>我·····</p>
+<p>这样你一句我一句。我两人争得面红耳赤的。就差点没打一架。要是他能打赢，就不废话了，得亏我个子大点。不然你们可能今天就见不到我了。</p>
+<p>最后我是打死不改，他也只好手解了一遍。那个时候连Gson都不知道，开局只有一个记事本，内容数据全靠手拼。sql也是手工拼。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-cc30c67c270b6bd0.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>两只喳喳之间争吵，导致的是什么结果？</p>
+<p>效率更低、代码更烂、 甚至我tm再也不想和他一起写代码了。。。。</p>
+<p>这样的故事，我相信大大小小大家也发生过。而我在生活中也开始反思自己，和寻找一些有效的沟通协作技巧。</p>
+<p>它们大概是这样的：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-cefa7d8f16cab8bc.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片11.jpg"></p>
+<p>人在心理上会下意识的排斥那些从一开始就争强好胜不妥协的人，所以如果我们在别人眼里一直都是这样的人，不妨试着在一项共同决策上的事情，选择退让一步。试着去做一次，我保证你的行为会让对方大吃一惊而对你另眼相待。以后共事的时候也会因为你之前的退让，而倾向你的意见。</p>
+<p>别问我为什么，因为你让他<em>感到</em>舒服了。</p>
+<p>所以总结一句话就是:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-a42266d6ee7dc09a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这种技巧，同样适用在女朋友身上，我指的是你让对方感到舒服了。嗯 没错！ 当然前提是你得有一个。</p>
+<h2 id="如何成为核心"><a href="#如何成为核心" class="headerlink" title="如何成为核心"></a>如何成为核心</h2><p>好 如何成为核心?</p>
+<p>激动吗？俗话说，不想当将军的士兵，不是好士兵。我们先来看一张图。这张图是我从网上盗来的，有没有小伙伴见过举个手。</p>
+<p>好！幸好没有太多人见过噢。不然我就没法讲了。</p>
+<p>我们来看一下这幅图一共分为四个版块，左边是转岗位去了，右边是项目管理型的。下边这个煎饼摊 养螃蟹 民间融资就不说了。中间就是纯技术。这是网上找到的一张图哦。我觉得很有意思。我们来稍微分析一下。其中技术人员是不是最多的，如果纯走技术路线最后的顶峰应该就是技术专家和架构师了。我要说的是，我们得有一个定位，我们现在在哪个位置，我们以后在哪个位置，这是一个值得深思的问题。</p>
+<p>我们回到主题上来，如何成为核心。这是一个很趋向现实的问题。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-cd70488d6672b68d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>谁不想日子过得滋润点，社会地位高一点呢？</p>
+<p>其实我们只需要这样做。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-53d8761631005f58.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>当团队中遇到一个又累又脏的活儿，可能谁都不愿意揽在自己的身上。这个事情请注意，我们最好不要第一时间冲出来。机智一点，等上边发现没有人能做的时候我们冲出来说老夫愿意一试。注意为什么说是不要第一时间冲出来，第一个是不为了太抢风头导致其他人不舒服，第二是让团队知道这件事是没有人愿意做的，只有你可以。明白了吗？不要觉得别人会认为我们很功利和心机。凭真本事去争取的，怕啥！我们要相信人优秀的人总是喜欢和更优秀的人在一起，而不是往下去比和嫉妒别人。</p>
+<p>看第二点，不要去抱怨。这个其实很重要的一个品质。我们大多数时候也就嘴里说说，该做什么还是得做。我们应该尽量规避在抱怨中完成工作，因为除了会给其他同事带来负面情绪，还会让自己也丢失了耐心。我们应该多去培养自己这个优点。因为我们可是要成为核心人物的人呀。怎么能去抱怨嗯？</p>
+<p>为什么说多帮助他人呢？这里和成为核心有没有关系？有，而且很大。是这样的，互帮互助本身就是我们中华名族的传统美德。在工作中当我们在帮助其他人解决的疑难重症越来越多的时候，也无疑是对我们自己在提升。再一个我们经常帮助一些人其实就是在无形之中建立威望。就比如我们刚刚踏入一家公司，和平级的同事都是一样的。但是由于我们总能在小伙伴遇到困难的时候一次次伸出热情的双手。等到有一天项目扩大了，我们的上级升职了，我们说上级最先提拔谁？当然是那个救命稻草，人际关系处理得好，大家都喜欢的那位。因为我们总在帮助他们，他们干嘛不喜欢我们？ 值得注意的是，千万不要因为觉得自己技术牛，在帮别人解决问题的时候就对人家发出带有嘲讽，和讽刺的话语。说到底还是前面讲到的，我们说的话让别人感觉到舒服。</p>
+<p>少甩锅，多担当责任。这一点我认为是这样的，是我的锅，我一个都不甩，给大家说一声抱歉。我以后做得更好。不是我的锅，表示同情，如果可以去分担一点我们同事的担子。这对我们来说并不是坏处。可能当时一起挨骂。但后期我们也不用担心没人替我们分担的问题。</p>
+<p>最重要的一点</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-20770ebc140b6502.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="幻灯片17.jpg"></p>
+<p>让boss喜欢上你。嗯！这个自己看着办，看用什么办法。实际上当我们已经把前面这几点做好的时候，我想你boss应该会挺喜欢你的不是吗？没毛饼吧？</p>
+<h2 id="个人提升"><a href="#个人提升" class="headerlink" title="个人提升"></a>个人提升</h2><p>好，看个人提升。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-2355ee6f0ba1fd79.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-4bc58b3476cc0c27.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>第一不断的总结自我，给自己定一个时间。可以是一到两周，也可以是半个月半年。不过我觉得最好两周差不多。这样比如一年过去了，我们就可以回过头的清晰的知道自己这一年都干了些什么，进步了多少。而不是像写年终总结的时候，我tm今年都做了什么，好像啥也没做呀。。。。。 可以总结什么呢？总结我们学到的新技能呀、新的观念呀、还有一些自己觉得挺牛逼的事情。对不对。总会有一些的。</p>
+<p>像企业一起去思考自己，准确的说是经营自己。我们想象一下公司对外的形象是怎么样的？当然是把好的一面向外展示咯。所以同样，我们也可以这样做。企业有自己的产品，我们也有我们的产品，我们的产品是什么？是技能、能力那么如果向外外界展示自己的才华成了一门学问。作为程序员目前最流行的方式可以从写博客或者做开源项目开始。当然这一点可能一开始并不简单，而且也没有人来关注我们。但是我们仅仅记住一点持之以恒的去用心做一件事，我们会越做越好。没有人生来就很厉害。万事开头难，难在没能迈出这一步。当我们做的东西足够能帮助别人解决足够多的时间成本问题的时候。一定会有人感激你和关注你的。你去酒吧听乍一听驻场歌手好像丝毫不比电视明星唱功差到哪里去吧？但为什么他们只能在酒吧，而不是成为娱乐圈明星一样的光环人物。这一切仅仅是灵魂无处安放吗？当然不是，只是因为缺少运营。而不是实力本身上。或者也可以说运营也是实力的一部分吧。所以从现在开始经营起自己来。让外界知道我们的存在，这只是一个点，学会把自己运营起来。</p>
+<p>不要固化自己的角色是说，我们今天在公司是程序员，不代表说我们在公司只能做程序员的事情。难道那些从程序员摇身一变成为CEO的大佬仅仅在当年只想过我要把代码写得66哒？我想显然不是。我们可以去思考公司的运营呀，回家后思考如何财富自由，还很年轻机会很多，千万不要主动的屏蔽掉自己在其他方面的天赋，也许只是我们没有打开任督二脉。</p>
+<p>计划年年有，年年没执行，或者前期三分钟热度。明天小明叫我去吃饭，后天阿黄叫我打游戏，大后天我想提前睡一觉….完了丢到一旁再也没看过。实际上我们需要一定的技巧和周期性来完成。首先思考一个大一点的目标，不要太远也不要太近。我觉得最好是3年。当然不是比如挣他一个亿。比较贴切自己。而又有挑战的。可以是 我现在是初级工程是，我想三年后成为高级工程师、三年后创业公司seo、三年后娶媳妇买房等 这都没毛病。但前提是将这个大点的目标揉碎成小计划。这就好比我们出海，每个人都在船上。如果每天都没有计划，不知道去哪里，就算晃悠一年也不知道飘到哪里去了。也去今天运气好登录了一个小岛，明天离开了也不知道下一个在何处。如果一开始我们就知道目标和方向，只要朝着这个方向去，我不说一定会到达岸边，但至少我们每天都会知道，我今天距离最终的目标又近了一步。</p>
+<p>避开大多数人正在做的，这一点我想说的是不要随波逐流。就好比投简历找工作这件事，我曾经也是满大街的投简历，但是我发现我在职场投简历这件事并没有竞争力。人家HR从千千份简历中筛选的时候一看学历 啧啧 专科 再一看工作两个月。直接不要。电话都接不到一个。社会虽不是绝对公平的，谁叫我们在该读书的年纪没有好好读书呢？所以企业筛选简历也是考虑成本问题。就把我们理所应当的刷掉了咯。但是别担心也有别的路可以走，程序员嘛，我们可以有一种情况绕过HR不走大多数人走的路。还是我前面说到的写博客，做开源，在我们和面试官见面之前，就让面试官认识我们。再讲一个实际点的做法，想必大家都知道android巴士，如果我们想去巴士上班怎么办？第一你可以选择认识巴士的工作人员，第二假设你是做网站的，你觉得巴士的网站你能做得更好，而且你又想去这里上班，别犹豫赶紧现在开始做。做好了发出来。我保证会有人发现你这个机智的小伙子的。换工作还难么？所以还是那句话，避开大多数人正在做的事情。</p>
+<p>我想我分享的这些应该更不仅限于在程序员圈子，希望能给大家带来一些帮助。这也就是说即便我们以后不做IT了，也是能起到帮助的。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-f18e35f92eb39f13.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>最后左边的是我的博客，右边是我推荐给大家的一本好书，《软技能-代码之外的生成指南》跟本次分享的内容极其相关，如果大家对这个主题感兴趣，可以来看看。最后欢迎大家来指点学习噢。谢谢，谢谢大家!</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+          
+            <a href="/tags/沙龙分享/" rel="tag"># 沙龙分享</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/a9dda310.html" rel="next" title="动手写Android内的计划任务定时框架">
+                <i class="fa fa-chevron-left"></i> 动手写Android内的计划任务定时框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/cd4232c0.html" rel="prev" title="Say goodbye 2017">
+                Say goodbye 2017 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#沟通与协作"><span class="nav-number">1.</span> <span class="nav-text">沟通与协作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何成为核心"><span class="nav-number">2.</span> <span class="nav-text">如何成为核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#个人提升"><span class="nav-number">3.</span> <span class="nav-text">个人提升</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

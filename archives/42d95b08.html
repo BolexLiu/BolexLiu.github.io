@@ -81,13 +81,13 @@
 
 
 
-<meta name="description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享最近几年在我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，以及操作方法。">
+<meta name="description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，及操作方法。">
 <meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="客户端有效耗时优化方法">
 <meta property="og:url" content="http://www.dajipai.cc/archives/42d95b08.html">
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
-<meta property="og:description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享最近几年在我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，以及操作方法。">
+<meta property="og:description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，及操作方法。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dajipai.cc/images/opt_01.png">
 <meta property="og:image" content="http://www.dajipai.cc/images/opt_02.png">
@@ -98,10 +98,10 @@
 <meta property="og:image" content="http://www.dajipai.cc/images/opt_06.png">
 <meta property="og:image" content="http://www.dajipai.cc/images/opt_08.png">
 <meta property="og:image" content="http://www.dajipai.cc/images/opt_07.png">
-<meta property="og:updated_time" content="2022-03-19T14:32:33.152Z">
+<meta property="og:updated_time" content="2022-03-19T15:20:44.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="客户端有效耗时优化方法">
-<meta name="twitter:description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享最近几年在我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，以及操作方法。">
+<meta name="twitter:description" content="有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。 耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，及操作方法。">
 <meta name="twitter:image" content="http://www.dajipai.cc/images/opt_01.png">
 
 
@@ -358,13 +358,13 @@
 
       
         <p>有变量输入的系统，就会持续往混沌状态发展。我们只有对抗熵增才能变得有序。</p>
-<p>耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享最近几年在我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，以及操作方法。<br><a id="more"></a></p>
+<p>耗时优化是性能优化的一种，通过优化能给业务带来流畅的体验。下面我将分享我工作中用到的优化方法。这里我认为最有价值的部分在有效性怎么去衡量，及操作方法。<br><a id="more"></a></p>
 <h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>我们觉得某个场景慢，是主观感受上的。我们没法在不熟悉代码或模块工作机理的情况下就能知道是哪里的问题。那么可以这样做，我画了一张图。<br><img src="/images/opt_01.png" width="500"><br>那么什么叫体验糟糕，个人认为是：</p>
 <blockquote>
 <p><code>慢</code>、<code>卡</code>、<code>发烫</code></p>
 </blockquote>
-<p>这三种描述都属于表象，它们对应到程序上的原因很复杂，有诸多的原因会导致，这里我列举出部分我开发过程中常见的原因，除此之外<code>Android</code>官方也给出了 <a href="https://developer.android.com/topic/performance/vitals/render?hl=zh-cn#common-jank" target="_blank" rel="noopener">常见的卡顿来源</a>指导参考。<br><img src="/images/opt_02.png" width="750"></p>
-<h4 id="如何观测"><a href="#如何观测" class="headerlink" title="如何观测"></a>如何观测</h4><p>至此已经了解了一个程序在运行过程中的性能问题的复杂性，那么我们有什么办法可以观察他们吗？<br>我们需要找到一个突破口，或者说是监事对象。这里我认为最主要的就是函数（方法），至于硬件操作系统之类的不在我们能考虑或干涉的范围。</p>
+<p>这三种描述都属于表象，它们对应到程序上的原因很杂，有诸多的原因会导致，这里我列举出部分我们开发过程中常见的原因，除此之外<code>Android</code>官方也给出了 <a href="https://developer.android.com/topic/performance/vitals/render?hl=zh-cn#common-jank" target="_blank" rel="noopener">常见的卡顿来源</a>指导参考。<br><img src="/images/opt_02.png" width="750"></p>
+<h4 id="如何观测"><a href="#如何观测" class="headerlink" title="如何观测"></a>如何观测</h4><p>通过上图，我们了解到一个App程序在运行过程中的性能问题的复杂性，那么我们有什么办法可以观察吗？<br>我们需要找到一个突破口，或者说是监事方法。这里我认为最主要的就是函数执行耗时（方法），至于硬件和系统层面不在我们能干涉的范围，这里不做展开。</p>
 <p>好，函数耗时观测而言，我们有哪些手段呢？</p>
 <h5 id="本地调试"><a href="#本地调试" class="headerlink" title="本地调试"></a>本地调试</h5><blockquote>
 <p> <a href="https://developer.android.google.cn/studio/profile/android-profiler" target="_blank" rel="noopener">Android-Profiler</a></p>
@@ -376,16 +376,16 @@
 <p>通过借助<code>Profiler</code>工具，我们还可以利用<code>Debug</code>类中提供的方法对某个执行片段进行抽样分析。它的好处是我们不会被应用整体的复杂性干扰，只对某块代码或函数调用进行分析。写法类似：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Debug.startMethodTracing(<span class="string">"sample"</span>)</span><br><span class="line"><span class="comment">// 要观察的耗时代码或函数在中间</span></span><br><span class="line">Debug.stopMethodTracing()</span><br></pre></td></tr></table></figure></p>
 <p>最终会在<code>/sdcard/data/「包名」/files/xxx.trace</code>路径下生成记录。我们要做的仅仅是把它导入到<a href="https://developer.android.com/studio/profile/import-traces?hl=zh-cn" target="_blank" rel="noopener">cpu-profiler</a>中进行分析。</p>
 <p>除了官方提供的工具，还有一些第三方的分析工具。原理大部分是通过<code>APM</code>插桩来实现，这里不做展开了，个人认为官方的已经很香了。能解决大部分本地可观察的问题够用。</p>
-<h4 id="大盘监控"><a href="#大盘监控" class="headerlink" title="大盘监控"></a>大盘监控</h4><h5 id="反映真实情况"><a href="#反映真实情况" class="headerlink" title="反映真实情况"></a>反映真实情况</h5><p>除了在调试阶段做优化，我们还会关注到线上实际在用户手中的体验情况。主要原因是本地调试的设备和环境比较局限，即使是研发、测试、产品都体验不错任然是偏主观的。这时我们可以采取对线上的模块函数耗时进行监控。</p>
+<h4 id="大盘监控"><a href="#大盘监控" class="headerlink" title="大盘监控"></a>大盘监控</h4><h5 id="反映真实情况"><a href="#反映真实情况" class="headerlink" title="反映真实情况"></a>反映真实情况</h5><p>除了在开发调试阶段做优化，我们还需要关注到线上实际在用户手中的体验情况。主要原因是本地调试的设备和环境比较局限，即使是研发、测试、产品都体验不错任然是偏主观的。这时我们可以采取对线上的模块函数耗时进行监控。</p>
 <h5 id="指标可量化"><a href="#指标可量化" class="headerlink" title="指标可量化"></a>指标可量化</h5><p>如果满分是100分，从50分做到90分，可以很直观的通过录屏看到前后效果。但如果我们要知道从90分做到91分、95分怎么衡量？这里有一些基本的套路玩法。</p>
 <p><img src="/images/opt_03.png" width="500"></p>
 <p>1.<strong>可观察改造：</strong>通过对客户端代码的架构的调整，利用分治思想。把任务（函数）按业务拆分，颗粒度越精细越好。通过在框架层面设计进行手工(或自动)插桩，记录任务的耗时。<br><img src="/images/opt_06.png" width="600"></p>
-<p>2.<strong>采集数据：</strong>通过对打点的数据进行收集，上报到数据仓库，这里需注意的是，如果业务的频率高、生产太快将会影响到后续报表的计算的消耗，可以采取采样策略（比如圈出20%的用户）。</p>
+<p>2.<strong>采集数据：</strong>通过对打点的数据进行收集，上报到数据仓库，这里需注意的是，如果业务的频率高、生产太快将会影响到后续报表的流计算的吞吐量，可以采取采样策略（比如圈出20%的用户）。</p>
 <p>3.<strong>定基准线：</strong>假设我们这个业务模块有十个任务，测试单台设备累计耗时<code>500ms</code>。这个只是单台设备的。在第2步我们已经采集到了全面的数据，可以统计出采样用户的平均耗时<code>公式：单次耗时累计 / 总次数</code>，但一般我们不通过平均数来看，而是以分位数求正态分布情况,参考 <a href="https://www.cnblogs.com/Allen-rg/p/9645829.html" target="_blank" rel="noopener">hive percentile</a>函数。这时统计出来会出现下面的情况。</p>
 <p><img src="/images/opt_04.png" width="350"><br>比如20分位，它代表<code>20%</code>的用户的体验不会超过120ms，90分位代表<code>90%</code>的用户不超过<code>500ms</code>。假设我们以满足90%的用户有良好体验作为基准，但又不确定这里的<code>500ms</code>是优秀、良好、一般、糟糕？</p>
 <p>我们可以这样做，找到10~90分对应的设备，或通过模拟耗时刻意延迟执行。找到权威人员（产品、交互设计老师等）体验进行判断。<br><img src="/images/opt_05.png" width="500"></p>
 <p>我们发现大多数权威人员认为至少要达到60分的标准才能接受。这说明将会有<code>40%</code>的用户的体验都很糟糕，那么我们应该把90分位的基准线定为<code>300ms</code>。这种方法是非常贴近线上情况的，因为本身分位已经反映了正态分布的情况了。</p>
-<p>4.<strong>优化任务：</strong>此前我们再第1步已经对不同的任务进行了拆分，并通过框架层面监控到了异常的任务节点。我们可以通过<a href="https://developer.android.com/studio/profile/generate-trace-logs?hl=zh-cn" target="_blank" rel="noopener">Debug MethodTracing</a> 拿到<code>trace</code>记录进行分析优化。就像下面的磁盘访问耗时。<br><img src="/images/opt_06.png" width="600"></p>
+<p>4.<strong>优化任务：</strong>此前我们在第1步已经对不同的任务进行了拆分，并通过框架层面监控到了异常的任务节点。我们可以通过<a href="https://developer.android.com/studio/profile/generate-trace-logs?hl=zh-cn" target="_blank" rel="noopener">Debug MethodTracing</a> 拿到<code>trace</code>记录进行分析优化。就像下面的磁盘访问耗时。<br><img src="/images/opt_06.png" width="600"></p>
 <h3 id="优化手段"><a href="#优化手段" class="headerlink" title="优化手段"></a>优化手段</h3><p>业务是慢慢变复杂的。一开始业务简单不会受关注。在复杂后操刀会很痛苦。这类技术债偿还起来往往不轻松。</p>
 <ul>
 <li>1.盘点现状，按模块整理</li>
@@ -411,9 +411,9 @@
 <h4 id="客户端代码"><a href="#客户端代码" class="headerlink" title="客户端代码"></a>客户端代码</h4><p>即便我们当前已经做到了教优解的调教，也无法阻止产品去改需求，无法控制团队中其他同学因为各种原因不得不调整某些跟我们优化的部分相关的代码。他们必然会直接或间接的影响。比如：</p>
 <ul>
 <li>1.基础库升级</li>
-<li>2.更高优的任务，跑在了你的前面</li>
+<li>2.更高优的任务，跑在了我们的任务前面</li>
 </ul>
-<p>对于这种情况，我们可以对Debug包做数据报表，甚至可以在影响因子中把开发分支都加上，同时也留意线上各个版本的变化。一旦在开发阶段就能发现的问题，及时通过告警通知到业务负责人，把问题扼杀在发版前。</p>
+<p>对于这种情况，我们可以在数据报表上选择筛查Debug包类型的数据，甚至可以把开发分支都加上标签，同时留意线上各个版本的变化。一旦在开发阶段就能发现的问题，及时通过告警通知到业务负责人，把问题扼杀在发版前。</p>
 <h4 id="业务链路"><a href="#业务链路" class="headerlink" title="业务链路"></a>业务链路</h4><p>如果我们的模块不是很单一，对外部有依赖。很多时候很难知道在整个链路上谁会搞什么幺蛾子，比如：</p>
 <ul>
 <li>1.上游发起了一次技术重构，而我们完全不知道这件事。</li>
@@ -422,6 +422,9 @@
 <li>…..</li>
 </ul>
 <p>这类问题一般只能在上线后案后才能被发现。而且回溯问题的成本非常高。这很考研当前业务负责同学对业务&amp;技术全貌的的了解。并且需要相当敏感度。否则就是拉着一大帮人到处找问题，最后可能某一两个环节有关。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>做性能优化，在代码和技术方案都已经符合基本的有序性、抽象化设计后，如果还要持续压榨，我目前做过的项目基本上都在采用比较风骚非常规的手段在实现。这种做法短期收益上见效会很好。往往是牺牲了可读、可维护、可扩展的特性，打破常规的设计思路，甚至会增加线上出问题的风险。</p>
+<p>当新人阅读这部分代码的时候会感到非常晦涩，弄不懂为什么要这样做，可能最后就会骂出，这谁写的沙雕代码，感觉好乱好复杂，明明这么简单的逻辑，瞎搞。</p>
+<p>这需要我们对技术方案进行宣讲留档，正所谓攻城容易守城难。</p>
 
       
     </div>
@@ -729,7 +732,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么做"><span class="nav-number">1.</span> <span class="nav-text">怎么做</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何观测"><span class="nav-number">1.0.1.</span> <span class="nav-text">如何观测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#本地调试"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">本地调试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大盘监控"><span class="nav-number">1.0.2.</span> <span class="nav-text">大盘监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反映真实情况"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">反映真实情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指标可量化"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">指标可量化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化手段"><span class="nav-number">1.1.</span> <span class="nav-text">优化手段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#任务颗粒"><span class="nav-number">1.1.1.</span> <span class="nav-text">任务颗粒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行任务"><span class="nav-number">1.1.2.</span> <span class="nav-text">并行任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预加载"><span class="nav-number">1.1.3.</span> <span class="nav-text">预加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒加载"><span class="nav-number">1.1.4.</span> <span class="nav-text">懒加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何防劣化"><span class="nav-number">2.</span> <span class="nav-text">如何防劣化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端代码"><span class="nav-number">2.0.1.</span> <span class="nav-text">客户端代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务链路"><span class="nav-number">2.0.2.</span> <span class="nav-text">业务链路</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么做"><span class="nav-number">1.</span> <span class="nav-text">怎么做</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何观测"><span class="nav-number">1.0.1.</span> <span class="nav-text">如何观测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#本地调试"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">本地调试</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大盘监控"><span class="nav-number">1.0.2.</span> <span class="nav-text">大盘监控</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#反映真实情况"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">反映真实情况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指标可量化"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">指标可量化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化手段"><span class="nav-number">1.1.</span> <span class="nav-text">优化手段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#任务颗粒"><span class="nav-number">1.1.1.</span> <span class="nav-text">任务颗粒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#并行任务"><span class="nav-number">1.1.2.</span> <span class="nav-text">并行任务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预加载"><span class="nav-number">1.1.3.</span> <span class="nav-text">预加载</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#懒加载"><span class="nav-number">1.1.4.</span> <span class="nav-text">懒加载</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何防劣化"><span class="nav-number">2.</span> <span class="nav-text">如何防劣化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#客户端代码"><span class="nav-number">2.0.1.</span> <span class="nav-text">客户端代码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#业务链路"><span class="nav-number">2.0.2.</span> <span class="nav-text">业务链路</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>

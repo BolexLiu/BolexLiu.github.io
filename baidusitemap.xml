@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/42d95b08.html</loc>
-    <lastmod>2022-03-19T14:32:33.152Z</lastmod>
+    <lastmod>2022-03-19T15:20:44.721Z</lastmod>
     <data>
         <display>
         <title>客户端有效耗时优化方法</title>
@@ -129,6 +129,23 @@
     
     
   <url>
+    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
+    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
+    <data>
+        <display>
+        <title>重拾git命令</title>
+        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/1a0307d1.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
@@ -143,23 +160,6 @@
         <tag>逆向</tag>
          
         <tag>适配</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
-    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
-    <data>
-        <display>
-        <title>重拾git命令</title>
-        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
-        
-        <tag>git</tag>
          
          
            
@@ -612,23 +612,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dd694c2c.html</loc>
-    <lastmod>2018-10-12T17:52:59.079Z</lastmod>
-    <data>
-        <display>
-        <title>分层框架</title>
-        <pubTime>2017-02-26T15:08:11.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/baae41ed.html</loc>
     <lastmod>2018-10-12T17:52:59.079Z</lastmod>
     <data>
@@ -649,6 +632,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/dd694c2c.html</loc>
+    <lastmod>2018-10-12T17:52:59.079Z</lastmod>
+    <data>
+        <display>
+        <title>分层框架</title>
+        <pubTime>2017-02-26T15:08:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/b253952b.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -659,6 +659,44 @@
         <tag>Android</tag>
          
         <tag>Kotlin</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>为App申请更多的内存空间</title>
+        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>内存空间</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>使用Termux，将Android当做Linux玩</title>
+        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
          
          
            
@@ -688,16 +726,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
+    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
         <display>
-        <title>为App申请更多的内存空间</title>
-        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
+        <title>免拆ROM获取系统应用dex、oat、odex</title>
+        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>内存空间</tag>
+        <tag>Shell</tag>
+         
+        <tag>逆向</tag>
          
          
            
@@ -715,46 +755,6 @@
         <pubTime>2018-04-30T17:05:37.000Z</pubTime>
         
         <tag>异常</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>使用Termux，将Android当做Linux玩</title>
-        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>免拆ROM获取系统应用dex、oat、odex</title>
-        <pubTime>2018-01-26T10:40:11.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-        <tag>逆向</tag>
          
          
            
@@ -828,11 +828,11 @@
         <title>ADB shell模拟点击</title>
         <pubTime>2016-09-30T03:14:11.000Z</pubTime>
         
+        <tag>ADB</tag>
+         
         <tag>Android</tag>
          
         <tag>Shell</tag>
-         
-        <tag>ADB</tag>
          
          
            
@@ -911,6 +911,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>MAC下树莓派烧写Ubuntu+SSH</title>
+        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
+        
+        <tag>树莓派</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
@@ -923,23 +940,6 @@
         <tag>源码分析</tag>
          
         <tag>IntentService</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>MAC下树莓派烧写Ubuntu+SSH</title>
-        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
-        
-        <tag>树莓派</tag>
          
          
            
@@ -1069,27 +1069,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>Handler消息源码流程分析</title>
-        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>Handler</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/803dcc0.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1126,6 +1105,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>Handler消息源码流程分析</title>
+        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>Handler</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
@@ -1143,12 +1143,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
+    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-网络模型分层</title>
-        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
+        <title>Android与物联网设备通信-自定义报文与字节序</title>
+        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1160,12 +1160,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
+    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-自定义报文与字节序</title>
-        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
+        <title>Android与物联网设备通信-网络模型分层</title>
+        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1264,6 +1264,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/6c35d185.html</loc>
+    <lastmod>2018-10-12T17:52:59.070Z</lastmod>
+    <data>
+        <display>
+        <title>ADB命令</title>
+        <pubTime>2016-02-22T07:40:11.000Z</pubTime>
+        
+        <tag>ADB</tag>
+         
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/aee243ac.html</loc>
     <lastmod>2018-10-12T17:52:59.070Z</lastmod>
     <data>
@@ -1271,9 +1290,9 @@
         <title>AS记单词翻译插件</title>
         <pubTime>2017-03-10T07:42:11.000Z</pubTime>
         
-        <tag>插件</tag>
-         
         <tag>Android</tag>
+         
+        <tag>插件</tag>
          
          
            
@@ -1295,25 +1314,6 @@
         <tag>sqlite</tag>
          
         <tag>Shell</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/6c35d185.html</loc>
-    <lastmod>2018-10-12T17:52:59.070Z</lastmod>
-    <data>
-        <display>
-        <title>ADB命令</title>
-        <pubTime>2016-02-22T07:40:11.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>ADB</tag>
          
          
            

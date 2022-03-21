@@ -146,6 +146,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
+    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
+    <data>
+        <display>
+        <title>重推导设备尺寸</title>
+        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>适配</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/1a0307d1.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
@@ -158,27 +179,6 @@
         <tag>Shell</tag>
          
         <tag>逆向</tag>
-         
-        <tag>适配</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
-    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
-    <data>
-        <display>
-        <title>重推导设备尺寸</title>
-        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
          
         <tag>适配</tag>
          
@@ -266,25 +266,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/569b6918.html</loc>
-    <lastmod>2018-10-12T17:52:59.085Z</lastmod>
-    <data>
-        <display>
-        <title>局域网被arp攻击反查与解决</title>
-        <pubTime>2018-01-04T15:22:24.000Z</pubTime>
-        
-        <tag>网络</tag>
-         
-        <tag>arp</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/3903596e.html</loc>
     <lastmod>2018-10-12T17:52:59.085Z</lastmod>
     <data>
@@ -295,6 +276,25 @@
         <tag>随笔</tag>
          
         <tag>沙龙分享</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/569b6918.html</loc>
+    <lastmod>2018-10-12T17:52:59.085Z</lastmod>
+    <data>
+        <display>
+        <title>局域网被arp攻击反查与解决</title>
+        <pubTime>2018-01-04T15:22:24.000Z</pubTime>
+        
+        <tag>网络</tag>
+         
+        <tag>arp</tag>
          
          
            
@@ -316,6 +316,23 @@
         <tag>逆向</tag>
          
         <tag>嵌入式</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/75c64cfc.html</loc>
+    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
+    <data>
+        <display>
+        <title>瞎扯-学技术</title>
+        <pubTime>2018-05-12T02:05:37.000Z</pubTime>
+        
+        <tag>随笔</tag>
          
          
            
@@ -369,23 +386,6 @@
         <tag>Android</tag>
          
         <tag>逆向</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/75c64cfc.html</loc>
-    <lastmod>2018-10-12T17:52:59.084Z</lastmod>
-    <data>
-        <display>
-        <title>瞎扯-学技术</title>
-        <pubTime>2018-05-12T02:05:37.000Z</pubTime>
-        
-        <tag>随笔</tag>
          
          
            
@@ -478,6 +478,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/df2843c0.html</loc>
+    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
+    <data>
+        <display>
+        <title>App开发建议技巧</title>
+        <pubTime>2018-01-23T04:20:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>开发技巧</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/1099feff.html</loc>
     <lastmod>2018-10-12T17:52:59.081Z</lastmod>
     <data>
@@ -494,25 +513,6 @@
              
               <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/df2843c0.html</loc>
-    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
-    <data>
-        <display>
-        <title>App开发建议技巧</title>
-        <pubTime>2018-01-23T04:20:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>开发技巧</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -536,6 +536,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <data>
+        <display>
+        <title>动手写Android内的计划任务定时框架</title>
+        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>定时任务</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/cf888d61.html</loc>
     <lastmod>2018-10-12T17:52:59.080Z</lastmod>
     <data>
@@ -548,25 +567,6 @@
         <tag>踩坑</tag>
          
         <tag>so冲突</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
-    <data>
-        <display>
-        <title>动手写Android内的计划任务定时框架</title>
-        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>定时任务</tag>
          
          
            
@@ -649,44 +649,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>为App申请更多的内存空间</title>
-        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>内存空间</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>使用Termux，将Android当做Linux玩</title>
-        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/b253952b.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -726,6 +688,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>为App申请更多的内存空间</title>
+        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>内存空间</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -734,6 +715,25 @@
         <pubTime>2018-04-30T17:05:37.000Z</pubTime>
         
         <tag>异常</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>使用Termux，将Android当做Linux玩</title>
+        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
          
          
            
@@ -842,31 +842,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/d1346012.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
-    <data>
-        <display>
-        <title>Scroller原理作用分析</title>
-        <pubTime>2018-03-15T10:22:10.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>View</tag>
-         
-        <tag>滑动</tag>
-         
-        <tag>Scroller</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
     <lastmod>2018-10-12T17:52:59.075Z</lastmod>
     <data>
@@ -911,18 +886,22 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/51430a0e.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/d1346012.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
     <data>
         <display>
-        <title>Maven私仓Gradle下依赖阻塞临时解决</title>
-        <pubTime>2018-01-11T07:41:46.000Z</pubTime>
+        <title>Scroller原理作用分析</title>
+        <pubTime>2018-03-15T10:22:10.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>Gradle</tag>
+        <tag>源码分析</tag>
          
-        <tag>踩坑</tag>
+        <tag>View</tag>
+         
+        <tag>滑动</tag>
+         
+        <tag>Scroller</tag>
          
          
            
@@ -961,6 +940,27 @@
         <pubTime>2018-05-10T15:05:22.000Z</pubTime>
         
         <tag>树莓派</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/51430a0e.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>Maven私仓Gradle下依赖阻塞临时解决</title>
+        <pubTime>2018-01-11T07:41:46.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Gradle</tag>
+         
+        <tag>踩坑</tag>
          
          
            
@@ -1009,6 +1009,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/f213acdb.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>Android开发相关的导图收集</title>
+        <pubTime>2016-08-09T09:47:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/e8998065.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1031,14 +1048,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/f213acdb.html</loc>
+    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
         <display>
-        <title>Android开发相关的导图收集</title>
-        <pubTime>2016-08-09T09:47:11.000Z</pubTime>
+        <title>Handler消息源码流程分析</title>
+        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
         
         <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>Handler</tag>
          
          
            
@@ -1060,27 +1081,6 @@
         <tag>源码分析</tag>
          
         <tag>HandlerThread</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>Handler消息源码流程分析</title>
-        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>Handler</tag>
          
          
            
@@ -1196,23 +1196,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
-    <lastmod>2018-10-12T17:52:59.071Z</lastmod>
-    <data>
-        <display>
-        <title>Android与物联网设备通信-UDP&TCP协议</title>
-        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
-        
-        <tag>物联网</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/22074801.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
@@ -1236,6 +1219,23 @@
         <display>
         <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
         <pubTime>2018-08-10T04:50:37.000Z</pubTime>
+        
+        <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
+    <lastmod>2018-10-12T17:52:59.071Z</lastmod>
+    <data>
+        <display>
+        <title>Android与物联网设备通信-UDP&TCP协议</title>
+        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
         
         <tag>物联网</tag>
          

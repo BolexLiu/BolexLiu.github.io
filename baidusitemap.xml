@@ -190,12 +190,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/6bab0cfe.html</loc>
+    <loc>http://www.dajipai.cc/archives/4300e823.html</loc>
     <lastmod>2018-10-12T17:52:59.087Z</lastmod>
     <data>
         <display>
-        <title>踏过2016一名刚毕业的android初级工程师是如何成长的</title>
-        <pubTime>2017-01-20T05:00:00.000Z</pubTime>
+        <title>这位写代码的小师傅，停一下，我想跟你聊聊</title>
+        <pubTime>2017-05-17T16:54:00.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -210,12 +210,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4300e823.html</loc>
+    <loc>http://www.dajipai.cc/archives/6bab0cfe.html</loc>
     <lastmod>2018-10-12T17:52:59.087Z</lastmod>
     <data>
         <display>
-        <title>这位写代码的小师傅，停一下，我想跟你聊聊</title>
-        <pubTime>2017-05-17T16:54:00.000Z</pubTime>
+        <title>踏过2016一名刚毕业的android初级工程师是如何成长的</title>
+        <pubTime>2017-01-20T05:00:00.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -497,23 +497,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/95d21ebb.html</loc>
-    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
-    <data>
-        <display>
-        <title>感谢被教育了</title>
-        <pubTime>2018-02-25T15:50:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/1099feff.html</loc>
     <lastmod>2018-10-12T17:52:59.081Z</lastmod>
     <data>
@@ -536,16 +519,14 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4fd5e7fe.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/95d21ebb.html</loc>
+    <lastmod>2018-10-12T17:52:59.081Z</lastmod>
     <data>
         <display>
-        <title>大佬们的博客，我要串起来玩了【持续更新中】</title>
-        <pubTime>2018-01-07T10:20:11.000Z</pubTime>
+        <title>感谢被教育了</title>
+        <pubTime>2018-02-25T15:50:00.000Z</pubTime>
         
-        <tag>node</tag>
-         
-        <tag>爬虫</tag>
+        <tag>随笔</tag>
          
          
            
@@ -565,6 +546,25 @@
         <tag>Android</tag>
          
         <tag>定时任务</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/4fd5e7fe.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <data>
+        <display>
+        <title>大佬们的博客，我要串起来玩了【持续更新中】</title>
+        <pubTime>2018-01-07T10:20:11.000Z</pubTime>
+        
+        <tag>node</tag>
+         
+        <tag>爬虫</tag>
          
          
            
@@ -724,25 +724,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>使用Termux，将Android当做Linux玩</title>
-        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -755,6 +736,25 @@
         <tag>Shell</tag>
          
         <tag>逆向</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>使用Termux，将Android当做Linux玩</title>
+        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
          
          
            
@@ -867,6 +867,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <data>
+        <display>
+        <title>View单位转换的秘密</title>
+        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>单位转换</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/39fa9566.html</loc>
     <lastmod>2018-10-12T17:52:59.075Z</lastmod>
     <data>
@@ -890,18 +911,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/46c1909.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
         <display>
-        <title>View单位转换的秘密</title>
-        <pubTime>2017-07-10T06:18:00.000Z</pubTime>
+        <title>IntentService源码解析</title>
+        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
         
         <tag>Android</tag>
          
         <tag>源码分析</tag>
          
-        <tag>单位转换</tag>
+        <tag>IntentService</tag>
          
          
            
@@ -919,27 +940,6 @@
         <pubTime>2018-05-10T15:05:22.000Z</pubTime>
         
         <tag>树莓派</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>IntentService源码解析</title>
-        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>IntentService</tag>
          
          
            
@@ -1048,6 +1048,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>Handler消息源码流程分析</title>
+        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>Handler</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/afceb456.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1079,27 +1100,6 @@
         <tag>node</tag>
          
         <tag>Visual Studio</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>Handler消息源码流程分析</title>
-        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>Handler</tag>
          
          
            
@@ -1143,25 +1143,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
-    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
-    <data>
-        <display>
-        <title>Android开发中相见恨晚的冷知识</title>
-        <pubTime>2017-04-10T14:38:45.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>开发技巧</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
@@ -1187,6 +1168,25 @@
         <pubTime>2018-06-18T16:20:37.000Z</pubTime>
         
         <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
+    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
+    <data>
+        <display>
+        <title>Android开发中相见恨晚的冷知识</title>
+        <pubTime>2017-04-10T14:38:45.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>开发技巧</tag>
          
          
            

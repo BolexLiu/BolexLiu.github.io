@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="时间复杂度,算法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="我是一只香脆的大鸡排" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="现在是伟大美好的端午佳节时间，你现在是在回家的路上吗？祝各位简友们生日快乐！！！啪啪啪！ 又调皮，明明是中秋节快乐好咩~。 今日有酒尽早醉，明日无酒老夫我开盖再来一瓶。 咱今天扒一下软件编程中的算法时间复杂度。 “玛德，智 ……..勇双全。一说算法之类的东西晚生我就想打哈欠，犯困。(o-ωｑ)).oO ”">
+<meta name="keywords" content="时间复杂度,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间复杂度和大O表示法">
+<meta property="og:url" content="http://www.dajipai.cc/archives/2bce0d61.html">
+<meta property="og:site_name" content="我是一只香脆的大鸡排">
+<meta property="og:description" content="现在是伟大美好的端午佳节时间，你现在是在回家的路上吗？祝各位简友们生日快乐！！！啪啪啪！ 又调皮，明明是中秋节快乐好咩~。 今日有酒尽早醉，明日无酒老夫我开盖再来一瓶。 咱今天扒一下软件编程中的算法时间复杂度。 “玛德，智 ……..勇双全。一说算法之类的东西晚生我就想打哈欠，犯困。(o-ωｑ)).oO ”">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-df9fa75d99a42be9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-529bd1c0d4df9bb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-d746da2665e46654.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-12T17:52:59.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="时间复杂度和大O表示法">
+<meta name="twitter:description" content="现在是伟大美好的端午佳节时间，你现在是在回家的路上吗？祝各位简友们生日快乐！！！啪啪啪！ 又调皮，明明是中秋节快乐好咩~。 今日有酒尽早醉，明日无酒老夫我开盖再来一瓶。 咱今天扒一下软件编程中的算法时间复杂度。 “玛德，智 ……..勇双全。一说算法之类的东西晚生我就想打哈欠，犯困。(o-ωｑ)).oO ”">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1110736-df9fa75d99a42be9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.dajipai.cc/archives/2bce0d61.html"/>
+
+
+
+
+
+  <title>时间复杂度和大O表示法 | 我是一只香脆的大鸡排</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?21b54a7efe3088189253cca3385e8fe4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">我是一只香脆的大鸡排</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-打赏">
+          <a href="/reward/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa fa-money"></i> <br />
+            
+            打赏
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-算法" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.dajipai.cc/archives/2bce0d61.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="香脆的大鸡排">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我是一只香脆的大鸡排">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">时间复杂度和大O表示法</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-29T01:07:11+08:00">
+                2017-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>现在是伟大美好的端午佳节时间，你现在是在回家的路上吗？祝各位简友们<del>生日快乐</del>！！！啪啪啪！ 又调皮，明明是中秋节快乐好咩~。<br><img src="http://upload-images.jianshu.io/upload_images/1110736-df9fa75d99a42be9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>今日有酒尽早醉，明日无酒老夫我开盖再来一瓶。 咱今天扒一下软件编程中的算法时间复杂度。</p>
+<p>“玛德，智 ……..勇双全。一说算法之类的东西晚生我就想打哈欠，犯困。(o-ωｑ)).oO ”<br><a id="more"></a><br><img src="http://upload-images.jianshu.io/upload_images/1110736-529bd1c0d4df9bb0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt=""></p>
+<p>“是不是感觉老有知识咳不出来，又咽不下去？老夫反手就是一张过去的CD，听听那是我们的XX”</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1110736-d746da2665e46654.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt=""></p>
+<p>“巴拉拉能量，麻辣割鸡小魔仙全身变。kuang！别担心，大鸡排今天讲的足够简单、 粗暴<del>不戴X</del>，易理解。” 快坐上来吧，搞起。搞起。</p>
+<hr>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ul>
+<li>前言</li>
+<li>概念</li>
+<li>例子</li>
+<li>题外话</li>
+</ul>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>到今天为止，可能我们的确不会自己再去经常编写一个高效的算法。因为在各大框架或语言原生的API里，它们已经帮业务开发的程序员将最优的算法都实现了。所以我们很少用到在实际场景中，特别是作为大前端开发人员更加很少接触到。但是无论从计算机编程基础、以及编写更优秀的性能代码，这块的知识是任然是非常重要的。</p>
+<h3 id="基础与流行"><a href="#基础与流行" class="headerlink" title="基础与流行"></a>基础与流行</h3><p>人的一生是有限的，个人认为在编程技术栈中的学习即是一种投资行为。做我们这行的行业积累是会过期的。所以我将技术知识粗略的划分为两块。<br>即：<strong>基础编程知识流、流行编程知识流。</strong><br>基础知识是牢固而不容易过期的，而流行编程知识往往是偏向前沿技术而活泼不稳定的，把时间轴拉长来看，新技术是不断的被迭代的。</p>
+<p>也就是说如果我们把 sql、算法、编程思想 …归结为基础编程知识来看。java语言、kotlin语言、android、React …这种知识是当前流行编程知识流。</p>
+<p>那么流行知识是一个反复学习新技术，不断的扔掉成旧知识的一个过程。而恰恰相反，基础知识是不会和新技术产生冲突交集的。所以如果你是一个刚刚入行不久的攻城狮，那么从投资的角度来看，我建议对基础编程知识的前期投资是越丰厚越好，而且是稳赚不陪的卖买。<br>正式开发环境中很多时候是飞机大炮造到一半，发现零件的质量不够好。框架子搞了一堆再牛逼，却写不出好东西或则说无法发挥最大的性能。</p>
+<h3 id="用优质的代码解决硬件成本"><a href="#用优质的代码解决硬件成本" class="headerlink" title="用优质的代码解决硬件成本"></a>用优质的代码解决硬件成本</h3><p>简单来说，就是如果你代码的执行算法太慢，将导致需要用硬件来撑起运行速度。这就是在过多的消耗硬件成本。而作为行业内人员或者boss，你是愿意将刀刃(钱)用在优秀的工程师上，还是高昂价格的机器上。相信这个问题，我只需要提出,你就已经有了结论。我不作过多的阐述。</p>
+<hr>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>我们今天只弄明白两点，到底什么是算法时间复杂度？什么是大O表示法？</p>
+<h3 id="算法时间复杂度"><a href="#算法时间复杂度" class="headerlink" title="算法时间复杂度"></a>算法时间复杂度</h3><p>好，怎么理解？一句话来说就是<br><strong>你用代码做某一件事件，所消耗的总体时间长度,就是该事件(算法)的时间复杂度。</strong><br>这里暂且不说平均复杂度和实际复杂度。我们后面再讲这些。</p>
+<h3 id="大O表示法"><a href="#大O表示法" class="headerlink" title="大O表示法"></a>大O表示法</h3><p>大O表示法呢？<br><strong>一个用来表示算法时间复杂度的公式名称，用于指出该算法的效率有多快。在计算机领域我们用函数来表示</strong><br>当我第一次接触到<code>大O表示法</code>时，我还在纠结，那<code>小o表示法</code>又是什么。其实根本没有这种东西。<code>大O表示法</code>仅仅是一个名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//表达式其中n表示要执行的次数。</span><br><span class="line"> O(n)</span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul>
+<li>O(n) 傻找算法(线性时间)</li>
+<li>O(log n)  二分查找</li>
+</ul>
+<p>黑魔法大鸡排把你的老婆抓起来藏在召唤师峡谷的地窖中。依照你过人的聪明智慧，你用敏锐的嗅觉一路上根据老婆的味道，靠鼻子闻到了地窖。打开一看。<strong>里面有1000个和你老婆一模一样的蜡像，但其中有一个是真正的老婆。</strong>放眼望去，你并不知道哪个是你的老婆，因为他们实在太像了。由于被大鸡排下了诅咒，真正的老婆被封印了起来，只有通过真爱么么哒才能唤醒 （づ￣3￣）づ╭❤～。</p>
+<h3 id="O-n-傻找算法-线性时间"><a href="#O-n-傻找算法-线性时间" class="headerlink" title="O(n) 傻找算法(线性时间)"></a>O(n) 傻找算法(线性时间)</h3><p>此刻你急中生智，骂道：“什么烂剧情例子,用鼻子闻到老婆的味道跟我聪明的智慧有个毛关系啊？,还tm要一个么么哒”，你只好决定<strong>一个一个亲下去。从第一个亲到最后一个</strong>。<br>我们用代码来表示这个过程就是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//999个假老婆+一个真的</span><br><span class="line">List&lt;Wife&gt; Wifes= &#123;蜡像，蜡像，蜡像...真老婆，蜡像&#125;；</span><br><span class="line">// 我自己</span><br><span class="line"> Lead myself =new Lead()；</span><br><span class="line"></span><br><span class="line">for(i=0; i&lt;=Wifes.length; ++i)&#123;</span><br><span class="line">  boolean  resurrection =kiss(Wifes.get(i))； //么么哒唤醒</span><br><span class="line">  if(resurrection )&#123;</span><br><span class="line">     Log.i(“已找到老婆他在”+i+“个,赶紧抬回家，远离召唤师峡谷”)；</span><br><span class="line">     return ;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> boolean  kiss(Wife mWife)&#123;</span><br><span class="line">  //调用自己的么么哒方法 返回真假</span><br><span class="line"> return myself.kiss(mWife)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个过程是我们有一个Wifes容器装下了999个蜡像和一个真正的老婆。然后myself 是自己,拥有一个kiss方法用来唤醒老婆并返回真假。这里模拟从第一个开始kiss到最后一个。当我们找到了老婆就停止一切行为。</p>
+<p>那么我们的时间复杂度是：最多尝试<strong>1000</strong>次，即<strong> O(n)</strong>来表示，其中<strong>n</strong>表示次数。是不是很简单。</p>
+<p>这是最糟糕的结果，大鸡排将你的wife放在最后一个位置，你从第一个开始亲，亲到最后一个。你需要尝试<strong>1000</strong>次。但绝不会超过这个范围。当然实际情况也可能是<strong>O(1)</strong>，第一次成功了。</p>
+<p>我们通过这个算法得到了时间复杂度公式： <strong>O(n)</strong></p>
+<h3 id="O-log-n-二分查找"><a href="#O-log-n-二分查找" class="headerlink" title="O(log n)  二分查找"></a>O(log n)  二分查找</h3><p>接着上面的列子。还记得召唤师峡谷里有个商店老爷爷吗？他说能为你打开此次寻找的天机。将所有蜡像的序号都展示出来，并且他每次都能告诉你整个区间内是否存在真正的老婆。你想了想那么我可以从中间对折拆分找呀，这样可以每次直接排除掉一半。这个过程就像：</p>
+<p>第一次询问:<strong> 500~1000</strong> 他说不存在， <strong>1~499</strong>那么一定存在。<br>第二次询问:<strong> 250~499</strong> 他说不存在， <strong>1~249</strong>那么一定存在。<br>第三次询问:<strong> 125~249</strong> 他说不存在， <strong>1~124</strong>那么一定存在。<br>第四次询问:<strong> 63~124</strong> 他说不存在， <strong>1~62</strong>那么一定存在。<br>第五次询问:<strong> 31~62</strong> 他说不存在， <strong>1~30</strong>那么一定存在。<br>第六次询问:<strong> 15~30</strong> 他说不存在， <strong>1~15</strong>那么一定存在。<br>第七次询问:<strong> 7~14</strong> 他说不存在， <strong>1~6</strong>那么一定存在。<br>第八次询问:<strong> 3~6</strong> 他说不存在， <strong>1~2</strong>那么一定存在。<br>第九次询问:<strong> 2</strong> 他说不对，那么结果只剩下<strong>1</strong>了。</p>
+<p>好，我们捋一捋。实际每次询问我们都可以排除一半绝对不可能存在的。也就是说最多我们需要经过<strong>9步</strong>即可完成从<strong>1000个</strong>老婆中出真正的老婆。<br>如果我们把它写成代码就会是这个样子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//999个假老婆+一个真的</span><br><span class="line">List&lt;Wife&gt; Wifes= &#123;蜡像，蜡像，蜡像...真老婆，蜡像&#125;；</span><br><span class="line">// 我自己</span><br><span class="line"> Lead myself =new Lead()；</span><br><span class="line"></span><br><span class="line">int low=0; //最低位</span><br><span class="line">int high = Wifes.length-1; //最高位</span><br><span class="line">int mid; //折中猜想数</span><br><span class="line"></span><br><span class="line">  while( low&lt;=high)&#123;</span><br><span class="line">       mid=(low+higt)/2</span><br><span class="line">      likeWife=Wifes.get(mid)；</span><br><span class="line">      if( kiss(likeWife))&#123;</span><br><span class="line">          Log.i(“已找到老婆他在”+mid+“个,赶紧抬回家，远离召唤师峡谷”)；</span><br><span class="line">          return ;</span><br><span class="line">      &#125;</span><br><span class="line">    boolean  deviation=  elderlyHelp(likeWife)；</span><br><span class="line">      if(deviation)&#123; //往左偏移 表示大了</span><br><span class="line">      high=mid-1；</span><br><span class="line">      &#125;esle&#123;  //往右偏移 表示小了</span><br><span class="line">      low=mid+1；</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//老爷爷的帮助 返回区间内是否包含</span><br><span class="line">boolean   elderlyHelp()&#123;</span><br><span class="line">  ····</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> boolean  kiss(Wife mWife)&#123;</span><br><span class="line">  //调用自己的么么哒方法 返回真假</span><br><span class="line"> return myself.kiss(mWife)；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们就推倒出二分法查找实际是是对数函数的反向幂运算。所以推倒出公式为：<strong>O(log n)</strong></p>
+<p>稍微说一下log对数运算，也许你学过又忘了。log以10为底数多少次幂结果等于100，其实就是指多少个10相乘的结果为100。答案是两个：10 × 10 = 100。所以log以10为底数的 2次幂等于100。</p>
+<h3 id="O-n-对比-O-log-n"><a href="#O-n-对比-O-log-n" class="headerlink" title="O(n)对比 O(log n)"></a>O(n)对比 O(log n)</h3><p>假定我们每一次myself.kiss用于激活的方法需要1秒钟执行。当采用第一种算法时，时间复杂度为O(n) ，那么需要<strong>1000秒</strong>才能找出老婆。但如果采用了二分查找，时间复杂度为 O(log n)  ，那么仅需要<strong>9秒</strong>即可完成操作。其中n表示次数。那么由此可见O(log n) 比O(n)要快。当元素越多的时候，执行的效率就尤其具有可比性。</p>
+<hr>
+<h3 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h3><p>好，那么到这里就讲完了今天的内容啦。如果你感兴趣的话可以再去了解<strong>O(n!)</strong> n阶乘的时间复杂度。当n阶越高，消耗的时间越长。这是计算机领域非常经典的旅行商问题。 感兴趣戳<a href="http://baike.baidu.com/item/%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">这里</a>过去继续深入阅读。</p>
+<blockquote>
+<p><strong>旅行推销员问题</strong>（英语：<strong>Travelling salesman problem</strong>, <strong>TSP</strong>）是这样一个问题：给定一系列城市和每对城市之间的距离，求解访问每一座城市一次并回到起始城市的最短回路。它是<a href="http://baike.baidu.com/item/%E7%BB%84%E5%90%88%E4%BC%98%E5%8C%96" target="_blank" rel="noopener">组合优化</a>中的一个<a href="http://baike.baidu.com/item/NP/7470332" target="_blank" rel="noopener">NP</a>困难问题，在<a href="http://baike.baidu.com/item/%E8%BF%90%E7%AD%B9%E5%AD%A6/1559" target="_blank" rel="noopener">运筹学</a>和<a href="http://baike.baidu.com/item/%E7%90%86%E8%AE%BA%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6" target="_blank" rel="noopener">理论计算机科学</a>中非常重要。</p>
+</blockquote>
+<p>看完本篇并不能让你成一个优秀的工程狮，这是入门级别的基础知识。但如果因为是你看完这篇文章后产生了这种想法，我的目的就达到了，至少已经在通往优秀工程狮的路上了。那么更多的知识还需要长久的打磨和学习。共勉 加油！</p>
+<hr>
+<h1 id="如何下次找到我"><a href="#如何下次找到我" class="headerlink" title="如何下次找到我?"></a>如何下次找到我?</h1><ul>
+<li>关注我的简书</li>
+<li>本篇同步Github仓库:<a href="https://github.com/BolexLiu/MyNote" target="_blank" rel="noopener">https://github.com/BolexLiu/MyNote</a>  (可以关注)<br><img src="http://upload-images.jianshu.io/upload_images/1110736-f0a700624e0723ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>随缘打赏！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="香脆的大鸡排 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="香脆的大鸡排 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/时间复杂度/" rel="tag"># 时间复杂度</a>
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/b253952b.html" rel="next" title="《From Java To Kotlin》从Java到Kotlin·译">
+                <i class="fa fa-chevron-left"></i> 《From Java To Kotlin》从Java到Kotlin·译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/cf888d61.html" rel="prev" title="多个sdk平台依赖，so重复冲突">
+                多个sdk平台依赖，so重复冲突 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zMTUyNC84MDg4"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/avatar.png"
+                alt="香脆的大鸡排" />
+            
+              <p class="site-author-name" itemprop="name">香脆的大鸡排</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">49</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/BolexLiu" target="_blank" rel="external nofollow" title="GitHub">
+                    GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.jianshu.com/u/abc8086489c7" target="_blank" rel="external nofollow" title="简书">
+                    简书</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://juejin.im/user/58c25a5b2f301e006bb0552c" target="_blank" rel="external nofollow" title="掘金">
+                    掘金</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/jipaila" target="_blank" rel="external nofollow" title="微博">
+                    微博</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友友
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.vivianchen.cn/" title="Vivian" target="_blank">Vivian</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blankj.com/" title="blankj" target="_blank">blankj</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://jp1017.github.io/" title="蒋朋" target="_blank">蒋朋</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://androidwing.net/" title="大精-wing神" target="_blank">大精-wing神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://blog.csdn.net/lmj623565791/" title="Hongyang" target="_blank">Hongyang</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.wanandroid.com/" title="玩Android" target="_blank">玩Android</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://wuxiaolong.me/" title="吴小龙同學" target="_blank">吴小龙同學</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://droidyue.com/" title="技术小黑屋" target="_blank">技术小黑屋</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础与流行"><span class="nav-number">1.1.1.</span> <span class="nav-text">基础与流行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用优质的代码解决硬件成本"><span class="nav-number">1.1.2.</span> <span class="nav-text">用优质的代码解决硬件成本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.2.</span> <span class="nav-text">概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#算法时间复杂度"><span class="nav-number">1.2.1.</span> <span class="nav-text">算法时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大O表示法"><span class="nav-number">1.2.2.</span> <span class="nav-text">大O表示法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#O-n-傻找算法-线性时间"><span class="nav-number">1.3.1.</span> <span class="nav-text">O(n) 傻找算法(线性时间)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O-log-n-二分查找"><span class="nav-number">1.3.2.</span> <span class="nav-text">O(log n)  二分查找</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#O-n-对比-O-log-n"><span class="nav-number">1.3.3.</span> <span class="nav-text">O(n)对比 O(log n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题外话"><span class="nav-number">1.3.4.</span> <span class="nav-text">题外话</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何下次找到我"><span class="nav-number">2.</span> <span class="nav-text">如何下次找到我?</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2016 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">香脆的大鸡排</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a rel="external nofollow" class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a rel="external nofollow" class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> </div>
+
+
+  <div id="hostedByCodingPages" >
+  <p>Hosted by <a href="https://pages.coding.me" style="font-weight: bold" target="_blank">Coding Pages</a></p>
+  </div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- 不蒜子计数初始值纠正 -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 150);
+        var busuanziSiteOffset = parseInt(68820);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript" src="http://apps.bdimg.com/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+    
+  </script>
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

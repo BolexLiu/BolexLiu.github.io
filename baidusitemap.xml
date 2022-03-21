@@ -395,25 +395,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/2bce0d61.html</loc>
-    <lastmod>2018-10-12T17:52:59.083Z</lastmod>
-    <data>
-        <display>
-        <title>时间复杂度和大O表示法</title>
-        <pubTime>2017-05-28T17:07:11.000Z</pubTime>
-        
-        <tag>时间复杂度</tag>
-         
-        <tag>算法</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/64ea64f2.html</loc>
     <lastmod>2018-10-12T17:52:59.083Z</lastmod>
     <data>
@@ -426,6 +407,25 @@
         <tag>SharedPreferences</tag>
          
         <tag>持久化存储</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/2bce0d61.html</loc>
+    <lastmod>2018-10-12T17:52:59.083Z</lastmod>
+    <data>
+        <display>
+        <title>时间复杂度和大O表示法</title>
+        <pubTime>2017-05-28T17:07:11.000Z</pubTime>
+        
+        <tag>时间复杂度</tag>
+         
+        <tag>算法</tag>
          
          
            
@@ -687,25 +687,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>使用Termux，将Android当做Linux玩</title>
-        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -726,6 +707,42 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>你敢叫Android程序员找bug？不存在的这辈子都不会找bug</title>
+        <pubTime>2018-04-30T17:05:37.000Z</pubTime>
+        
+        <tag>异常</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/a748e934.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>使用Termux，将Android当做Linux玩</title>
+        <pubTime>2018-02-28T03:50:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/7cf1aebb.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -738,23 +755,6 @@
         <tag>Shell</tag>
          
         <tag>逆向</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>你敢叫Android程序员找bug？不存在的这辈子都不会找bug</title>
-        <pubTime>2018-04-30T17:05:37.000Z</pubTime>
-        
-        <tag>异常</tag>
          
          
            
@@ -911,23 +911,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>MAC下树莓派烧写Ubuntu+SSH</title>
-        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
-        
-        <tag>树莓派</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
@@ -961,6 +944,23 @@
         <tag>Gradle</tag>
          
         <tag>踩坑</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>MAC下树莓派烧写Ubuntu+SSH</title>
+        <pubTime>2018-05-10T15:05:22.000Z</pubTime>
+        
+        <tag>树莓派</tag>
          
          
            
@@ -1069,6 +1069,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>Handler消息源码流程分析</title>
+        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>Handler</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/803dcc0.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1105,50 +1126,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/f6d6c129.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>Handler消息源码流程分析</title>
-        <pubTime>2017-07-15T12:28:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>Handler</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
         <title>Android与物联网设备通信-概念入门</title>
         <pubTime>2018-05-23T15:55:37.000Z</pubTime>
-        
-        <tag>物联网</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
-    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
-    <data>
-        <display>
-        <title>Android与物联网设备通信-自定义报文与字节序</title>
-        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1196,6 +1179,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
+    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
+    <data>
+        <display>
+        <title>Android与物联网设备通信-自定义报文与字节序</title>
+        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
+        
+        <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/22074801.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
@@ -1230,12 +1230,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/ead4653c.html</loc>
+    <loc>http://www.dajipai.cc/archives/f1d847c5.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
-        <pubTime>2018-08-10T04:50:37.000Z</pubTime>
+        <title>Android与物联网设备通信-数据传递的本质</title>
+        <pubTime>2018-05-30T13:01:22.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1247,12 +1247,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/f1d847c5.html</loc>
+    <loc>http://www.dajipai.cc/archives/ead4653c.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-数据传递的本质</title>
-        <pubTime>2018-05-30T13:01:22.000Z</pubTime>
+        <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
+        <pubTime>2018-08-10T04:50:37.000Z</pubTime>
         
         <tag>物联网</tag>
          

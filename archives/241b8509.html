@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0，今年13.0 也快出来了。">
+<meta name="description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 不同版源码跳着看好心累，这里我基于Android 10.0画了一下抽象的站在整个Android Framework来看应用过的启动流程。">
 <meta name="keywords" content="AMS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从 Android-10.0 ATMS接管AMS对Activity的管理">
 <meta property="og:url" content="http://www.dajipai.cc/archives/241b8509.html">
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
-<meta property="og:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0，今年13.0 也快出来了。">
+<meta property="og:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 不同版源码跳着看好心累，这里我基于Android 10.0画了一下抽象的站在整个Android Framework来看应用过的启动流程。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dajipai.cc/images/atms/01.png">
-<meta property="og:updated_time" content="2022-04-05T16:55:34.567Z">
+<meta property="og:updated_time" content="2022-04-05T16:59:46.115Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从 Android-10.0 ATMS接管AMS对Activity的管理">
-<meta name="twitter:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0，今年13.0 也快出来了。">
+<meta name="twitter:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 不同版源码跳着看好心累，这里我基于Android 10.0画了一下抽象的站在整个Android Framework来看应用过的启动流程。">
 <meta name="twitter:image" content="http://www.dajipai.cc/images/atms/01.png">
 
 
@@ -350,8 +350,16 @@
 
       
         <p>近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。</p>
-<p>上一次详细去读<code>Activity</code>这启动流程<code>Android</code>版本才发布到<code>7.0</code>，今年<code>13.0</code> 也快出来了。</p>
+<p>不同版源码跳着看好心累，这里我基于<code>Android 10.0</code>画了一下抽象的站在整个<code>Android Framework</code>来看应用过的启动流程。</p>
+<p><img src="/images/atms/01.png" width="800"></p>
 <a id="more"></a>
+<p>通过这几天对<code>Framework</code>层源码的学习过程中，习得一点经验。</p>
+<ul>
+<li>不可完全按照书本、博客等资料上说的来人云亦云。不同版本有差异，分析源码要亲力亲为。看别人怎么做的时候，自己也要动手。抱着怀疑、辩证的态度去看。</li>
+<li>源码体量太大，没法记住每个<code>API</code>函数调用链路，个人觉得是没有必要去强行记住。细节真的太多，主要还是以理解为主，抓核心原理就好。</li>
+<li>虽然不同版本的<code>framework</code>实现细节不一样，但它们在交互上的本质<code>Binder</code>、<code>AIDL</code>没有变化，外部的架构也没有变化。</li>
+</ul>
+<p>下面截取发现<code>ATMS</code>过程记录一下，上一次详细去读<code>Activity</code>启动流程当时<code>Android</code>版本发布到了<code>7.0</code>，转眼今年<code>13.0</code>也快出来了。</p>
 <p>发现这个不同的点时，我当时正基于<code>12.0</code>的<code>sdk</code>源码阅读，从<code>Activity.startActivity(intent)</code>跟踪下去到<code>Instrumentation.execStartActivity(...)</code>方法看到了<code>ActivityTaskManager</code>，有点懵逼了，和我之前理解的不太一样，不应该是<code>AMS</code>的代理对象么？带着这个疑问我开始就近翻阅不同版本的<code>Instrumentation</code>，发现从<code>10.0</code>开始变更。那么我们着重来看这两个版本的差异。</p>
 <p><strong>Android 9.0（28）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instrumentation.java execStartActivity(...)</span></span><br><span class="line"> <span class="keyword">int</span> result = ActivityManager.getService()</span><br><span class="line">                .startActivity(whoThread, who.getBasePackageName(), intent,</span><br><span class="line">                        intent.resolveTypeIfNeeded(who.getContentResolver()),</span><br><span class="line">                        token, target != <span class="keyword">null</span> ? target.mEmbeddedID : <span class="keyword">null</span>,</span><br><span class="line">                        requestCode, <span class="number">0</span>, <span class="keyword">null</span>, options);</span><br></pre></td></tr></table></figure></p>
 <p><strong>Android 10.0（29）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instrumentation.java execStartActivity(...)</span></span><br><span class="line">      <span class="keyword">int</span> result = ActivityTaskManager.getService()</span><br><span class="line">                .startActivity(whoThread, who.getBasePackageName(), intent,</span><br><span class="line">                        intent.resolveTypeIfNeeded(who.getContentResolver()),</span><br><span class="line">                        token, target != <span class="keyword">null</span> ? target.mEmbeddedID : <span class="keyword">null</span>,</span><br><span class="line">                        requestCode, <span class="number">0</span>, <span class="keyword">null</span>, options);</span><br></pre></td></tr></table></figure></p>
@@ -386,15 +394,6 @@
 <p><del>不过这两个原因都只是我单方面猜测，不确定<code>Google</code>的开发者做这件事的时候是怎么思考的。</del></p>
 <p>更正:</p>
 <p>经过分析发现在<code>Android 10.0</code>版本中，<code>ATMS</code>被设计出来专门调度<code>Activity</code>生命周期。而<code>AMS</code>职责没有变，它范围更广泛，需要对四大组件的生命周期、进程进行管理。这么看我觉得这样做的好处是把<code>ATMS</code>的事情都拆了出来。</p>
-<hr>
-<p>不同版源码跳着看好心累，这里我基于<code>Android 10.0</code>画了一下抽象的站在整个<code>Android Framework</code>来看应用过的启动流程。</p>
-<p><img src="/images/atms/01.png" width="700"></p>
-<p>通过这几天对<code>Framework</code>层源码的学习过程中，习得一点经验。</p>
-<ul>
-<li>不可完全按照书本、博客等资料上说的来人云亦云。不同版本有差异，分析源码要亲力亲为。看别人怎么做的时候，自己也要动手。抱着怀疑、辩证的态度去看。</li>
-<li>源码体量太大，没法记住每个<code>API</code>函数调用链路，个人觉得是没有必要去强行记住。细节真的太多，主要还是以理解为主，抓核心原理就好。</li>
-<li>虽然不同版本的<code>framework</code>实现细节不一样，但它们在交互上的本质<code>Binder</code>、<code>AIDL</code>没有变化，外部的架构也没有变化。</li>
-</ul>
 
       
     </div>

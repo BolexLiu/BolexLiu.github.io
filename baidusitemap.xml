@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/241b8509.html</loc>
-    <lastmod>2022-04-05T16:49:14.842Z</lastmod>
+    <lastmod>2022-04-05T16:50:55.900Z</lastmod>
     <data>
         <display>
         <title>从 Android-10.0 ATMS接管AMS对Activity的管理</title>
@@ -146,6 +146,29 @@
     
     
   <url>
+    <loc>http://www.dajipai.cc/archives/1a0307d1.html</loc>
+    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
+    <data>
+        <display>
+        <title>逆向小米rom层应用做碎片化适配</title>
+        <pubTime>2017-09-11T09:40:11.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>Shell</tag>
+         
+        <tag>逆向</tag>
+         
+        <tag>适配</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
@@ -173,29 +196,6 @@
         <tag>Android</tag>
          
         <tag>源码分析</tag>
-         
-        <tag>适配</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/1a0307d1.html</loc>
-    <lastmod>2018-10-12T17:52:59.088Z</lastmod>
-    <data>
-        <display>
-        <title>逆向小米rom层应用做碎片化适配</title>
-        <pubTime>2017-09-11T09:40:11.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>Shell</tag>
-         
-        <tag>逆向</tag>
          
         <tag>适配</tag>
          
@@ -452,25 +452,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
-    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
-    <data>
-        <display>
-        <title>无接口写网站App端</title>
-        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>网站撸成App</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/58cfb872.html</loc>
     <lastmod>2018-10-12T17:52:59.082Z</lastmod>
     <data>
@@ -489,6 +470,25 @@
              
               <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
+    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
+    <data>
+        <display>
+        <title>无接口写网站App端</title>
+        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>网站撸成App</tag>
+         
+         
+           
         </display>
     </data>
     </url>
@@ -685,26 +685,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
-        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -735,6 +715,26 @@
          
          
            
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
+        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+             
+              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
+          
         </display>
     </data>
     </url>
@@ -845,11 +845,36 @@
         <title>ADB shell模拟点击</title>
         <pubTime>2016-09-30T03:14:11.000Z</pubTime>
         
-        <tag>ADB</tag>
-         
         <tag>Android</tag>
          
         <tag>Shell</tag>
+         
+        <tag>ADB</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/d1346012.html</loc>
+    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
+    <data>
+        <display>
+        <title>Scroller原理作用分析</title>
+        <pubTime>2018-03-15T10:22:10.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>View</tag>
+         
+        <tag>滑动</tag>
+         
+        <tag>Scroller</tag>
          
          
            
@@ -903,52 +928,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/d1346012.html</loc>
-    <lastmod>2018-10-12T17:52:59.075Z</lastmod>
-    <data>
-        <display>
-        <title>Scroller原理作用分析</title>
-        <pubTime>2018-03-15T10:22:10.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>View</tag>
-         
-        <tag>滑动</tag>
-         
-        <tag>Scroller</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>IntentService源码解析</title>
-        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>IntentService</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
@@ -978,6 +957,27 @@
         <tag>Gradle</tag>
          
         <tag>踩坑</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>IntentService源码解析</title>
+        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>IntentService</tag>
          
          
            
@@ -1177,23 +1177,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
-    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
-    <data>
-        <display>
-        <title>Android与物联网设备通信-自定义报文与字节序</title>
-        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
-        
-        <tag>物联网</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
@@ -1213,12 +1196,46 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/dbd40ba8.html</loc>
+    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
+    <data>
+        <display>
+        <title>Android与物联网设备通信-自定义报文与字节序</title>
+        <pubTime>2018-06-18T16:20:37.000Z</pubTime>
+        
+        <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/22074801.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
         <title>Android与物联网设备通信 - 字节报文组装与解析</title>
         <pubTime>2018-07-07T16:23:33.000Z</pubTime>
+        
+        <tag>物联网</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
+    <lastmod>2018-10-12T17:52:59.071Z</lastmod>
+    <data>
+        <display>
+        <title>Android与物联网设备通信-UDP&TCP协议</title>
+        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1264,33 +1281,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
-    <lastmod>2018-10-12T17:52:59.071Z</lastmod>
-    <data>
-        <display>
-        <title>Android与物联网设备通信-UDP&TCP协议</title>
-        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
-        
-        <tag>物联网</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/6c35d185.html</loc>
+    <loc>http://www.dajipai.cc/archives/ea8ae16c.html</loc>
     <lastmod>2018-10-12T17:52:59.070Z</lastmod>
     <data>
         <display>
-        <title>ADB命令</title>
-        <pubTime>2016-02-22T07:40:11.000Z</pubTime>
+        <title>Android下这样查数据库会比较酷</title>
+        <pubTime>2018-02-12T02:20:00.000Z</pubTime>
         
-        <tag>ADB</tag>
+        <tag>sqlite</tag>
          
         <tag>Android</tag>
+         
+        <tag>Shell</tag>
          
          
            
@@ -1319,18 +1321,16 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/ea8ae16c.html</loc>
+    <loc>http://www.dajipai.cc/archives/6c35d185.html</loc>
     <lastmod>2018-10-12T17:52:59.070Z</lastmod>
     <data>
         <display>
-        <title>Android下这样查数据库会比较酷</title>
-        <pubTime>2018-02-12T02:20:00.000Z</pubTime>
+        <title>ADB命令</title>
+        <pubTime>2016-02-22T07:40:11.000Z</pubTime>
         
         <tag>Android</tag>
          
-        <tag>sqlite</tag>
-         
-        <tag>Shell</tag>
+        <tag>ADB</tag>
          
          
            

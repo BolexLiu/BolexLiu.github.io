@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/241b8509.html</loc>
-    <lastmod>2022-04-05T14:49:21.859Z</lastmod>
+    <lastmod>2022-04-05T16:39:17.329Z</lastmod>
     <data>
         <display>
-        <title>从 Android-10.0 开始 ATMS 接管了 AMS</title>
+        <title>从 Android-10.0 ATMS接管AMS对Activity的管理</title>
         <pubTime>2022-04-03T18:10:22.000Z</pubTime>
         
         <tag>AMS</tag>
@@ -247,6 +247,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/b9fde245.html</loc>
+    <lastmod>2018-10-12T17:52:59.086Z</lastmod>
+    <data>
+        <display>
+        <title>观念</title>
+        <pubTime>2018-01-18T13:05:37.000Z</pubTime>
+        
+        <tag>随笔</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/3d72a6b2.html</loc>
     <lastmod>2018-10-12T17:52:59.086Z</lastmod>
     <data>
@@ -257,23 +274,6 @@
         <tag>node</tag>
          
         <tag>踩坑</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/b9fde245.html</loc>
-    <lastmod>2018-10-12T17:52:59.086Z</lastmod>
-    <data>
-        <display>
-        <title>观念</title>
-        <pubTime>2018-01-18T13:05:37.000Z</pubTime>
-        
-        <tag>随笔</tag>
          
          
            
@@ -452,6 +452,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
+    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
+    <data>
+        <display>
+        <title>无接口写网站App端</title>
+        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>网站撸成App</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/58cfb872.html</loc>
     <lastmod>2018-10-12T17:52:59.082Z</lastmod>
     <data>
@@ -470,25 +489,6 @@
              
               <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/aa7f67b7.html</loc>
-    <lastmod>2018-10-12T17:52:59.082Z</lastmod>
-    <data>
-        <display>
-        <title>无接口写网站App端</title>
-        <pubTime>2017-08-06T16:32:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>网站撸成App</tag>
-         
-         
-           
         </display>
     </data>
     </url>
@@ -553,6 +553,25 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
+    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
+    <data>
+        <display>
+        <title>动手写Android内的计划任务定时框架</title>
+        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>定时任务</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/cf888d61.html</loc>
     <lastmod>2018-10-12T17:52:59.080Z</lastmod>
     <data>
@@ -565,25 +584,6 @@
         <tag>踩坑</tag>
          
         <tag>so冲突</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/a9dda310.html</loc>
-    <lastmod>2018-10-12T17:52:59.080Z</lastmod>
-    <data>
-        <display>
-        <title>动手写Android内的计划任务定时框架</title>
-        <pubTime>2017-11-10T08:30:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>定时任务</tag>
          
          
            
@@ -781,12 +781,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4f0f8e78.html</loc>
+    <loc>http://www.dajipai.cc/archives/8a7f75e7.html</loc>
     <lastmod>2018-10-12T17:52:59.077Z</lastmod>
     <data>
         <display>
-        <title>①:只要活着，就有希望</title>
-        <pubTime>2017-06-15T13:29:00.000Z</pubTime>
+        <title>②:欺骗的艺术</title>
+        <pubTime>2017-06-20T17:10:00.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -800,12 +800,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/8a7f75e7.html</loc>
+    <loc>http://www.dajipai.cc/archives/4f0f8e78.html</loc>
     <lastmod>2018-10-12T17:52:59.077Z</lastmod>
     <data>
         <display>
-        <title>②:欺骗的艺术</title>
-        <pubTime>2017-06-20T17:10:00.000Z</pubTime>
+        <title>①:只要活着，就有希望</title>
+        <pubTime>2017-06-15T13:29:00.000Z</pubTime>
         
         <tag>Android</tag>
          
@@ -928,6 +928,27 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
+    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
+    <data>
+        <display>
+        <title>IntentService源码解析</title>
+        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>IntentService</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/c8a6696a.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
@@ -966,21 +987,20 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/9e86a7ad.html</loc>
+    <loc>http://www.dajipai.cc/archives/cd4232c0.html</loc>
     <lastmod>2018-10-12T17:52:59.074Z</lastmod>
     <data>
         <display>
-        <title>IntentService源码解析</title>
-        <pubTime>2017-07-21T02:04:00.000Z</pubTime>
+        <title>Say goodbye 2017</title>
+        <pubTime>2017-12-22T12:10:00.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>IntentService</tag>
+        <tag>随笔</tag>
          
          
            
+             
+              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
+          
         </display>
     </data>
     </url>
@@ -1000,26 +1020,6 @@
          
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/cd4232c0.html</loc>
-    <lastmod>2018-10-12T17:52:59.074Z</lastmod>
-    <data>
-        <display>
-        <title>Say goodbye 2017</title>
-        <pubTime>2017-12-22T12:10:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
-          
         </display>
     </data>
     </url>
@@ -1107,6 +1107,23 @@
 
     
   <url>
+    <loc>http://www.dajipai.cc/archives/ec8af0f7.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>hexo博客SEO优化</title>
+        <pubTime>2017-10-27T10:40:11.000Z</pubTime>
+        
+        <tag>SEO优化</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.dajipai.cc/archives/803dcc0.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1126,14 +1143,14 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/ec8af0f7.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
+    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>hexo博客SEO优化</title>
-        <pubTime>2017-10-27T10:40:11.000Z</pubTime>
+        <title>Android与物联网设备通信-概念入门</title>
+        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
         
-        <tag>SEO优化</tag>
+        <tag>物联网</tag>
          
          
            
@@ -1143,14 +1160,16 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
+    <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-概念入门</title>
-        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
+        <title>Android开发中相见恨晚的冷知识</title>
+        <pubTime>2017-04-10T14:38:45.000Z</pubTime>
         
-        <tag>物联网</tag>
+        <tag>Android</tag>
+         
+        <tag>开发技巧</tag>
          
          
            
@@ -1185,25 +1204,6 @@
         <pubTime>2018-06-18T16:20:37.000Z</pubTime>
         
         <tag>物联网</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.dajipai.cc/archives/fd5d316d.html</loc>
-    <lastmod>2018-10-12T17:52:59.072Z</lastmod>
-    <data>
-        <display>
-        <title>Android开发中相见恨晚的冷知识</title>
-        <pubTime>2017-04-10T14:38:45.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>开发技巧</tag>
          
          
            

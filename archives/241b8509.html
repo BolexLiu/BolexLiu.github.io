@@ -81,19 +81,19 @@
 
 
 
-<meta name="description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。很快13.0 也快出来了。">
+<meta name="description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。今年13.0 也快出来了。">
 <meta name="keywords" content="AMS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="从 Android-10 开始 ATMS 接管了 AMS">
+<meta property="og:title" content="从 Android-10.0 开始 ATMS 接管了 AMS">
 <meta property="og:url" content="http://www.dajipai.cc/archives/241b8509.html">
 <meta property="og:site_name" content="我是一只香脆的大鸡排">
-<meta property="og:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。很快13.0 也快出来了。">
+<meta property="og:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。今年13.0 也快出来了。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dajipai.cc/images/atms/01.png">
-<meta property="og:updated_time" content="2022-04-05T13:29:47.653Z">
+<meta property="og:updated_time" content="2022-04-05T13:33:24.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="从 Android-10 开始 ATMS 接管了 AMS">
-<meta name="twitter:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。很快13.0 也快出来了。">
+<meta name="twitter:title" content="从 Android-10.0 开始 ATMS 接管了 AMS">
+<meta name="twitter:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。今年13.0 也快出来了。">
 <meta name="twitter:image" content="http://www.dajipai.cc/images/atms/01.png">
 
 
@@ -130,7 +130,7 @@
 
 
 
-  <title>从 Android-10 开始 ATMS 接管了 AMS | 我是一只香脆的大鸡排</title>
+  <title>从 Android-10.0 开始 ATMS 接管了 AMS | 我是一只香脆的大鸡排</title>
   
 
 
@@ -294,7 +294,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">从 Android-10 开始 ATMS 接管了 AMS</h2>
+          <h2 class="post-title" itemprop="name headline">从 Android-10.0 开始 ATMS 接管了 AMS</h2>
         
 
         <div class="post-meta">
@@ -350,7 +350,7 @@
 
       
         <p>近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。</p>
-<p>上一次详细去读<code>Activity</code>这启动流程<code>Android</code>版本才发布到<code>7.0</code>。<code>AMS</code>流程和各种书籍以及网上的资料没太大差别。很快<code>13.0</code> 也快出来了。</p>
+<p>上一次详细去读<code>Activity</code>这启动流程<code>Android</code>版本才发布到<code>7.0</code>。<code>AMS</code>流程和各种书籍以及网上的资料没太大差别。今年<code>13.0</code> 也快出来了。</p>
 <a id="more"></a>
 <p>发现这个不同的点时，我当时正基于<code>12.0</code>的<code>sdk</code>源码阅读，从<code>Activity.startActivity(intent)</code>跟踪下去到<code>Instrumentation.execStartActivity(...)</code>方法看到了<code>ActivityTaskManager</code>，有点懵逼了，和我之前理解的不太一样，不应该是<code>AMS</code>的代理对象么？带着这个疑问我开始就近翻阅不同版本的<code>Instrumentation</code>，发现从<code>10.0</code>开始变更。那么我们着重来看这两个版本的差异。</p>
 <p><strong>Android 9.0（28）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Instrumentation.java execStartActivity(...)</span></span><br><span class="line"> <span class="keyword">int</span> result = ActivityManager.getService()</span><br><span class="line">                .startActivity(whoThread, who.getBasePackageName(), intent,</span><br><span class="line">                        intent.resolveTypeIfNeeded(who.getContentResolver()),</span><br><span class="line">                        token, target != <span class="keyword">null</span> ? target.mEmbeddedID : <span class="keyword">null</span>,</span><br><span class="line">                        requestCode, <span class="number">0</span>, <span class="keyword">null</span>, options);</span><br></pre></td></tr></table></figure></p>
@@ -361,7 +361,7 @@
 <p>不难发现在<code>getService()</code>的调用上，设计思路没有任何变化，都是通过<code>AIDL</code>来获取远端的服务，只不过在<code>10.0</code>版本中获取到的接口变成了<code>IActivityTaskManager</code>，这里我们拿到的是<code>AIDL</code>中的<code>Binder</code>代理对象，我们翻过去看下<code>Server</code>端的实现类<code>ActivityTaskManagerService.java</code>。</p>
 <p>而<code>9.0</code>的实现类是<code>ActivityManagerService.java</code>也就是我们经常提起的<code>AMS</code>服务。</p>
 <p>通过翻阅工程，发现其实在<code>10.0</code>版本的源码中也存在<code>ActivityManagerService.java</code>这让人有点迷惑，为什么既有<code>AMS</code>又有<code>ATMS</code>。</p>
-<p>既然这样只好翻开大名鼎鼎的<code>SystemServer.java</code>来看看在<code>FrameWork</code>初始化各服务时到是怎么工作的？</p>
+<p>既然这样只好翻开大名鼎鼎的<code>SystemServer.java</code>来看看在<code>Framework</code>初始化各服务时到是怎么工作的？</p>
 <p><strong>Android 9.0（28）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SystemServer.java</span></span><br><span class="line"></span><br><span class="line">        mActivityManagerService = mSystemServiceManager.startService(</span><br><span class="line">                ActivityManagerService.Lifecycle.class).getService();</span><br><span class="line">        mActivityManagerService.setSystemServiceManager(mSystemServiceManager);</span><br><span class="line">        mActivityManagerService.setInstaller(installer);</span><br></pre></td></tr></table></figure></p>
 <p><strong>Android 10.0（29）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SystemServer.java</span></span><br><span class="line"></span><br><span class="line">       ActivityTaskManagerService atm = mSystemServiceManager.startService(</span><br><span class="line">            ActivityTaskManagerService.Lifecycle.class).getService();</span><br><span class="line">        mActivityManagerService = ActivityManagerService.Lifecycle.startService(</span><br><span class="line">            mSystemServiceManager, atm);</span><br><span class="line">        mActivityManagerService.setSystemServiceManager(mSystemServiceManager);</span><br><span class="line">        mActivityManagerService.setInstaller(installer);</span><br></pre></td></tr></table></figure></p>
 <p>可以看到相比<code>9.0</code>在<code>10.0</code>版本中同时会把<code>ATMS</code>和<code>AMS</code>都初始化，并把<code>ATMS</code>作为入参给了<code>AMS</code>。</p>
@@ -374,7 +374,7 @@
 <ul>
 <li><p>在名称上把<code>ActivityManager</code>改成<code>ActivityTaskManager</code>可能更符合外面对它的认知。</p>
 </li>
-<li><p>直接改名，会造成兼容性问题。虽然<code>Android</code>官方可以在<code>FrameWork</code>层面将所有的调用处都替换成<code>ATMS</code>但对于应用层各种反射、<code>HOOK</code>手段完成完成诸如插件化加载的事情可能会造成大面积失效。基于此不得不把原来的类保留。</p>
+<li><p>直接改名，会造成兼容性问题。虽然<code>Android</code>官方可以在<code>Framework</code>层面将所有的调用处都替换成<code>ATMS</code>但对于应用层各种反射、<code>Hook</code>手段完成完成诸如插件化加载的事情可能会造成大面积失效。基于此不得不把原来的类保留。</p>
 </li>
 </ul>
 <p>不过这两个原因都只是我单方面猜测，不确定<code>Google</code>的开发者做这件事的时候是怎么思考的。</p>

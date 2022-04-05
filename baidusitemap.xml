@@ -5,10 +5,10 @@
     
   <url>
     <loc>http://www.dajipai.cc/archives/241b8509.html</loc>
-    <lastmod>2022-04-05T13:29:47.653Z</lastmod>
+    <lastmod>2022-04-05T13:33:24.735Z</lastmod>
     <data>
         <display>
-        <title>从 Android-10 开始 ATMS 接管了 AMS</title>
+        <title>从 Android-10.0 开始 ATMS 接管了 AMS</title>
         <pubTime>2022-04-03T18:10:22.000Z</pubTime>
         
         <tag>AMS</tag>
@@ -146,18 +146,14 @@
     
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
+    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
         <display>
-        <title>重推导设备尺寸</title>
-        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
+        <title>重拾git命令</title>
+        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>适配</tag>
+        <tag>git</tag>
          
          
            
@@ -190,14 +186,18 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1da0d72f.html</loc>
+    <loc>http://www.dajipai.cc/archives/1abfe67d.html</loc>
     <lastmod>2018-10-12T17:52:59.088Z</lastmod>
     <data>
         <display>
-        <title>重拾git命令</title>
-        <pubTime>2017-05-12T15:58:00.000Z</pubTime>
+        <title>重推导设备尺寸</title>
+        <pubTime>2017-07-08T14:06:00.000Z</pubTime>
         
-        <tag>git</tag>
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>适配</tag>
          
          
            
@@ -359,12 +359,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/9f0b14d0.html</loc>
+    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
     <lastmod>2018-10-12T17:52:59.084Z</lastmod>
     <data>
         <display>
-        <title>瞎扯-表达</title>
-        <pubTime>2018-05-17T00:00:37.000Z</pubTime>
+        <title>瞎扯-颠覆性</title>
+        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -376,12 +376,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dafeb1b8.html</loc>
+    <loc>http://www.dajipai.cc/archives/9f0b14d0.html</loc>
     <lastmod>2018-10-12T17:52:59.084Z</lastmod>
     <data>
         <display>
-        <title>瞎扯-颠覆性</title>
-        <pubTime>2018-05-13T03:05:37.000Z</pubTime>
+        <title>瞎扯-表达</title>
+        <pubTime>2018-05-17T00:00:37.000Z</pubTime>
         
         <tag>随笔</tag>
          
@@ -666,19 +666,20 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
+    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
         <display>
-        <title>为App申请更多的内存空间</title>
-        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
+        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
+        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
         
-        <tag>Android</tag>
-         
-        <tag>内存空间</tag>
+        <tag>随笔</tag>
          
          
            
+             
+              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
+          
         </display>
     </data>
     </url>
@@ -704,26 +705,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/1d76c68f.html</loc>
-    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
-    <data>
-        <display>
-        <title>《从0到1开启商业与未来的秘密》读书笔记</title>
-        <pubTime>2017-04-30T09:43:00.000Z</pubTime>
-        
-        <tag>随笔</tag>
-         
-         
-           
-             
-              <breadCrumb title="essay" url="http://www.dajipai.cc/categories/essay/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/52403d97.html</loc>
     <lastmod>2018-10-12T17:52:59.078Z</lastmod>
     <data>
@@ -732,6 +713,25 @@
         <pubTime>2018-04-30T17:05:37.000Z</pubTime>
         
         <tag>异常</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/4cc65c41.html</loc>
+    <lastmod>2018-10-12T17:52:59.078Z</lastmod>
+    <data>
+        <display>
+        <title>为App申请更多的内存空间</title>
+        <pubTime>2018-01-08T17:09:44.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>内存空间</tag>
          
          
            
@@ -1043,27 +1043,6 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/afceb456.html</loc>
-    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
-    <data>
-        <display>
-        <title>HandlerThread线程间通信</title>
-        <pubTime>2017-07-17T17:16:00.000Z</pubTime>
-        
-        <tag>Android</tag>
-         
-        <tag>源码分析</tag>
-         
-        <tag>HandlerThread</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://www.dajipai.cc/archives/e8998065.html</loc>
     <lastmod>2018-10-12T17:52:59.073Z</lastmod>
     <data>
@@ -1080,6 +1059,27 @@
              
               <breadCrumb title="react-native" url="http://www.dajipai.cc/categories/react-native/"/>
           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.dajipai.cc/archives/afceb456.html</loc>
+    <lastmod>2018-10-12T17:52:59.073Z</lastmod>
+    <data>
+        <display>
+        <title>HandlerThread线程间通信</title>
+        <pubTime>2017-07-17T17:16:00.000Z</pubTime>
+        
+        <tag>Android</tag>
+         
+        <tag>源码分析</tag>
+         
+        <tag>HandlerThread</tag>
+         
+         
+           
         </display>
     </data>
     </url>
@@ -1143,12 +1143,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
+    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-概念入门</title>
-        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
+        <title>Android与物联网设备通信-网络模型分层</title>
+        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1160,12 +1160,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/dcba528a.html</loc>
+    <loc>http://www.dajipai.cc/archives/fe5f6231.html</loc>
     <lastmod>2018-10-12T17:52:59.072Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-网络模型分层</title>
-        <pubTime>2018-06-06T13:22:01.000Z</pubTime>
+        <title>Android与物联网设备通信-概念入门</title>
+        <pubTime>2018-05-23T15:55:37.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1213,12 +1213,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
+    <loc>http://www.dajipai.cc/archives/22074801.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-UDP&TCP协议</title>
-        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
+        <title>Android与物联网设备通信 - 字节报文组装与解析</title>
+        <pubTime>2018-07-07T16:23:33.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1230,12 +1230,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/ead4653c.html</loc>
+    <loc>http://www.dajipai.cc/archives/d555ca34.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
-        <pubTime>2018-08-10T04:50:37.000Z</pubTime>
+        <title>Android与物联网设备通信-UDP&TCP协议</title>
+        <pubTime>2018-06-12T05:00:37.000Z</pubTime>
         
         <tag>物联网</tag>
          
@@ -1264,12 +1264,12 @@
 
     
   <url>
-    <loc>http://www.dajipai.cc/archives/22074801.html</loc>
+    <loc>http://www.dajipai.cc/archives/ead4653c.html</loc>
     <lastmod>2018-10-12T17:52:59.071Z</lastmod>
     <data>
         <display>
-        <title>Android与物联网设备通信 - 字节报文组装与解析</title>
-        <pubTime>2018-07-07T16:23:33.000Z</pubTime>
+        <title>Android与物联网设备通信-利用UDP广播来做设备查找</title>
+        <pubTime>2018-08-10T04:50:37.000Z</pubTime>
         
         <tag>物联网</tag>
          

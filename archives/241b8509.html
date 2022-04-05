@@ -90,7 +90,7 @@
 <meta property="og:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。今年13.0 也快出来了。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.dajipai.cc/images/atms/01.png">
-<meta property="og:updated_time" content="2022-04-05T13:33:24.735Z">
+<meta property="og:updated_time" content="2022-04-05T14:37:43.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从 Android-10.0 开始 ATMS 接管了 AMS">
 <meta name="twitter:description" content="近一个月上海疫情越来越严重，已居家办公三周。不得不感慨，平平安安就是福。 上一次详细去读Activity这启动流程Android版本才发布到7.0。AMS流程和各种书籍以及网上的资料没太大差别。今年13.0 也快出来了。">
@@ -367,17 +367,34 @@
 <p>可以看到相比<code>9.0</code>在<code>10.0</code>版本中同时会把<code>ATMS</code>和<code>AMS</code>都初始化，并把<code>ATMS</code>作为入参给了<code>AMS</code>。</p>
 <p>那么我们来看看在<code>10.0</code>之后的<code>AMS</code>会怎么处理。</p>
 <p><strong>Android 10.0（29）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ActivityManagerService.java</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">startActivity</span><span class="params">(IApplicationThread caller, String callingPackage,</span></span></span><br><span class="line"><span class="function"><span class="params">            Intent intent, String resolvedType, IBinder resultTo, String resultWho, <span class="keyword">int</span> requestCode,</span></span></span><br><span class="line"><span class="function"><span class="params">            <span class="keyword">int</span> startFlags, ProfilerInfo profilerInfo, Bundle bOptions)</span> </span>&#123;</span><br><span class="line">            <span class="comment">// 委托给了 mActivityTaskManager 来处理</span></span><br><span class="line">        <span class="keyword">return</span> mActivityTaskManager.startActivity(caller, callingPackage, intent, resolvedType,</span><br><span class="line">                resultTo, resultWho, requestCode, startFlags, profilerInfo, bOptions);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里发现在高版本中<code>AMS</code>已经已经不干活了，而是将要做的事情再转给<code>ATMS</code>来完成。至于<code>ATMS</code>里的细节我就不贴出来了，往下再跟源码就不贴了，整套流程还是很复杂，调用链路非常长。感兴趣的朋友可以自行翻阅源码或资料看，下面这张图是我从网上找的，比较形象。</p>
-<p><img src="/images/atms/01.png" width="700"></p>
+<p>这里发现在高版本中<code>AMS</code>已经已经不干活了，而是将要做的事情再转给<code>ATMS</code>来完成。除了<code>ATMS</code>外。内部的</p>
+<ul>
+<li><code>12.0</code> 用的 <code>ActivityTaskSupervisor</code></li>
+<li><code>10.0、9.0</code> 用的 <code>ActivityStackSupervisor</code></li>
+</ul>
+<p>来管理<code>Activity</code>栈，里面的实现细节也不太一样。特别是<code>10.0</code>版本中从<code>ActivityStackSupervisor</code>删除了下面几个<code>stack</code>,而改为由<code>RootActivityContainer</code>来管理，到了<code>12.0</code>调整为<code>RootWindowContainer</code>。</p>
+<p><strong>Android 9.0（28）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ActivityStackSupervisor.java</span></span><br><span class="line">    ActivityStack mHomeStack;</span><br><span class="line">    ActivityStack mFocusedStack;</span><br><span class="line">    <span class="keyword">private</span> ActivityStack mLastFocusedStack;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Android 10.0（29）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ActivityStackSupervisor.java</span></span><br><span class="line">    RootActivityContainer mRootActivityContainer;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Android 12.0（29）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// ActivityTaskSupervisor.java</span><br><span class="line">    RootWindowContainer mRootWindowContainer;</span><br></pre></td></tr></table></figure></p>
+<p>细节不展开了，整套流程还是很复杂，调用链路非常长。可参考下面的链接对 <code>Android 11.0</code>的<code>Activity</code>启动分析:<br><a href="https://zhuanlan.zhihu.com/p/382133130" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/382133130</a></p>
 <p>这里我更加关心一个问题为啥要改成这样？</p>
-<p>个人觉得有两个原因。</p>
+<p>个人觉得有两个方面：</p>
 <ul>
 <li><p>在名称上把<code>ActivityManager</code>改成<code>ActivityTaskManager</code>可能更符合外面对它的认知。</p>
 </li>
-<li><p>直接改名，会造成兼容性问题。虽然<code>Android</code>官方可以在<code>Framework</code>层面将所有的调用处都替换成<code>ATMS</code>但对于应用层各种反射、<code>Hook</code>手段完成完成诸如插件化加载的事情可能会造成大面积失效。基于此不得不把原来的类保留。</p>
+<li><p>直接改名，会造成兼容性问题。虽然<code>Android</code>官方可以在<code>Framework</code>层面将所有的调用处都替换成<code>ATMS</code>但对于应用层各种反射、<code>Hook</code>手段完成完成诸如插件化加载的事情可能会造成大面积失效。基于此不得不把原来的类保留。（向来<code>sdk</code>层的改动都是向前先兼容多个版本的，后面可能也会废弃）</p>
 </li>
 </ul>
 <p>不过这两个原因都只是我单方面猜测，不确定<code>Google</code>的开发者做这件事的时候是怎么思考的。</p>
+<hr>
+<p>不同版源码跳着看好心累，下面这张图是我从网上找到一张从抽象的角度整体来看的交互，比较形象。</p>
+<p><img src="/images/atms/01.png" width="700"></p>
+<p>通过这几天对<code>Framework</code>层源码的学习过程中，习得一点经验。</p>
+<ul>
+<li>不可完全按照书上和博客等资料说的来理解。版本差异比较大，分析源码要亲力亲为，看别人怎么做的时候，自己也要动手。二手知识可能过期了，学个思路就好。</li>
+<li>源码体量太大，没法记住没个<code>API</code>函数调用链路，这个个人觉得是没有必要去强行记住。细节真的太多，主要还是已理解为主，抓核心原理就好。</li>
+<li>虽然不同版本的<code>framework</code>实现细节不一样，但它们在交互上的本质<code>Binder</code>、<code>AIDL</code>没有变化，外部的架构也没有变化。</li>
+</ul>
 
       
     </div>
